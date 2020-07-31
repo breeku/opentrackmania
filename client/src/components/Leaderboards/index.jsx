@@ -74,16 +74,16 @@ const getTopTen = leaderboards => {
     let result = []
 
     for (const leaderboard of leaderboards) {
-        const names = leaderboard.maps.flatMap(x => x.top.map(x => x.name))
+        const names = leaderboard.maps.flatMap(x => x.top.map(x => x.nameOnPlatform))
         const regions = leaderboard.maps.flatMap(x => x.top.map(x => x.zoneName))
 
         let players = []
         let zones = []
-        for (const name of names) {
+        for (const nameOnPlatform of names) {
             // change this to reduce
-            if (!players.find(x => x.name === name)) {
-                const count = names.filter(x => x === name).length
-                players.push({ name, count })
+            if (!players.find(x => x.nameOnPlatform === nameOnPlatform)) {
+                const count = names.filter(x => x === nameOnPlatform).length
+                players.push({ nameOnPlatform, count })
             }
         }
 
@@ -144,13 +144,13 @@ export default function Leaderboard() {
 
                                     <AccordionDetails className={classes.flex_column}>
                                         {topTen[i].players.map(x => {
-                                            const { name, count } = x
+                                            const { nameOnPlatform, count } = x
                                             return (
                                                 <Paper
                                                     elevation={3}
                                                     className={`${classes.paper} ${classes.top_records}`}>
                                                     <h3>
-                                                        {name} has{' '}
+                                                        {nameOnPlatform} has{' '}
                                                         <span
                                                             className={
                                                                 classes.color_green
@@ -232,7 +232,11 @@ export default function Leaderboard() {
                                                                     }>
                                                                     #{i + 1}
                                                                 </h4>
-                                                                <h3>{record.name}</h3>
+                                                                <h3>
+                                                                    {
+                                                                        record.nameOnPlatform
+                                                                    }
+                                                                </h3>
                                                             </span>
                                                         </Grid>
                                                         <Grid item xs={12} sm={12} md={4}>

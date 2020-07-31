@@ -27,8 +27,8 @@ if (process.env.NODE_ENV === 'production') {
 
 app.listen(process.env.PORT || 8080)
 ;(async () => {
-    const success = await topPlayersFromSeasons()
-    success
-        ? console.log('Updated leaderboards')
-        : console.error('Updating leaderboards failed')
+    //const success = await topPlayersFromSeasons()
+    //success
+    //    ? console.log('Updated leaderboards')
+    //    : console.error('Updating leaderboards failed')
 })()
