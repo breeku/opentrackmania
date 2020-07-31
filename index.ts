@@ -38,7 +38,7 @@ app.get('/api/leaderboard', (req, res) => {
 })
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'build', 'index.html'))
+    res.sendFile(path.join(__dirname, './client/build', 'index.html'))
 })
 
 cron.schedule('0 * * * *', async () => {
@@ -77,7 +77,7 @@ cron.schedule('0 * * * *', async () => {
     }
 })
 
-app.listen(8080)
+app.listen(process.env.PORT || 8080)
 
 const login = async (credentials: string) => {
     try {
@@ -102,7 +102,7 @@ const topPlayersFromSeasons = async (credentials: loggedIn) => {
     const seasons = nodeCache.get('seasons') as IallSeasons
     if (credentials) {
         let result = []
-        console.log('Retrieved credentials and seasons')
+        console.log('Retrieved seasons')
         for (const campaign of seasons.campaignList) {
             let topPlayersMaps: any = []
             for (const map of campaign.playlist) {
