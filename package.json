@@ -26,12 +26,11 @@
         "node-cron": "^2.0.3",
         "trackmania-api-node": "0.0.18",
         "ts-node": "^8.10.2",
-        "typescript": "^3.9.7"
+        "typescript": "^3.9.7",
+        "@types/express": "^4.17.7",
+        "@types/node": "^14.0.27"
     },
     "devDependencies": {
-        "@now/node": "^1.7.4",
-        "@types/express": "^4.17.7",
-        "@types/node": "^14.0.27",
         "ts-node-dev": "^1.0.0-pre.56"
     }
 }
