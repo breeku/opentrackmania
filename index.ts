@@ -6,7 +6,7 @@ import { db } from './server/db'
 
 const app = express()
 
-db.defaults({ leaderboard: [] }).write()
+db.defaults({ leaderboard: [], accounts: [] }).write()
 
 app.use(express.static(path.join(__dirname, 'build')))
 

@@ -4,6 +4,7 @@ import {
     getProfilesById,
     getProfiles,
     getSeasons,
+    IwebIdentity,
 } from 'trackmania-api-node'
 
 import { login } from './login'
@@ -18,6 +19,7 @@ export const topPlayersFromSeasons = async () => {
         const seasons = await getSeasons(credentials.nadeoTokens.accessToken)
         if (seasons) {
             const result = []
+            const dbAccounts = db.get('accounts').value()
             for (const campaign of seasons.campaignList) {
                 const topPlayersMaps: any = []
                 for (const map of campaign.playlist) {
@@ -26,34 +28,70 @@ export const topPlayersFromSeasons = async () => {
                             credentials.nadeoTokens.accessToken,
                             map.mapUid,
                         )
-                        // could first get all top players, then gather them all to big array to getprofiles and getprofilesbyid, many small requests vs one big
-                        const accountIds = topPlayers.tops[0].top.map(
-                            (x: { accountId: string }) => x.accountId,
-                        )
-                        const accounts = await getProfiles(
-                            credentials.ubiTokens.accessToken,
-                            accountIds,
-                        )
-                        const { profiles } = await getProfilesById(
-                            credentials.ticket,
-                            accounts.map(x => x.uid),
-                        )
-
-                        const newTop = topPlayers.tops[0].top.map(record => {
-                            const user = accounts.flatMap(a => {
-                                if (a.accountId === record.accountId) {
-                                    const u = profiles.find(p => p.profileId === a.uid)
-                                    return u
+                        const accountIds = topPlayers.tops[0].top.flatMap(
+                            (a: { accountId: string }) => {
+                                if (
+                                    !dbAccounts.find(
+                                        (d: { accountId: string }) =>
+                                            a.accountId === d.accountId,
+                                    )
+                                ) {
+                                    return a.accountId
                                 } else {
                                     return []
                                 }
-                            })[0]
+                            },
+                        )
+
+                        let accounts: IwebIdentity[] = []
+                        let profile: any[] = []
+
+                        if (accountIds.length > 0) {
+                            accounts = await getProfiles(
+                                credentials.ubiTokens.accessToken,
+                                accountIds,
+                            )
+                            const { profiles } = await getProfilesById(
+                                credentials.ticket,
+                                accounts.map(x => x.uid),
+                            )
+                            profile = profiles
+                        }
+
+                        const newTop = topPlayers.tops[0].top.map(record => {
+                            const user =
+                                dbAccounts.find(
+                                    (x: { accountId: string }) =>
+                                        x.accountId === record.accountId,
+                                ) ||
+                                accounts.flatMap(a => {
+                                    if (a.accountId === record.accountId) {
+                                        const u = profile.find(p => p.profileId === a.uid)
+                                        return u
+                                    } else {
+                                        return []
+                                    }
+                                })[0]
                             if (user) {
-                                return { ...record, name: user.nameOnPlatform }
+                                if (
+                                    !dbAccounts.find(
+                                        (x: { accountId: string }) =>
+                                            x.accountId === record.accountId,
+                                    )
+                                )
+                                    dbAccounts.push({
+                                        accountId: record.accountId,
+                                        nameOnPlatform: user.nameOnPlatform,
+                                    })
+
+                                return { ...record, nameOnPlatform: user.nameOnPlatform }
                             }
                         })
 
+                        db.set('accounts', dbAccounts).write()
+
                         topPlayersMaps.push({ map: map.mapUid, top: newTop })
+
                         console.log(
                             map.position +
                                 ' (' +
