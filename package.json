@@ -4,9 +4,15 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "build": "cd client && npm run build",
+        "update": "ts-node updateLeaderboard",
+        "start": "ts-node index.ts",
+        "heroku-postbuild": "cd client && npm i && npm i --only=dev --no-shrinkwrap && npm run build",
         "watch": "tsnd --respawn index.ts"
     },
+    "cacheDirectories": [
+        "node_modules",
+        "react-ui/node_modules"
+    ],
     "keywords": [],
     "author": "",
     "license": "ISC",
@@ -18,7 +24,8 @@
         "lowdb": "^1.0.0",
         "node-cache": "^5.1.2",
         "node-cron": "^2.0.3",
-        "trackmania-api-node": "0.0.18"
+        "trackmania-api-node": "0.0.18",
+        "ts-node": "^8.10.2"
     },
     "devDependencies": {
         "@now/node": "^1.7.4",
