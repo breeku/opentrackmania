@@ -1,16 +1,9 @@
 import express from 'express'
 import path from 'path'
-import low from 'lowdb'
-import FileSync from 'lowdb/adapters/FileSync'
 
 import { topPlayersFromSeasons } from './server/leaderboard'
+import { db } from './server/db'
 
-interface Database {
-    leaderboard: any[]
-}
-
-const adapter = new FileSync<Database>('db.json')
-export const db = low(adapter)
 const app = express()
 
 db.defaults({ leaderboard: [] }).write()

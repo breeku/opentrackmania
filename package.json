@@ -4,7 +4,7 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "update": "ts-node updateLeaderboard",
+        "update": "ts-node updateLeaderboard.ts",
         "start": "ts-node index.ts",
         "heroku-postbuild": "cd client && npm i && npm i --only=dev --no-shrinkwrap && npm run build",
         "watch": "tsnd --respawn index.ts",

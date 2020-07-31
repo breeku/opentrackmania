@@ -1,4 +1,4 @@
-import { db } from '../index'
+import { db } from './db'
 import {
     getTopPlayersMap,
     getProfilesById,
@@ -8,14 +8,11 @@ import {
 
 import { login } from './login'
 
-interface Database {
-    leaderboard: any[]
-}
-
 // tslint:disable-next-line: no-var-requires
 const sleep = require('util').promisify(setTimeout)
 
 export const topPlayersFromSeasons = async () => {
+    // probably should task a worker to this since it blocks for minute at a time
     const credentials = await login()
     if (credentials) {
         const seasons = await getSeasons(credentials.nadeoTokens.accessToken)
@@ -29,6 +26,7 @@ export const topPlayersFromSeasons = async () => {
                             credentials.nadeoTokens.accessToken,
                             map.mapUid,
                         )
+                        // could first get all top players, then gather them all to big array to getprofiles and getprofilesbyid, many small requests vs one big
                         const accountIds = topPlayers.tops[0].top.map(
                             (x: { accountId: string }) => x.accountId,
                         )
@@ -64,7 +62,7 @@ export const topPlayersFromSeasons = async () => {
                                 (campaign.playlist.length - 1) +
                                 ')',
                         )
-                        await sleep(1000)
+                        await sleep(2500)
                     } catch (e) {
                         console.error(e)
                         console.warn('get top players map failed')
