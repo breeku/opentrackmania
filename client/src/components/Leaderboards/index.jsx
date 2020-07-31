@@ -100,7 +100,6 @@ const getTopTen = leaderboards => {
 
         result.push({ players: players.slice(0, 10), zones: zones.slice(0, 10) })
     }
-    console.log(result)
     return result
 }
 

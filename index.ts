@@ -10,7 +10,7 @@ interface Database {
 }
 
 const adapter = new FileSync<Database>('db.json')
-const db = low(adapter)
+export const db = low(adapter)
 const app = express()
 
 db.defaults({ leaderboard: [] }).write()

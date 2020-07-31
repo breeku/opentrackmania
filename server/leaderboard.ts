@@ -1,5 +1,4 @@
-import low from 'lowdb'
-import FileSync from 'lowdb/adapters/FileSync'
+import { db } from '../index'
 import {
     getTopPlayersMap,
     getProfilesById,
@@ -13,8 +12,6 @@ interface Database {
     leaderboard: any[]
 }
 
-const adapter = new FileSync<Database>('db.json')
-const db = low(adapter)
 // tslint:disable-next-line: no-var-requires
 const sleep = require('util').promisify(setTimeout)
 
