@@ -47,6 +47,7 @@ export const topPlayersFromSeasons = async () => {
                         let profile: any[] = []
 
                         if (accountIds.length > 0) {
+                            console.log('Get new account ids')
                             accounts = await getProfiles(
                                 credentials.ubiTokens.accessToken,
                                 accountIds,
@@ -56,6 +57,8 @@ export const topPlayersFromSeasons = async () => {
                                 accounts.map(x => x.uid),
                             )
                             profile = profiles
+                        } else {
+                            console.log('All account ids are known')
                         }
 
                         const newTop = topPlayers.tops[0].top.map(record => {
