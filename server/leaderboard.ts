@@ -12,7 +12,7 @@ import { login } from './login'
 const sleep = require('util').promisify(setTimeout)
 
 export const topPlayersFromSeasons = async () => {
-    // probably should task a worker to this since it blocks for minute at a time
+    // probably should task a worker to this
     const credentials = await login()
     if (credentials) {
         const seasons = await getSeasons(credentials.nadeoTokens.accessToken)
