@@ -22,13 +22,19 @@ app.get('/api/leaderboard', (req, res) => {
     return res.send(leaderboard)
 })
 
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'client/build', 'index.html'))
-})
+if (process.env.NODE_ENV === 'production') {
+    // Serve any static files
+    app.use(express.static(path.join(__dirname, 'client/build')))
+
+    // Handle React routing, return all requests to React app
+    app.get('*', function (req, res) {
+        res.sendFile(path.join(__dirname, 'client/build', 'index.html'))
+    })
+}
 
 app.listen(process.env.PORT || 8080)
 ;(async () => {
-    const success = topPlayersFromSeasons()
+    const success = await topPlayersFromSeasons()
     success
         ? console.log('Updated leaderboards')
         : console.error('Updating leaderboards failed')
