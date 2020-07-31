@@ -1,7 +1,6 @@
 import express from 'express'
 import path from 'path'
 
-import { topPlayersFromSeasons } from './server/leaderboard'
 import { db } from './server/db'
 
 const app = express()
@@ -24,9 +23,3 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 app.listen(process.env.PORT || 8080)
-;(async () => {
-    const success = await topPlayersFromSeasons()
-    success
-        ? console.log('Updated leaderboards')
-        : console.error('Updating leaderboards failed')
-})()

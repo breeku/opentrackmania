@@ -1,0 +1,2672 @@
+{
+  "leaderboard": [
+    {
+      "name": "Summer 2020",
+      "maps": [
+        {
+          "map": "XJ_JEjWGoAexDWe8qfaOjEcq5l8",
+          "top": [
+            {
+              "accountId": "a9cbdeff-daa3-4bc2-998c-b2838183fb97",
+              "zoneId": "30229617-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Vaud",
+              "position": 1,
+              "score": 19454,
+              "nameOnPlatform": "AffiTM"
+            },
+            {
+              "accountId": "531a9861-c024-4063-9b29-14601350b899",
+              "zoneId": "301e4b33-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Lower Austria",
+              "position": 2,
+              "score": 19481,
+              "nameOnPlatform": "Rollin.9D"
+            },
+            {
+              "accountId": "2ed0997d-62bc-4a53-8c09-ffb793382ea2",
+              "zoneId": "30201200-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Dortmund",
+              "position": 3,
+              "score": 19547,
+              "nameOnPlatform": "riolu-tm"
+            },
+            {
+              "accountId": "a5af97bc-d185-404f-a7d1-5c4e48d05db6",
+              "zoneId": "30222b92-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Wielkopolskie",
+              "position": 4,
+              "score": 19553,
+              "nameOnPlatform": "RotakeR.9D"
+            },
+            {
+              "accountId": "dc512a57-42b5-411d-b798-ed1961c4fac3",
+              "zoneId": "30200b48-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Hannover",
+              "position": 5,
+              "score": 19558,
+              "nameOnPlatform": "LeGSimi"
+            },
+            {
+              "accountId": "58278714-fbe5-4bb1-960c-3ad278bb7ecc",
+              "zoneId": "301ff7e1-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Karlsruhe",
+              "position": 6,
+              "score": 19566,
+              "nameOnPlatform": "styx-tm"
+            },
+            {
+              "accountId": "e2630e0a-72f9-4b47-8cb4-15a2abfad1df",
+              "zoneId": "301f6969-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Isère",
+              "position": 7,
+              "score": 19568,
+              "nameOnPlatform": "SapiTM"
+            },
+            {
+              "accountId": "aa4e375f-d23e-4915-8d53-8b3307e06764",
+              "zoneId": "301ffccb-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Nürnberg",
+              "position": 8,
+              "score": 19568,
+              "nameOnPlatform": "racehansTM"
+            },
+            {
+              "accountId": "b14f7613-8fb9-463e-b356-75f0700048db",
+              "zoneId": "301f96de-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Ille-et-Vilaine",
+              "position": 9,
+              "score": 19576,
+              "nameOnPlatform": "Canon-TM"
+            },
+            {
+              "accountId": "b67bedd1-7d2f-4861-86c4-dae8c1583ace",
+              "zoneId": "30200bd1-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Oldenburg",
+              "position": 10,
+              "score": 19578,
+              "nameOnPlatform": "Toasti9801"
+            }
+          ]
+        },
+        {
+          "map": "zFK9sy3nRLa6FGSpuk_gw0cHLv7",
+          "top": [
+            {
+              "accountId": "a9cbdeff-daa3-4bc2-998c-b2838183fb97",
+              "zoneId": "30229617-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Vaud",
+              "position": 1,
+              "score": 14613,
+              "nameOnPlatform": "AffiTM"
+            },
+            {
+              "accountId": "ab60793c-3aa2-497b-9d45-d841282620e9",
+              "zoneId": "301f60f6-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Finland",
+              "position": 2,
+              "score": 14615,
+              "nameOnPlatform": "Drarker"
+            },
+            {
+              "accountId": "36d7f757-6ee9-4434-ad78-02bdcc374f4e",
+              "zoneId": "301fec4d-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Maine-et-Loire",
+              "position": 3,
+              "score": 14620,
+              "nameOnPlatform": "Dexarys"
+            },
+            {
+              "accountId": "f4843288-5992-46a7-bca9-755faaba1608",
+              "zoneId": "301ffa36-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Augsburg",
+              "position": 4,
+              "score": 14620,
+              "nameOnPlatform": "Joooooooooey"
+            },
+            {
+              "accountId": "531a9861-c024-4063-9b29-14601350b899",
+              "zoneId": "301e4b33-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Lower Austria",
+              "position": 5,
+              "score": 14626,
+              "nameOnPlatform": "Rollin.9D"
+            },
+            {
+              "accountId": "445a6375-a8aa-4b56-b3b5-18d4bff53351",
+              "zoneId": "30205c20-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Israel",
+              "position": 6,
+              "score": 14626,
+              "nameOnPlatform": "RacetalTM"
+            },
+            {
+              "accountId": "6d5323d0-d6ff-4a6a-af3c-42c11740f9d0",
+              "zoneId": "301fffb7-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Potsdam",
+              "position": 7,
+              "score": 14626,
+              "nameOnPlatform": "swa.Wanted"
+            },
+            {
+              "accountId": "934543d0-dbcc-432f-8959-ca789f7c904e",
+              "zoneId": "30225cbf-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Andalucía",
+              "position": 8,
+              "score": 14627,
+              "nameOnPlatform": "Joltysonic."
+            },
+            {
+              "accountId": "0def209a-944b-40ac-8dc8-989af08c8ef4",
+              "zoneId": "302240ae-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Norte",
+              "position": 9,
+              "score": 14628,
+              "nameOnPlatform": "PauLL.4W"
+            },
+            {
+              "accountId": "e02a714f-2305-4344-8cab-4124f9d15cda",
+              "zoneId": "3020ad48-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Dolnośląskie",
+              "position": 10,
+              "score": 14630,
+              "nameOnPlatform": "fwofliks"
+            }
+          ]
+        },
+        {
+          "map": "xfRvyL9ByoJoPhlAvcNzbc4xD88",
+          "top": [
+            {
+              "accountId": "d1898c24-d0be-4785-bb32-58e3dc78b842",
+              "zoneId": "301f5723-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Denmark",
+              "position": 1,
+              "score": 18355,
+              "nameOnPlatform": "Morning29"
+            },
+            {
+              "accountId": "ca1d5313-1683-405d-b5b3-14c6fd54969c",
+              "zoneId": "3020818d-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Latvia",
+              "position": 2,
+              "score": 18378,
+              "nameOnPlatform": "AR_TK"
+            },
+            {
+              "accountId": "cc1d1f01-608b-4008-9e24-674f8bc7d327",
+              "zoneId": "30204490-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Erfurt",
+              "position": 3,
+              "score": 18388,
+              "nameOnPlatform": "saKar_"
+            },
+            {
+              "accountId": "0bf1ffe7-e3d5-4703-aeca-ac6f69549daa",
+              "zoneId": "30228fd4-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Neuchâtel",
+              "position": 4,
+              "score": 18402,
+              "nameOnPlatform": "IuSkAiUs"
+            },
+            {
+              "accountId": "6d6665a9-1157-4f2b-a209-a32020ef07ad",
+              "zoneId": "3022e7ba-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "North Carolina",
+              "position": 5,
+              "score": 18405,
+              "nameOnPlatform": "coolbropal"
+            },
+            {
+              "accountId": "2dd1e832-8f25-44c1-8189-ff28d7388806",
+              "zoneId": "301ffccb-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Nürnberg",
+              "position": 6,
+              "score": 18408,
+              "nameOnPlatform": "esu-LX"
+            },
+            {
+              "accountId": "bdbcea9e-6a2b-41b7-9cc2-824fa1d30687",
+              "zoneId": "3022e729-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "New York",
+              "position": 7,
+              "score": 18415,
+              "nameOnPlatform": "AngNazgul"
+            },
+            {
+              "accountId": "abf77231-3e2a-4fff-8f4e-fd3e2e18171f",
+              "zoneId": "301e5f67-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Luxemburg",
+              "position": 8,
+              "score": 18428,
+              "nameOnPlatform": "xMoltoX"
+            },
+            {
+              "accountId": "49965c7b-d71c-467d-99c7-ff4092daf0ca",
+              "zoneId": "301f6969-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Isère",
+              "position": 9,
+              "score": 18430,
+              "nameOnPlatform": "CamionTM"
+            },
+            {
+              "accountId": "2024fa3a-6a7d-49cd-a546-1ed90bb92583",
+              "zoneId": "30204490-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Erfurt",
+              "position": 10,
+              "score": 18447,
+              "nameOnPlatform": "FerxGG"
+            }
+          ]
+        },
+        {
+          "map": "8rWFH6JI2N1UuHeaS9dmMkTojS",
+          "top": [
+            {
+              "accountId": "74bd19c1-72d9-4187-8185-86e2a182bede",
+              "zoneId": "301e6b3a-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Bulgaria",
+              "position": 1,
+              "score": 5034,
+              "nameOnPlatform": "Stal.time"
+            },
+            {
+              "accountId": "509f80c0-f8c3-4f57-acb8-bbbdc1346020",
+              "zoneId": "301faf13-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Val-d'Oise",
+              "position": 2,
+              "score": 5184,
+              "nameOnPlatform": "Louislemanifike"
+            },
+            {
+              "accountId": "06496fad-70f7-49bc-80c6-d62caa7a9de4",
+              "zoneId": "301f40ae-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Croatia",
+              "position": 3,
+              "score": 22668,
+              "nameOnPlatform": "Hefest.9D"
+            },
+            {
+              "accountId": "1e056adb-9300-4ce5-9a51-5adc2756ea7e",
+              "zoneId": "30209992-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Gelderland",
+              "position": 4,
+              "score": 22791,
+              "nameOnPlatform": "SamGusta"
+            },
+            {
+              "accountId": "5953a712-54ff-4603-b863-d69975f2f372",
+              "zoneId": "301f5723-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Denmark",
+              "position": 5,
+              "score": 22998,
+              "nameOnPlatform": "helion404"
+            },
+            {
+              "accountId": "ba06de15-1fb3-4ea3-b279-4283828151d6",
+              "zoneId": "301ffa36-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Augsburg",
+              "position": 6,
+              "score": 23155,
+              "nameOnPlatform": "xdennis090"
+            },
+            {
+              "accountId": "531a9861-c024-4063-9b29-14601350b899",
+              "zoneId": "301e4b33-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Lower Austria",
+              "position": 7,
+              "score": 23176,
+              "nameOnPlatform": "Rollin.9D"
+            },
+            {
+              "accountId": "c0799fdc-d7a7-4d7e-ad9e-c9fcc4fc7bbf",
+              "zoneId": "30228671-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Sweden",
+              "position": 8,
+              "score": 23181,
+              "nameOnPlatform": "JozoTm"
+            },
+            {
+              "accountId": "445a6375-a8aa-4b56-b3b5-18d4bff53351",
+              "zoneId": "30205c20-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Israel",
+              "position": 9,
+              "score": 23203,
+              "nameOnPlatform": "RacetalTM"
+            },
+            {
+              "accountId": "7aa19bef-a3f5-4aaa-aeae-ff2284bbadd8",
+              "zoneId": "3022e729-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "New York",
+              "position": 10,
+              "score": 23248,
+              "nameOnPlatform": "Draggyyy"
+            }
+          ]
+        },
+        {
+          "map": "eWR2OWAaiqQOISa_0roXlpsnQLl",
+          "top": [
+            {
+              "accountId": "71dd25f5-436b-459b-8fa0-c2c94d243990",
+              "zoneId": "30222b92-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Wielkopolskie",
+              "position": 1,
+              "score": 31414,
+              "nameOnPlatform": "ShadyIsntGay"
+            },
+            {
+              "accountId": "0a49fda3-ae53-4cd2-a332-f5d20facbe98",
+              "zoneId": "30229d8f-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Tunisia",
+              "position": 2,
+              "score": 31445,
+              "nameOnPlatform": "StigaaTM"
+            },
+            {
+              "accountId": "445a6375-a8aa-4b56-b3b5-18d4bff53351",
+              "zoneId": "30205c20-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Israel",
+              "position": 3,
+              "score": 31511,
+              "nameOnPlatform": "RacetalTM"
+            },
+            {
+              "accountId": "9214d740-f581-4529-858a-417405e463bf",
+              "zoneId": "301f5723-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Denmark",
+              "position": 4,
+              "score": 31514,
+              "nameOnPlatform": "Im2slow4you_"
+            },
+            {
+              "accountId": "78b59d52-1aed-4f79-a1ae-eee1cc7c3f9c",
+              "zoneId": "30204053-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Magdeburg",
+              "position": 5,
+              "score": 31536,
+              "nameOnPlatform": "Raisis.core"
+            },
+            {
+              "accountId": "2ed0997d-62bc-4a53-8c09-ffb793382ea2",
+              "zoneId": "30201200-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Dortmund",
+              "position": 6,
+              "score": 31558,
+              "nameOnPlatform": "riolu-tm"
+            },
+            {
+              "accountId": "b3bb28c2-bbd1-4c4c-a316-939128df4d8b",
+              "zoneId": "301f5723-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Denmark",
+              "position": 7,
+              "score": 31596,
+              "nameOnPlatform": "Sir.Cato"
+            },
+            {
+              "accountId": "dc512a57-42b5-411d-b798-ed1961c4fac3",
+              "zoneId": "30200b48-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Hannover",
+              "position": 8,
+              "score": 31611,
+              "nameOnPlatform": "LeGSimi"
+            },
+            {
+              "accountId": "a47216d8-ad9e-495c-9592-a54766d7b50e",
+              "zoneId": "301ffd60-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Passau",
+              "position": 9,
+              "score": 31616,
+              "nameOnPlatform": "leboris36"
+            },
+            {
+              "accountId": "06496fad-70f7-49bc-80c6-d62caa7a9de4",
+              "zoneId": "301f40ae-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Croatia",
+              "position": 10,
+              "score": 31626,
+              "nameOnPlatform": "Hefest.9D"
+            }
+          ]
+        },
+        {
+          "map": "NlKBKke_lk9hwhoEMb6rBQrsWC5",
+          "top": [
+            {
+              "accountId": "445a6375-a8aa-4b56-b3b5-18d4bff53351",
+              "zoneId": "30205c20-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Israel",
+              "position": 1,
+              "score": 25506,
+              "nameOnPlatform": "RacetalTM"
+            },
+            {
+              "accountId": "06496fad-70f7-49bc-80c6-d62caa7a9de4",
+              "zoneId": "301f40ae-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Croatia",
+              "position": 2,
+              "score": 25508,
+              "nameOnPlatform": "Hefest.9D"
+            },
+            {
+              "accountId": "2d4cba8b-3b77-45af-a635-5e4d6e61cfa2",
+              "zoneId": "3022a7ed-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "South West England",
+              "position": 3,
+              "score": 25524,
+              "nameOnPlatform": "PacTM"
+            },
+            {
+              "accountId": "84440cfa-9b4f-4d01-885f-11741878823a",
+              "zoneId": "301e6b3a-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Bulgaria",
+              "position": 4,
+              "score": 25534,
+              "nameOnPlatform": "suMichan-"
+            },
+            {
+              "accountId": "e93f5716-079b-4996-b16d-b3474832a242",
+              "zoneId": "30224326-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Центральный федеральный округ",
+              "position": 5,
+              "score": 25536,
+              "nameOnPlatform": "ShibalaTM"
+            },
+            {
+              "accountId": "f781e6ad-8a11-4093-a297-e48638d5fa1a",
+              "zoneId": "301fa363-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Bas-Rhin",
+              "position": 6,
+              "score": 25536,
+              "nameOnPlatform": "hug0220"
+            },
+            {
+              "accountId": "6a9b4f65-83ef-4d24-ac63-d040bc9ff44d",
+              "zoneId": "301f60f6-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Finland",
+              "position": 7,
+              "score": 25548,
+              "nameOnPlatform": "azinazz"
+            },
+            {
+              "accountId": "351c26a3-d706-45d5-ab18-505caff14714",
+              "zoneId": "301f60f6-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Finland",
+              "position": 8,
+              "score": 25552,
+              "nameOnPlatform": "Karhu_91"
+            },
+            {
+              "accountId": "b05db0f8-d845-47d2-b0e5-795717038ac6",
+              "zoneId": "301ffccb-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Nürnberg",
+              "position": 9,
+              "score": 25554,
+              "nameOnPlatform": "MASSAAA-"
+            },
+            {
+              "accountId": "f64997c3-61a5-461b-b6ed-e71cf62aa6eb",
+              "zoneId": "301e6b3a-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Bulgaria",
+              "position": 10,
+              "score": 25554,
+              "nameOnPlatform": "chzgod-"
+            }
+          ]
+        },
+        {
+          "map": "OG0yFZ4bA1iiybF7n4gaZkFO6m9",
+          "top": [
+            {
+              "accountId": "445a6375-a8aa-4b56-b3b5-18d4bff53351",
+              "zoneId": "30205c20-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Israel",
+              "position": 1,
+              "score": 29986,
+              "nameOnPlatform": "RacetalTM"
+            },
+            {
+              "accountId": "5cada1ac-a938-4468-af83-8e945d6251f3",
+              "zoneId": "30201200-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Dortmund",
+              "position": 2,
+              "score": 30046,
+              "nameOnPlatform": "PatroseTV"
+            },
+            {
+              "accountId": "ba06de15-1fb3-4ea3-b279-4283828151d6",
+              "zoneId": "301ffa36-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Augsburg",
+              "position": 3,
+              "score": 30081,
+              "nameOnPlatform": "xdennis090"
+            },
+            {
+              "accountId": "6a9b4f65-83ef-4d24-ac63-d040bc9ff44d",
+              "zoneId": "301f60f6-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Finland",
+              "position": 4,
+              "score": 30098,
+              "nameOnPlatform": "azinazz"
+            },
+            {
+              "accountId": "06496fad-70f7-49bc-80c6-d62caa7a9de4",
+              "zoneId": "301f40ae-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Croatia",
+              "position": 5,
+              "score": 30131,
+              "nameOnPlatform": "Hefest.9D"
+            },
+            {
+              "accountId": "8b636b33-6046-4be9-8b54-7b28634ac1e3",
+              "zoneId": "3020068a-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Kassel",
+              "position": 6,
+              "score": 30143,
+              "nameOnPlatform": "Fegir"
+            },
+            {
+              "accountId": "1f64d7b0-894c-4d3e-890d-e785c5a1b311",
+              "zoneId": "30201335-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Düsseldorf",
+              "position": 7,
+              "score": 30150,
+              "nameOnPlatform": "oNio92"
+            },
+            {
+              "accountId": "a5af97bc-d185-404f-a7d1-5c4e48d05db6",
+              "zoneId": "30222b92-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Wielkopolskie",
+              "position": 8,
+              "score": 30158,
+              "nameOnPlatform": "RotakeR.9D"
+            },
+            {
+              "accountId": "a9cbdeff-daa3-4bc2-998c-b2838183fb97",
+              "zoneId": "30229617-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Vaud",
+              "position": 9,
+              "score": 30228,
+              "nameOnPlatform": "AffiTM"
+            },
+            {
+              "accountId": "64bc0727-10b8-4dfb-8d70-ce92287dd514",
+              "zoneId": "30222424-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Śląskie",
+              "position": 10,
+              "score": 30245,
+              "nameOnPlatform": "maciey.pl"
+            }
+          ]
+        },
+        {
+          "map": "iWUvrk1X45PaUmKv6HUDak4W6V2",
+          "top": [
+            {
+              "accountId": "89fcac73-9917-4278-855e-109ecd04db4f",
+              "zoneId": "3020aff6-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Małopolskie",
+              "position": 1,
+              "score": 13964,
+              "nameOnPlatform": "Danio_TM"
+            },
+            {
+              "accountId": "06496fad-70f7-49bc-80c6-d62caa7a9de4",
+              "zoneId": "301f40ae-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Croatia",
+              "position": 2,
+              "score": 13978,
+              "nameOnPlatform": "Hefest.9D"
+            },
+            {
+              "accountId": "1585e07f-f22f-48a6-b497-b78cf1444122",
+              "zoneId": "301e309b-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "New South Wales",
+              "position": 3,
+              "score": 14001,
+              "nameOnPlatform": "LinkMaxTm"
+            },
+            {
+              "accountId": "ab60793c-3aa2-497b-9d45-d841282620e9",
+              "zoneId": "301f60f6-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Finland",
+              "position": 4,
+              "score": 14039,
+              "nameOnPlatform": "Drarker"
+            },
+            {
+              "accountId": "b6a9ef20-2a1c-4dd2-bb65-fb65f6dc4f1b",
+              "zoneId": "302251c1-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Slovakia",
+              "position": 5,
+              "score": 14041,
+              "nameOnPlatform": "raizo_O"
+            },
+            {
+              "accountId": "1e056adb-9300-4ce5-9a51-5adc2756ea7e",
+              "zoneId": "30209992-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Gelderland",
+              "position": 6,
+              "score": 14045,
+              "nameOnPlatform": "SamGusta"
+            },
+            {
+              "accountId": "def2b58e-a8c7-4e1f-ac48-6f5833fde76e",
+              "zoneId": "301ffccb-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Nürnberg",
+              "position": 7,
+              "score": 14055,
+              "nameOnPlatform": "Teryo.LeG"
+            },
+            {
+              "accountId": "0f400a09-023c-4787-87ed-72261460f337",
+              "zoneId": "301f96de-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Ille-et-Vilaine",
+              "position": 8,
+              "score": 14092,
+              "nameOnPlatform": "nsc.Paulmar"
+            },
+            {
+              "accountId": "ba06de15-1fb3-4ea3-b279-4283828151d6",
+              "zoneId": "301ffa36-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Augsburg",
+              "position": 9,
+              "score": 14093,
+              "nameOnPlatform": "xdennis090"
+            },
+            {
+              "accountId": "28efc4d5-3dfb-4c3b-b2cd-e8b9050dc149",
+              "zoneId": "301fb2a7-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Manche",
+              "position": 10,
+              "score": 14095,
+              "nameOnPlatform": "Bro.Bicougnon"
+            }
+          ]
+        },
+        {
+          "map": "5weePaThiuxiK4mSHOCokBV6bTg",
+          "top": [
+            {
+              "accountId": "445a6375-a8aa-4b56-b3b5-18d4bff53351",
+              "zoneId": "30205c20-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Israel",
+              "position": 1,
+              "score": 44099,
+              "nameOnPlatform": "RacetalTM"
+            },
+            {
+              "accountId": "06496fad-70f7-49bc-80c6-d62caa7a9de4",
+              "zoneId": "301f40ae-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Croatia",
+              "position": 2,
+              "score": 44217,
+              "nameOnPlatform": "Hefest.9D"
+            },
+            {
+              "accountId": "a5af97bc-d185-404f-a7d1-5c4e48d05db6",
+              "zoneId": "30222b92-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Wielkopolskie",
+              "position": 3,
+              "score": 44312,
+              "nameOnPlatform": "RotakeR.9D"
+            },
+            {
+              "accountId": "531a9861-c024-4063-9b29-14601350b899",
+              "zoneId": "301e4b33-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Lower Austria",
+              "position": 4,
+              "score": 44482,
+              "nameOnPlatform": "Rollin.9D"
+            },
+            {
+              "accountId": "bd45204c-80f1-4809-b983-38b3f0ffc1ef",
+              "zoneId": "3020a27d-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Norway",
+              "position": 5,
+              "score": 44682,
+              "nameOnPlatform": "WirtualTM"
+            },
+            {
+              "accountId": "ba06de15-1fb3-4ea3-b279-4283828151d6",
+              "zoneId": "301ffa36-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Augsburg",
+              "position": 6,
+              "score": 44726,
+              "nameOnPlatform": "xdennis090"
+            },
+            {
+              "accountId": "169fd394-6b72-4fec-9e34-ee606f529cda",
+              "zoneId": "301f5723-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Denmark",
+              "position": 7,
+              "score": 44763,
+              "nameOnPlatform": "RadianceTM"
+            },
+            {
+              "accountId": "a9cbdeff-daa3-4bc2-998c-b2838183fb97",
+              "zoneId": "30229617-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Vaud",
+              "position": 8,
+              "score": 44821,
+              "nameOnPlatform": "AffiTM"
+            },
+            {
+              "accountId": "1782655c-6ec9-49cb-a065-7f4c653aeab5",
+              "zoneId": "30223e61-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Centro",
+              "position": 9,
+              "score": 44870,
+              "nameOnPlatform": "xDestiiiny"
+            },
+            {
+              "accountId": "2ed0997d-62bc-4a53-8c09-ffb793382ea2",
+              "zoneId": "30201200-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Dortmund",
+              "position": 10,
+              "score": 44902,
+              "nameOnPlatform": "riolu-tm"
+            }
+          ]
+        },
+        {
+          "map": "oTGP3jwCiubHBM6KtuR_aCtGWZi",
+          "top": [
+            {
+              "accountId": "531a9861-c024-4063-9b29-14601350b899",
+              "zoneId": "301e4b33-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Lower Austria",
+              "position": 1,
+              "score": 38006,
+              "nameOnPlatform": "Rollin.9D"
+            },
+            {
+              "accountId": "da4642f9-6acf-43fe-88b6-b120ff1308ba",
+              "zoneId": "301e5e63-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Liège",
+              "position": 2,
+              "score": 38014,
+              "nameOnPlatform": "Scrapie98"
+            },
+            {
+              "accountId": "a5af97bc-d185-404f-a7d1-5c4e48d05db6",
+              "zoneId": "30222b92-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Wielkopolskie",
+              "position": 3,
+              "score": 38037,
+              "nameOnPlatform": "RotakeR.9D"
+            },
+            {
+              "accountId": "1e056adb-9300-4ce5-9a51-5adc2756ea7e",
+              "zoneId": "30209992-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Gelderland",
+              "position": 4,
+              "score": 38130,
+              "nameOnPlatform": "SamGusta"
+            },
+            {
+              "accountId": "9b8673a3-7d2c-4472-89da-67ff8c083027",
+              "zoneId": "301fad4a-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Paris",
+              "position": 5,
+              "score": 38155,
+              "nameOnPlatform": "Ener_"
+            },
+            {
+              "accountId": "445a6375-a8aa-4b56-b3b5-18d4bff53351",
+              "zoneId": "30205c20-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Israel",
+              "position": 6,
+              "score": 38162,
+              "nameOnPlatform": "RacetalTM"
+            },
+            {
+              "accountId": "c87ebb17-83f4-46bc-8c3d-c5ece3657c3d",
+              "zoneId": "301ff26c-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Bouches-du-Rhône",
+              "position": 7,
+              "score": 38226,
+              "nameOnPlatform": "asqha"
+            },
+            {
+              "accountId": "9da54743-020c-4e87-82b9-1dad80f8162d",
+              "zoneId": "301f9648-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Finistère",
+              "position": 8,
+              "score": 38241,
+              "nameOnPlatform": "Vulnerra"
+            },
+            {
+              "accountId": "b6a9ef20-2a1c-4dd2-bb65-fb65f6dc4f1b",
+              "zoneId": "302251c1-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Slovakia",
+              "position": 9,
+              "score": 38268,
+              "nameOnPlatform": "raizo_O"
+            },
+            {
+              "accountId": "347e8fe9-4c6f-46c3-a0c6-a8ba9133f4a7",
+              "zoneId": "302240ae-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Norte",
+              "position": 10,
+              "score": 38276,
+              "nameOnPlatform": "Arieug0n"
+            }
+          ]
+        },
+        {
+          "map": "gMsrsG59cdouiAoahyk7wOaPPC3",
+          "top": [
+            {
+              "accountId": "ca1d5313-1683-405d-b5b3-14c6fd54969c",
+              "zoneId": "3020818d-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Latvia",
+              "position": 1,
+              "score": 24515,
+              "nameOnPlatform": "AR_TK"
+            },
+            {
+              "accountId": "a5af97bc-d185-404f-a7d1-5c4e48d05db6",
+              "zoneId": "30222b92-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Wielkopolskie",
+              "position": 2,
+              "score": 24531,
+              "nameOnPlatform": "RotakeR.9D"
+            },
+            {
+              "accountId": "d320a237-1b0a-4069-af83-f2c09fbf042e",
+              "zoneId": "301e2e52-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Australian Capital Territory",
+              "position": 3,
+              "score": 24550,
+              "nameOnPlatform": "AR_Mudda"
+            },
+            {
+              "accountId": "06496fad-70f7-49bc-80c6-d62caa7a9de4",
+              "zoneId": "301f40ae-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Croatia",
+              "position": 4,
+              "score": 24567,
+              "nameOnPlatform": "Hefest.9D"
+            },
+            {
+              "accountId": "7f4dc682-f121-4650-98ee-5fb28b7dc70d",
+              "zoneId": "3020af74-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Lubuskie",
+              "position": 5,
+              "score": 24576,
+              "nameOnPlatform": "f1ol3k"
+            },
+            {
+              "accountId": "d8051da7-99d6-4680-8aba-7fdd4a3c04c8",
+              "zoneId": "30200b48-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Hannover",
+              "position": 6,
+              "score": 24594,
+              "nameOnPlatform": "kripkeTM"
+            },
+            {
+              "accountId": "0d6b328b-7284-441e-8fac-c48fa5f3fa9a",
+              "zoneId": "301e6178-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "West-Vlaanderen",
+              "position": 7,
+              "score": 24600,
+              "nameOnPlatform": "Arth4nn"
+            },
+            {
+              "accountId": "def2b58e-a8c7-4e1f-ac48-6f5833fde76e",
+              "zoneId": "301ffccb-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Nürnberg",
+              "position": 8,
+              "score": 24608,
+              "nameOnPlatform": "Teryo.LeG"
+            },
+            {
+              "accountId": "b3bb28c2-bbd1-4c4c-a316-939128df4d8b",
+              "zoneId": "301f5723-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Denmark",
+              "position": 9,
+              "score": 24633,
+              "nameOnPlatform": "Sir.Cato"
+            },
+            {
+              "accountId": "73736c8e-d0e5-4284-82fb-a72c59506b35",
+              "zoneId": "302052b9-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Jász-Nagykun-Szolnok",
+              "position": 10,
+              "score": 24643,
+              "nameOnPlatform": "Sketterhq55"
+            }
+          ]
+        },
+        {
+          "map": "EY3IfWHWGUtreJzWmAWp00ZT6z2",
+          "top": [
+            {
+              "accountId": "a5af97bc-d185-404f-a7d1-5c4e48d05db6",
+              "zoneId": "30222b92-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Wielkopolskie",
+              "position": 1,
+              "score": 38154,
+              "nameOnPlatform": "RotakeR.9D"
+            },
+            {
+              "accountId": "06496fad-70f7-49bc-80c6-d62caa7a9de4",
+              "zoneId": "301f40ae-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Croatia",
+              "position": 2,
+              "score": 38218,
+              "nameOnPlatform": "Hefest.9D"
+            },
+            {
+              "accountId": "531a9861-c024-4063-9b29-14601350b899",
+              "zoneId": "301e4b33-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Lower Austria",
+              "position": 3,
+              "score": 38258,
+              "nameOnPlatform": "Rollin.9D"
+            },
+            {
+              "accountId": "6c26b761-bd62-42b5-8190-e3e732c2b937",
+              "zoneId": "825a3452-6a36-4fe1-94b5-637986936ef7",
+              "zoneName": "São Paulo",
+              "position": 4,
+              "score": 38274,
+              "nameOnPlatform": "GNR-HASKELL"
+            },
+            {
+              "accountId": "58278714-fbe5-4bb1-960c-3ad278bb7ecc",
+              "zoneId": "301ff7e1-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Karlsruhe",
+              "position": 5,
+              "score": 38281,
+              "nameOnPlatform": "styx-tm"
+            },
+            {
+              "accountId": "2ed0997d-62bc-4a53-8c09-ffb793382ea2",
+              "zoneId": "30201200-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Dortmund",
+              "position": 6,
+              "score": 38358,
+              "nameOnPlatform": "riolu-tm"
+            },
+            {
+              "accountId": "da4642f9-6acf-43fe-88b6-b120ff1308ba",
+              "zoneId": "301e5e63-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Liège",
+              "position": 7,
+              "score": 38368,
+              "nameOnPlatform": "Scrapie98"
+            },
+            {
+              "accountId": "a9cbdeff-daa3-4bc2-998c-b2838183fb97",
+              "zoneId": "30229617-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Vaud",
+              "position": 8,
+              "score": 38386,
+              "nameOnPlatform": "AffiTM"
+            },
+            {
+              "accountId": "b05db0f8-d845-47d2-b0e5-795717038ac6",
+              "zoneId": "301ffccb-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Nürnberg",
+              "position": 9,
+              "score": 38397,
+              "nameOnPlatform": "MASSAAA-"
+            },
+            {
+              "accountId": "dba55c7e-d5cd-40c0-a5e7-8e793fd295eb",
+              "zoneId": "301f9773-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Morbihan",
+              "position": 10,
+              "score": 38445,
+              "nameOnPlatform": "Gwen_TM"
+            }
+          ]
+        },
+        {
+          "map": "1MPMjPNGKW_U2Aa1RGyfPDnJVhd",
+          "top": [
+            {
+              "accountId": "531a9861-c024-4063-9b29-14601350b899",
+              "zoneId": "301e4b33-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Lower Austria",
+              "position": 1,
+              "score": 31806,
+              "nameOnPlatform": "Rollin.9D"
+            },
+            {
+              "accountId": "06496fad-70f7-49bc-80c6-d62caa7a9de4",
+              "zoneId": "301f40ae-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Croatia",
+              "position": 2,
+              "score": 31846,
+              "nameOnPlatform": "Hefest.9D"
+            },
+            {
+              "accountId": "c471f6e7-2459-4da8-9d57-b55feb069da8",
+              "zoneId": "301fb2a7-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Manche",
+              "position": 3,
+              "score": 31856,
+              "nameOnPlatform": "Navvkk"
+            },
+            {
+              "accountId": "b7d666e2-97df-44d7-867f-e2351c9479d5",
+              "zoneId": "301ff90f-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Stuttgart",
+              "position": 4,
+              "score": 31863,
+              "nameOnPlatform": "azunai99"
+            },
+            {
+              "accountId": "cb137a6a-7112-4917-8e57-c457e082ea3d",
+              "zoneId": "302244ee-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Сибирский федеральный округ",
+              "position": 5,
+              "score": 31903,
+              "nameOnPlatform": "xTigershark777"
+            },
+            {
+              "accountId": "16ee3d8e-ee78-4e77-b787-48f2247f96c3",
+              "zoneId": "301ff879-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Mannheim",
+              "position": 6,
+              "score": 31944,
+              "nameOnPlatform": "DarkBringer94"
+            },
+            {
+              "accountId": "ab60793c-3aa2-497b-9d45-d841282620e9",
+              "zoneId": "301f60f6-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Finland",
+              "position": 7,
+              "score": 32064,
+              "nameOnPlatform": "Drarker"
+            },
+            {
+              "accountId": "bd45204c-80f1-4809-b983-38b3f0ffc1ef",
+              "zoneId": "3020a27d-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Norway",
+              "position": 8,
+              "score": 32077,
+              "nameOnPlatform": "WirtualTM"
+            },
+            {
+              "accountId": "5cada1ac-a938-4468-af83-8e945d6251f3",
+              "zoneId": "30201200-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Dortmund",
+              "position": 9,
+              "score": 32081,
+              "nameOnPlatform": "PatroseTV"
+            },
+            {
+              "accountId": "fc54a67c-7bd3-4b33-aa7d-a77f13a7b621",
+              "zoneId": "b9e4bf40-1d93-48a3-8b67-7e40dfa6eba9",
+              "zoneName": "Rio Grande do Sul",
+              "position": 10,
+              "score": 32131,
+              "nameOnPlatform": "SSG_matt"
+            }
+          ]
+        },
+        {
+          "map": "uQrUHGT16AptHdxkUKL3MWuh0Gm",
+          "top": [
+            {
+              "accountId": "180f1856-db4a-449c-8bb0-fbbab30efd64",
+              "zoneId": "301ff90f-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Stuttgart",
+              "position": 1,
+              "score": 19045,
+              "nameOnPlatform": "Buuuuurd"
+            },
+            {
+              "accountId": "ae6262f9-31ad-48a7-8445-3e701414a86a",
+              "zoneId": "301fd0bd-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Vienne",
+              "position": 2,
+              "score": 19322,
+              "nameOnPlatform": "KC.DarkeR"
+            },
+            {
+              "accountId": "cf0d1a6a-3f95-40a0-bca2-6294194508b1",
+              "zoneId": "301ff26c-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Bouches-du-Rhône",
+              "position": 3,
+              "score": 19381,
+              "nameOnPlatform": "TrilleKs"
+            },
+            {
+              "accountId": "c5b28ee7-7d85-4dbf-b311-30ca0e014d91",
+              "zoneId": "30206dbd-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Lombardia",
+              "position": 4,
+              "score": 19474,
+              "nameOnPlatform": "Dyzer__"
+            },
+            {
+              "accountId": "2f5735f4-04e5-4c9c-a60a-780648c02611",
+              "zoneId": "30201886-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Wuppertal",
+              "position": 5,
+              "score": 19719,
+              "nameOnPlatform": "TresZ_"
+            },
+            {
+              "accountId": "5df2a40b-1333-4569-81bc-be91ee851ad8",
+              "zoneId": "30226ac4-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Catalunya",
+              "position": 6,
+              "score": 19729,
+              "nameOnPlatform": "GunteR_RL"
+            },
+            {
+              "accountId": "6cc16fcc-75f5-4c23-bc4f-9f6a890ce4c7",
+              "zoneId": "302218ec-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Mazowieckie",
+              "position": 7,
+              "score": 19779,
+              "nameOnPlatform": "Pope.cut.tits"
+            },
+            {
+              "accountId": "f8843980-8d72-479b-97f2-8a14b4a0002f",
+              "zoneId": "301f96de-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Ille-et-Vilaine",
+              "position": 8,
+              "score": 19799,
+              "nameOnPlatform": "SABER_TM"
+            },
+            {
+              "accountId": "53472f38-b606-4196-ac80-b1ef1b64629c",
+              "zoneId": "302246d0-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Приволжский федеральный округ",
+              "position": 9,
+              "score": 19802,
+              "nameOnPlatform": "Fastxz"
+            },
+            {
+              "accountId": "e0795363-bce4-4d70-9557-982ee193ee0f",
+              "zoneId": "302218ec-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Mazowieckie",
+              "position": 10,
+              "score": 19842,
+              "nameOnPlatform": "gargiTM"
+            }
+          ]
+        },
+        {
+          "map": "159XBIpjid7Wh4mjIRQ6wazyme4",
+          "top": [
+            {
+              "accountId": "eb5347e1-7c69-42ea-b754-4963dea149a9",
+              "zoneId": "30209992-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Gelderland",
+              "position": 1,
+              "score": 44287,
+              "nameOnPlatform": "Mat_ty151"
+            },
+            {
+              "accountId": "f781e6ad-8a11-4093-a297-e48638d5fa1a",
+              "zoneId": "301fa363-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Bas-Rhin",
+              "position": 2,
+              "score": 44360,
+              "nameOnPlatform": "hug0220"
+            },
+            {
+              "accountId": "445621f8-7d34-455c-820a-7c688ec7a4ee",
+              "zoneId": "301faaf7-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Somme",
+              "position": 3,
+              "score": 44534,
+              "nameOnPlatform": "ViSleey"
+            },
+            {
+              "accountId": "d8298b26-efe1-469a-8e61-bec45bef955f",
+              "zoneId": "301facb6-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Hauts-de-Seine",
+              "position": 4,
+              "score": 44548,
+              "nameOnPlatform": "Dirty.TM"
+            },
+            {
+              "accountId": "06496fad-70f7-49bc-80c6-d62caa7a9de4",
+              "zoneId": "301f40ae-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Croatia",
+              "position": 5,
+              "score": 44577,
+              "nameOnPlatform": "Hefest.9D"
+            },
+            {
+              "accountId": "8ea3ba94-3029-4bc5-b262-d9ae7f43740a",
+              "zoneId": "301e5de0-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Hainaut",
+              "position": 6,
+              "score": 44727,
+              "nameOnPlatform": "BeClement"
+            },
+            {
+              "accountId": "59774340-614e-43eb-991b-629b2fab8575",
+              "zoneId": "301ffc28-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "München",
+              "position": 7,
+              "score": 44767,
+              "nameOnPlatform": "Sifflair"
+            },
+            {
+              "accountId": "b7d666e2-97df-44d7-867f-e2351c9479d5",
+              "zoneId": "301ff90f-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Stuttgart",
+              "position": 8,
+              "score": 44777,
+              "nameOnPlatform": "azunai99"
+            },
+            {
+              "accountId": "2ed0997d-62bc-4a53-8c09-ffb793382ea2",
+              "zoneId": "30201200-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Dortmund",
+              "position": 9,
+              "score": 44810,
+              "nameOnPlatform": "riolu-tm"
+            },
+            {
+              "accountId": "88db15cf-81b6-40b7-92bc-72373264b056",
+              "zoneId": "30209a33-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Groningen",
+              "position": 10,
+              "score": 44835,
+              "nameOnPlatform": "pauliepaulnl"
+            }
+          ]
+        },
+        {
+          "map": "8JfhDBlUSjG2qf9hqssAJupE0rc",
+          "top": [
+            {
+              "accountId": "06496fad-70f7-49bc-80c6-d62caa7a9de4",
+              "zoneId": "301f40ae-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Croatia",
+              "position": 1,
+              "score": 35707,
+              "nameOnPlatform": "Hefest.9D"
+            },
+            {
+              "accountId": "803695f6-8319-4b8e-8c28-44856834fe3b",
+              "zoneId": "301f60f6-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Finland",
+              "position": 2,
+              "score": 35893,
+              "nameOnPlatform": "simo_900"
+            },
+            {
+              "accountId": "5c3e3b67-01c0-4d73-a9b8-4b7164f4a6dd",
+              "zoneId": "3022a7ed-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "South West England",
+              "position": 3,
+              "score": 36058,
+              "nameOnPlatform": "Madpie24"
+            },
+            {
+              "accountId": "b3bb28c2-bbd1-4c4c-a316-939128df4d8b",
+              "zoneId": "301f5723-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Denmark",
+              "position": 4,
+              "score": 36162,
+              "nameOnPlatform": "Sir.Cato"
+            },
+            {
+              "accountId": "2b26a6ce-4805-4154-908d-7a871c8d3cf8",
+              "zoneId": "302218ec-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Mazowieckie",
+              "position": 5,
+              "score": 36243,
+              "nameOnPlatform": "Narcorek"
+            },
+            {
+              "accountId": "c0799fdc-d7a7-4d7e-ad9e-c9fcc4fc7bbf",
+              "zoneId": "30228671-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Sweden",
+              "position": 6,
+              "score": 36416,
+              "nameOnPlatform": "JozoTm"
+            },
+            {
+              "accountId": "64bc0727-10b8-4dfb-8d70-ce92287dd514",
+              "zoneId": "30222424-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Śląskie",
+              "position": 7,
+              "score": 36497,
+              "nameOnPlatform": "maciey.pl"
+            },
+            {
+              "accountId": "fc54a67c-7bd3-4b33-aa7d-a77f13a7b621",
+              "zoneId": "b9e4bf40-1d93-48a3-8b67-7e40dfa6eba9",
+              "zoneName": "Rio Grande do Sul",
+              "position": 8,
+              "score": 36551,
+              "nameOnPlatform": "SSG_matt"
+            },
+            {
+              "accountId": "181bb12e-96b6-4b96-bded-75b72ce06c24",
+              "zoneId": "ab799c02-3a45-4027-9fad-9c9897f604ce",
+              "zoneName": "Santa Catarina",
+              "position": 9,
+              "score": 36603,
+              "nameOnPlatform": "tthornn"
+            },
+            {
+              "accountId": "b6a9ef20-2a1c-4dd2-bb65-fb65f6dc4f1b",
+              "zoneId": "302251c1-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Slovakia",
+              "position": 10,
+              "score": 36634,
+              "nameOnPlatform": "raizo_O"
+            }
+          ]
+        },
+        {
+          "map": "4dRIXY5T5CMh6LPcL88l0gEpBkl",
+          "top": [
+            {
+              "accountId": "8f99036c-47a2-486c-baa6-bbe8fca7d7df",
+              "zoneId": "301f5723-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Denmark",
+              "position": 1,
+              "score": 44038,
+              "nameOnPlatform": "RiZZeR_5"
+            },
+            {
+              "accountId": "bd45204c-80f1-4809-b983-38b3f0ffc1ef",
+              "zoneId": "3020a27d-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Norway",
+              "position": 2,
+              "score": 44795,
+              "nameOnPlatform": "WirtualTM"
+            },
+            {
+              "accountId": "b1da19ab-4fb0-473b-a341-d137a45822ae",
+              "zoneId": "301e55f4-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Upper Austria",
+              "position": 3,
+              "score": 44858,
+              "nameOnPlatform": "TmLuffy"
+            },
+            {
+              "accountId": "6cc16fcc-75f5-4c23-bc4f-9f6a890ce4c7",
+              "zoneId": "302218ec-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Mazowieckie",
+              "position": 4,
+              "score": 44885,
+              "nameOnPlatform": "Pope.cut.tits"
+            },
+            {
+              "accountId": "c471f6e7-2459-4da8-9d57-b55feb069da8",
+              "zoneId": "301fb2a7-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Manche",
+              "position": 5,
+              "score": 45236,
+              "nameOnPlatform": "Navvkk"
+            },
+            {
+              "accountId": "3f40f137-6a40-464d-b2b1-1e3ec39ad7d2",
+              "zoneId": "301f68d0-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Drôme",
+              "position": 6,
+              "score": 45304,
+              "nameOnPlatform": "sokingTM"
+            },
+            {
+              "accountId": "2f5735f4-04e5-4c9c-a60a-780648c02611",
+              "zoneId": "30201886-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Wuppertal",
+              "position": 7,
+              "score": 45501,
+              "nameOnPlatform": "TresZ_"
+            },
+            {
+              "accountId": "e9345be4-1f4a-45fc-8032-e9be8a4286d5",
+              "zoneId": "30200ab8-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Braunschweig",
+              "position": 8,
+              "score": 45636,
+              "nameOnPlatform": "HMUS_Jan"
+            },
+            {
+              "accountId": "14064bdc-a9e3-405b-994b-f53cd83a8d8c",
+              "zoneId": "301fc43a-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Dordogne",
+              "position": 9,
+              "score": 45658,
+              "nameOnPlatform": "Lasvigne"
+            },
+            {
+              "accountId": "e3aa7a59-7cbc-4316-8ab5-915042369092",
+              "zoneId": "301ff7e1-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Karlsruhe",
+              "position": 10,
+              "score": 45681,
+              "nameOnPlatform": "PaddyProduction"
+            }
+          ]
+        },
+        {
+          "map": "oSqyiU8CN8A4KnYRsqgcIOshYl2",
+          "top": [
+            {
+              "accountId": "06496fad-70f7-49bc-80c6-d62caa7a9de4",
+              "zoneId": "301f40ae-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Croatia",
+              "position": 1,
+              "score": 33851,
+              "nameOnPlatform": "Hefest.9D"
+            },
+            {
+              "accountId": "bd45204c-80f1-4809-b983-38b3f0ffc1ef",
+              "zoneId": "3020a27d-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Norway",
+              "position": 2,
+              "score": 33984,
+              "nameOnPlatform": "WirtualTM"
+            },
+            {
+              "accountId": "d46fb45d-d422-47c9-9785-67270a311e25",
+              "zoneId": "301f555b-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Středočeský kraj",
+              "position": 3,
+              "score": 34054,
+              "nameOnPlatform": "eLconn21"
+            },
+            {
+              "accountId": "2f5735f4-04e5-4c9c-a60a-780648c02611",
+              "zoneId": "30201886-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Wuppertal",
+              "position": 4,
+              "score": 34357,
+              "nameOnPlatform": "TresZ_"
+            },
+            {
+              "accountId": "027f9a06-7faf-449e-8ffb-f9d00978fed3",
+              "zoneId": "302012a4-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Duisburg",
+              "position": 5,
+              "score": 34391,
+              "nameOnPlatform": "HeXeRMaN"
+            },
+            {
+              "accountId": "e57e6195-4845-44a9-9d30-48436d4abb75",
+              "zoneId": "301fe365-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Lot",
+              "position": 6,
+              "score": 34458,
+              "nameOnPlatform": "DrimisbacK46"
+            },
+            {
+              "accountId": "b6a9ef20-2a1c-4dd2-bb65-fb65f6dc4f1b",
+              "zoneId": "302251c1-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Slovakia",
+              "position": 7,
+              "score": 34646,
+              "nameOnPlatform": "raizo_O"
+            },
+            {
+              "accountId": "c1e8bbec-8bb3-40b3-9b0e-52e3cb36015e",
+              "zoneId": "301e5fea-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Namur",
+              "position": 8,
+              "score": 34651,
+              "nameOnPlatform": "SkandeaR"
+            },
+            {
+              "accountId": "ba06de15-1fb3-4ea3-b279-4283828151d6",
+              "zoneId": "301ffa36-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Augsburg",
+              "position": 9,
+              "score": 34685,
+              "nameOnPlatform": "xdennis090"
+            },
+            {
+              "accountId": "b1895865-9825-44e0-b83f-6d2af45389b8",
+              "zoneId": "301fa77a-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Vosges",
+              "position": 10,
+              "score": 34712,
+              "nameOnPlatform": "ConiFox"
+            }
+          ]
+        },
+        {
+          "map": "VjBmIAFe_vihp4dA6gXyxauMh_1",
+          "top": [
+            {
+              "accountId": "bd45204c-80f1-4809-b983-38b3f0ffc1ef",
+              "zoneId": "3020a27d-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Norway",
+              "position": 1,
+              "score": 49243,
+              "nameOnPlatform": "WirtualTM"
+            },
+            {
+              "accountId": "06496fad-70f7-49bc-80c6-d62caa7a9de4",
+              "zoneId": "301f40ae-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Croatia",
+              "position": 2,
+              "score": 49926,
+              "nameOnPlatform": "Hefest.9D"
+            },
+            {
+              "accountId": "fc54a67c-7bd3-4b33-aa7d-a77f13a7b621",
+              "zoneId": "b9e4bf40-1d93-48a3-8b67-7e40dfa6eba9",
+              "zoneName": "Rio Grande do Sul",
+              "position": 3,
+              "score": 50667,
+              "nameOnPlatform": "SSG_matt"
+            },
+            {
+              "accountId": "686a14b2-8b9f-4590-b408-d1aea84efb36",
+              "zoneId": "301fb040-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Yvelines",
+              "position": 4,
+              "score": 50740,
+              "nameOnPlatform": "NaGuulTM"
+            },
+            {
+              "accountId": "2f5735f4-04e5-4c9c-a60a-780648c02611",
+              "zoneId": "30201886-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Wuppertal",
+              "position": 5,
+              "score": 50895,
+              "nameOnPlatform": "TresZ_"
+            },
+            {
+              "accountId": "eece69af-176a-4306-9d70-470c8e5e1391",
+              "zoneId": "301ffe91-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Berlin",
+              "position": 6,
+              "score": 51141,
+              "nameOnPlatform": "theinsan3"
+            },
+            {
+              "accountId": "ba06de15-1fb3-4ea3-b279-4283828151d6",
+              "zoneId": "301ffa36-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Augsburg",
+              "position": 7,
+              "score": 51142,
+              "nameOnPlatform": "xdennis090"
+            },
+            {
+              "accountId": "ba5ca0cf-50c8-4ec3-96a7-1b58ea1180e0",
+              "zoneId": "30209ac9-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Limburg",
+              "position": 8,
+              "score": 51145,
+              "nameOnPlatform": "Telf_"
+            },
+            {
+              "accountId": "53472f38-b606-4196-ac80-b1ef1b64629c",
+              "zoneId": "302246d0-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Приволжский федеральный округ",
+              "position": 9,
+              "score": 51202,
+              "nameOnPlatform": "Fastxz"
+            },
+            {
+              "accountId": "d46fb45d-d422-47c9-9785-67270a311e25",
+              "zoneId": "301f555b-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Středočeský kraj",
+              "position": 10,
+              "score": 51277,
+              "nameOnPlatform": "eLconn21"
+            }
+          ]
+        },
+        {
+          "map": "bTxEqrds5pszV3PZTdK57AnYWfd",
+          "top": [
+            {
+              "accountId": "06496fad-70f7-49bc-80c6-d62caa7a9de4",
+              "zoneId": "301f40ae-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Croatia",
+              "position": 1,
+              "score": 36798,
+              "nameOnPlatform": "Hefest.9D"
+            },
+            {
+              "accountId": "bd45204c-80f1-4809-b983-38b3f0ffc1ef",
+              "zoneId": "3020a27d-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Norway",
+              "position": 2,
+              "score": 36856,
+              "nameOnPlatform": "WirtualTM"
+            },
+            {
+              "accountId": "ba5ca0cf-50c8-4ec3-96a7-1b58ea1180e0",
+              "zoneId": "30209ac9-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Limburg",
+              "position": 3,
+              "score": 37034,
+              "nameOnPlatform": "Telf_"
+            },
+            {
+              "accountId": "f40d3c02-135a-4c84-ad99-5e96f2431c41",
+              "zoneId": "301f9a60-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Indre-et-Loire",
+              "position": 4,
+              "score": 37143,
+              "nameOnPlatform": "NeqzoTM"
+            },
+            {
+              "accountId": "b6a9ef20-2a1c-4dd2-bb65-fb65f6dc4f1b",
+              "zoneId": "302251c1-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Slovakia",
+              "position": 5,
+              "score": 37320,
+              "nameOnPlatform": "raizo_O"
+            },
+            {
+              "accountId": "a9cbdeff-daa3-4bc2-998c-b2838183fb97",
+              "zoneId": "30229617-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Vaud",
+              "position": 6,
+              "score": 37392,
+              "nameOnPlatform": "AffiTM"
+            },
+            {
+              "accountId": "7aa19bef-a3f5-4aaa-aeae-ff2284bbadd8",
+              "zoneId": "3022e729-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "New York",
+              "position": 7,
+              "score": 37423,
+              "nameOnPlatform": "Draggyyy"
+            },
+            {
+              "accountId": "41c8470a-81ca-46fe-9063-b17129580aaa",
+              "zoneId": "301febb8-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Loire-Atlantique",
+              "position": 8,
+              "score": 37445,
+              "nameOnPlatform": "ShockeurTM"
+            },
+            {
+              "accountId": "50559337-5d49-41f0-b8df-f026fd5cc6cb",
+              "zoneId": "30207b0c-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Veneto",
+              "position": 9,
+              "score": 37470,
+              "nameOnPlatform": "Soft.41"
+            },
+            {
+              "accountId": "1fc035dd-5dbf-448c-b244-6c7aae88f0b2",
+              "zoneId": "301f40ae-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Croatia",
+              "position": 10,
+              "score": 37503,
+              "nameOnPlatform": "Hefest10"
+            }
+          ]
+        },
+        {
+          "map": "tHdTCbauyKWB_ft2NVRznkCE4rk",
+          "top": [
+            {
+              "accountId": "c471f6e7-2459-4da8-9d57-b55feb069da8",
+              "zoneId": "301fb2a7-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Manche",
+              "position": 1,
+              "score": 38794,
+              "nameOnPlatform": "Navvkk"
+            },
+            {
+              "accountId": "bd45204c-80f1-4809-b983-38b3f0ffc1ef",
+              "zoneId": "3020a27d-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Norway",
+              "position": 2,
+              "score": 38974,
+              "nameOnPlatform": "WirtualTM"
+            },
+            {
+              "accountId": "2f5735f4-04e5-4c9c-a60a-780648c02611",
+              "zoneId": "30201886-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Wuppertal",
+              "position": 3,
+              "score": 38976,
+              "nameOnPlatform": "TresZ_"
+            },
+            {
+              "accountId": "3c87b975-1d05-4424-8f9a-9534898abb7c",
+              "zoneId": "301ff90f-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Stuttgart",
+              "position": 4,
+              "score": 39107,
+              "nameOnPlatform": "LorenziusTM"
+            },
+            {
+              "accountId": "fc54a67c-7bd3-4b33-aa7d-a77f13a7b621",
+              "zoneId": "b9e4bf40-1d93-48a3-8b67-7e40dfa6eba9",
+              "zoneName": "Rio Grande do Sul",
+              "position": 5,
+              "score": 39144,
+              "nameOnPlatform": "SSG_matt"
+            },
+            {
+              "accountId": "b3bb28c2-bbd1-4c4c-a316-939128df4d8b",
+              "zoneId": "301f5723-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Denmark",
+              "position": 6,
+              "score": 39327,
+              "nameOnPlatform": "Sir.Cato"
+            },
+            {
+              "accountId": "aa57691a-dbde-4b5f-97e4-52bcf02156cf",
+              "zoneId": "302218ec-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Mazowieckie",
+              "position": 7,
+              "score": 39456,
+              "nameOnPlatform": "frevtm"
+            },
+            {
+              "accountId": "ba06de15-1fb3-4ea3-b279-4283828151d6",
+              "zoneId": "301ffa36-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Augsburg",
+              "position": 8,
+              "score": 39570,
+              "nameOnPlatform": "xdennis090"
+            },
+            {
+              "accountId": "7aa19bef-a3f5-4aaa-aeae-ff2284bbadd8",
+              "zoneId": "3022e729-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "New York",
+              "position": 9,
+              "score": 39637,
+              "nameOnPlatform": "Draggyyy"
+            },
+            {
+              "accountId": "59774340-614e-43eb-991b-629b2fab8575",
+              "zoneId": "301ffc28-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "München",
+              "position": 10,
+              "score": 39793,
+              "nameOnPlatform": "Sifflair"
+            }
+          ]
+        },
+        {
+          "map": "dAUOBz9H2iKzyo8HURb3Ce3cwT9",
+          "top": [
+            {
+              "accountId": "d320a237-1b0a-4069-af83-f2c09fbf042e",
+              "zoneId": "301e2e52-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Australian Capital Territory",
+              "position": 1,
+              "score": 40998,
+              "nameOnPlatform": "AR_Mudda"
+            },
+            {
+              "accountId": "16ee3d8e-ee78-4e77-b787-48f2247f96c3",
+              "zoneId": "301ff879-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Mannheim",
+              "position": 2,
+              "score": 41008,
+              "nameOnPlatform": "DarkBringer94"
+            },
+            {
+              "accountId": "1b36edfa-8243-49cd-8651-fdb76cf27d83",
+              "zoneId": "301e309b-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "New South Wales",
+              "position": 3,
+              "score": 41190,
+              "nameOnPlatform": "AR_bcp"
+            },
+            {
+              "accountId": "7cbba52b-bfa1-4d4f-8208-f9e0a0440f58",
+              "zoneId": "302015a3-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Köln",
+              "position": 4,
+              "score": 41235,
+              "nameOnPlatform": "F1lthy.Casual"
+            },
+            {
+              "accountId": "ca1d5313-1683-405d-b5b3-14c6fd54969c",
+              "zoneId": "3020818d-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Latvia",
+              "position": 5,
+              "score": 41268,
+              "nameOnPlatform": "AR_TK"
+            },
+            {
+              "accountId": "6c26b761-bd62-42b5-8190-e3e732c2b937",
+              "zoneId": "825a3452-6a36-4fe1-94b5-637986936ef7",
+              "zoneName": "São Paulo",
+              "position": 6,
+              "score": 41282,
+              "nameOnPlatform": "GNR-HASKELL"
+            },
+            {
+              "accountId": "95abee92-1174-45e3-8967-bc46d2e6afe3",
+              "zoneId": "30224dbd-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Beograd",
+              "position": 7,
+              "score": 41297,
+              "nameOnPlatform": "c1taM"
+            },
+            {
+              "accountId": "cd209ccb-d8fe-45fd-a162-0a08d5b88ed9",
+              "zoneId": "30228ab5-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Bern",
+              "position": 8,
+              "score": 41332,
+              "nameOnPlatform": "div_tm"
+            },
+            {
+              "accountId": "f6a1ceb1-1928-4043-9df8-2c5465e65eaa",
+              "zoneId": "301e73a7-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Quebec",
+              "position": 9,
+              "score": 41338,
+              "nameOnPlatform": "RainbowFS"
+            },
+            {
+              "accountId": "71140de7-ae6b-491e-a5af-7f926f644fc3",
+              "zoneId": "301f4fa6-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Plzeňský kraj",
+              "position": 10,
+              "score": 41418,
+              "nameOnPlatform": "Drpzor"
+            }
+          ]
+        },
+        {
+          "map": "FcNO1D7hn9nLuCrjqSA5_7slkR1",
+          "top": [
+            {
+              "accountId": "06496fad-70f7-49bc-80c6-d62caa7a9de4",
+              "zoneId": "301f40ae-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Croatia",
+              "position": 1,
+              "score": 39440,
+              "nameOnPlatform": "Hefest.9D"
+            },
+            {
+              "accountId": "60b87855-7dda-44c3-844a-86da686ca103",
+              "zoneId": "301fa3f8-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Haut-Rhin",
+              "position": 2,
+              "score": 39652,
+              "nameOnPlatform": "BRand0M_TM"
+            },
+            {
+              "accountId": "b6a9ef20-2a1c-4dd2-bb65-fb65f6dc4f1b",
+              "zoneId": "302251c1-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Slovakia",
+              "position": 3,
+              "score": 39659,
+              "nameOnPlatform": "raizo_O"
+            },
+            {
+              "accountId": "ba5ca0cf-50c8-4ec3-96a7-1b58ea1180e0",
+              "zoneId": "30209ac9-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Limburg",
+              "position": 4,
+              "score": 39677,
+              "nameOnPlatform": "Telf_"
+            },
+            {
+              "accountId": "aa57691a-dbde-4b5f-97e4-52bcf02156cf",
+              "zoneId": "302218ec-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Mazowieckie",
+              "position": 5,
+              "score": 39793,
+              "nameOnPlatform": "frevtm"
+            },
+            {
+              "accountId": "ba06de15-1fb3-4ea3-b279-4283828151d6",
+              "zoneId": "301ffa36-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Augsburg",
+              "position": 6,
+              "score": 39824,
+              "nameOnPlatform": "xdennis090"
+            },
+            {
+              "accountId": "c1e8bbec-8bb3-40b3-9b0e-52e3cb36015e",
+              "zoneId": "301e5fea-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Namur",
+              "position": 7,
+              "score": 39843,
+              "nameOnPlatform": "SkandeaR"
+            },
+            {
+              "accountId": "bd45204c-80f1-4809-b983-38b3f0ffc1ef",
+              "zoneId": "3020a27d-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Norway",
+              "position": 8,
+              "score": 39872,
+              "nameOnPlatform": "WirtualTM"
+            },
+            {
+              "accountId": "3d9d81a0-e58d-4052-8624-4e03c4064a78",
+              "zoneId": "301f7274-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Haute-Savoie",
+              "position": 9,
+              "score": 40013,
+              "nameOnPlatform": "unimork"
+            },
+            {
+              "accountId": "2ed0997d-62bc-4a53-8c09-ffb793382ea2",
+              "zoneId": "30201200-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Dortmund",
+              "position": 10,
+              "score": 40024,
+              "nameOnPlatform": "riolu-tm"
+            }
+          ]
+        },
+        {
+          "map": "0fJFNOS8ZzfDA6fJQrr5JU0JIom",
+          "top": [
+            {
+              "accountId": "b90e91eb-bd87-41fd-8c69-6560dbeedd2e",
+              "zoneId": "3020ade2-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Kujawsko-Pomorskie",
+              "position": 1,
+              "score": 45700,
+              "nameOnPlatform": "Magorian0212"
+            },
+            {
+              "accountId": "b05db0f8-d845-47d2-b0e5-795717038ac6",
+              "zoneId": "301ffccb-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Nürnberg",
+              "position": 2,
+              "score": 45741,
+              "nameOnPlatform": "MASSAAA-"
+            },
+            {
+              "accountId": "0da0a251-20e8-4219-86eb-7d9c52847779",
+              "zoneId": "30229e20-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Turkey",
+              "position": 3,
+              "score": 45790,
+              "nameOnPlatform": "Cemkoo"
+            },
+            {
+              "accountId": "f781e6ad-8a11-4093-a297-e48638d5fa1a",
+              "zoneId": "301fa363-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Bas-Rhin",
+              "position": 4,
+              "score": 45791,
+              "nameOnPlatform": "hug0220"
+            },
+            {
+              "accountId": "0c857beb-fd95-4449-a669-21fb310cacae",
+              "zoneId": "301e73a7-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Quebec",
+              "position": 5,
+              "score": 45830,
+              "nameOnPlatform": "CarlJr."
+            },
+            {
+              "accountId": "a5af97bc-d185-404f-a7d1-5c4e48d05db6",
+              "zoneId": "30222b92-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Wielkopolskie",
+              "position": 6,
+              "score": 45837,
+              "nameOnPlatform": "RotakeR.9D"
+            },
+            {
+              "accountId": "347e8fe9-4c6f-46c3-a0c6-a8ba9133f4a7",
+              "zoneId": "302240ae-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Norte",
+              "position": 7,
+              "score": 45850,
+              "nameOnPlatform": "Arieug0n"
+            },
+            {
+              "accountId": "64bc0727-10b8-4dfb-8d70-ce92287dd514",
+              "zoneId": "30222424-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Śląskie",
+              "position": 8,
+              "score": 45861,
+              "nameOnPlatform": "maciey.pl"
+            },
+            {
+              "accountId": "0def209a-944b-40ac-8dc8-989af08c8ef4",
+              "zoneId": "302240ae-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Norte",
+              "position": 9,
+              "score": 45885,
+              "nameOnPlatform": "PauLL.4W"
+            },
+            {
+              "accountId": "5802f075-578f-4dd3-8860-e51e5287a8e4",
+              "zoneId": "301e34ec-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Queensland",
+              "position": 10,
+              "score": 45905,
+              "nameOnPlatform": "grit.4W"
+            }
+          ]
+        },
+        {
+          "map": "2katsDjZmPOeQYE94jkbnSoJA64",
+          "top": [
+            {
+              "accountId": "b1895865-9825-44e0-b83f-6d2af45389b8",
+              "zoneId": "301fa77a-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Vosges",
+              "position": 1,
+              "score": 57204,
+              "nameOnPlatform": "ConiFox"
+            },
+            {
+              "accountId": "da4642f9-6acf-43fe-88b6-b120ff1308ba",
+              "zoneId": "301e5e63-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Liège",
+              "position": 2,
+              "score": 57800,
+              "nameOnPlatform": "Scrapie98"
+            },
+            {
+              "accountId": "b05db0f8-d845-47d2-b0e5-795717038ac6",
+              "zoneId": "301ffccb-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Nürnberg",
+              "position": 3,
+              "score": 58270,
+              "nameOnPlatform": "MASSAAA-"
+            },
+            {
+              "accountId": "b6a9ef20-2a1c-4dd2-bb65-fb65f6dc4f1b",
+              "zoneId": "302251c1-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Slovakia",
+              "position": 4,
+              "score": 58553,
+              "nameOnPlatform": "raizo_O"
+            },
+            {
+              "accountId": "5f33f8c5-1acf-4e79-83c5-8ce8461ee7a5",
+              "zoneId": "301f483f-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Jihomoravský kraj",
+              "position": 5,
+              "score": 58658,
+              "nameOnPlatform": "bushff"
+            },
+            {
+              "accountId": "2ed0997d-62bc-4a53-8c09-ffb793382ea2",
+              "zoneId": "30201200-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Dortmund",
+              "position": 6,
+              "score": 58683,
+              "nameOnPlatform": "riolu-tm"
+            },
+            {
+              "accountId": "0016c90f-401b-4d25-9591-3b7c4319f770",
+              "zoneId": "301fcef4-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Pyrénées-Atlantiques",
+              "position": 7,
+              "score": 58810,
+              "nameOnPlatform": "ZazimutTM"
+            },
+            {
+              "accountId": "fc54a67c-7bd3-4b33-aa7d-a77f13a7b621",
+              "zoneId": "b9e4bf40-1d93-48a3-8b67-7e40dfa6eba9",
+              "zoneName": "Rio Grande do Sul",
+              "position": 8,
+              "score": 58813,
+              "nameOnPlatform": "SSG_matt"
+            },
+            {
+              "accountId": "0c857beb-fd95-4449-a669-21fb310cacae",
+              "zoneId": "301e73a7-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Quebec",
+              "position": 9,
+              "score": 58940,
+              "nameOnPlatform": "CarlJr."
+            },
+            {
+              "accountId": "e57e6195-4845-44a9-9d30-48436d4abb75",
+              "zoneId": "301fe365-7e13-11e8-8060-e284abfd2bc4",
+              "zoneName": "Lot",
+              "position": 10,
+              "score": 58976,
+              "nameOnPlatform": "DrimisbacK46"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "accountId": "a9cbdeff-daa3-4bc2-998c-b2838183fb97",
+      "nameOnPlatform": "AffiTM"
+    },
+    {
+      "accountId": "531a9861-c024-4063-9b29-14601350b899",
+      "nameOnPlatform": "Rollin.9D"
+    },
+    {
+      "accountId": "2ed0997d-62bc-4a53-8c09-ffb793382ea2",
+      "nameOnPlatform": "riolu-tm"
+    },
+    {
+      "accountId": "a5af97bc-d185-404f-a7d1-5c4e48d05db6",
+      "nameOnPlatform": "RotakeR.9D"
+    },
+    {
+      "accountId": "dc512a57-42b5-411d-b798-ed1961c4fac3",
+      "nameOnPlatform": "LeGSimi"
+    },
+    {
+      "accountId": "58278714-fbe5-4bb1-960c-3ad278bb7ecc",
+      "nameOnPlatform": "styx-tm"
+    },
+    {
+      "accountId": "e2630e0a-72f9-4b47-8cb4-15a2abfad1df",
+      "nameOnPlatform": "SapiTM"
+    },
+    {
+      "accountId": "aa4e375f-d23e-4915-8d53-8b3307e06764",
+      "nameOnPlatform": "racehansTM"
+    },
+    {
+      "accountId": "b14f7613-8fb9-463e-b356-75f0700048db",
+      "nameOnPlatform": "Canon-TM"
+    },
+    {
+      "accountId": "b67bedd1-7d2f-4861-86c4-dae8c1583ace",
+      "nameOnPlatform": "Toasti9801"
+    },
+    {
+      "accountId": "ab60793c-3aa2-497b-9d45-d841282620e9",
+      "nameOnPlatform": "Drarker"
+    },
+    {
+      "accountId": "36d7f757-6ee9-4434-ad78-02bdcc374f4e",
+      "nameOnPlatform": "Dexarys"
+    },
+    {
+      "accountId": "f4843288-5992-46a7-bca9-755faaba1608",
+      "nameOnPlatform": "Joooooooooey"
+    },
+    {
+      "accountId": "445a6375-a8aa-4b56-b3b5-18d4bff53351",
+      "nameOnPlatform": "RacetalTM"
+    },
+    {
+      "accountId": "6d5323d0-d6ff-4a6a-af3c-42c11740f9d0",
+      "nameOnPlatform": "swa.Wanted"
+    },
+    {
+      "accountId": "934543d0-dbcc-432f-8959-ca789f7c904e",
+      "nameOnPlatform": "Joltysonic."
+    },
+    {
+      "accountId": "0def209a-944b-40ac-8dc8-989af08c8ef4",
+      "nameOnPlatform": "PauLL.4W"
+    },
+    {
+      "accountId": "e02a714f-2305-4344-8cab-4124f9d15cda",
+      "nameOnPlatform": "fwofliks"
+    },
+    {
+      "accountId": "d1898c24-d0be-4785-bb32-58e3dc78b842",
+      "nameOnPlatform": "Morning29"
+    },
+    {
+      "accountId": "ca1d5313-1683-405d-b5b3-14c6fd54969c",
+      "nameOnPlatform": "AR_TK"
+    },
+    {
+      "accountId": "cc1d1f01-608b-4008-9e24-674f8bc7d327",
+      "nameOnPlatform": "saKar_"
+    },
+    {
+      "accountId": "0bf1ffe7-e3d5-4703-aeca-ac6f69549daa",
+      "nameOnPlatform": "IuSkAiUs"
+    },
+    {
+      "accountId": "6d6665a9-1157-4f2b-a209-a32020ef07ad",
+      "nameOnPlatform": "coolbropal"
+    },
+    {
+      "accountId": "2dd1e832-8f25-44c1-8189-ff28d7388806",
+      "nameOnPlatform": "esu-LX"
+    },
+    {
+      "accountId": "bdbcea9e-6a2b-41b7-9cc2-824fa1d30687",
+      "nameOnPlatform": "AngNazgul"
+    },
+    {
+      "accountId": "abf77231-3e2a-4fff-8f4e-fd3e2e18171f",
+      "nameOnPlatform": "xMoltoX"
+    },
+    {
+      "accountId": "49965c7b-d71c-467d-99c7-ff4092daf0ca",
+      "nameOnPlatform": "CamionTM"
+    },
+    {
+      "accountId": "2024fa3a-6a7d-49cd-a546-1ed90bb92583",
+      "nameOnPlatform": "FerxGG"
+    },
+    {
+      "accountId": "74bd19c1-72d9-4187-8185-86e2a182bede",
+      "nameOnPlatform": "Stal.time"
+    },
+    {
+      "accountId": "509f80c0-f8c3-4f57-acb8-bbbdc1346020",
+      "nameOnPlatform": "Louislemanifike"
+    },
+    {
+      "accountId": "06496fad-70f7-49bc-80c6-d62caa7a9de4",
+      "nameOnPlatform": "Hefest.9D"
+    },
+    {
+      "accountId": "1e056adb-9300-4ce5-9a51-5adc2756ea7e",
+      "nameOnPlatform": "SamGusta"
+    },
+    {
+      "accountId": "5953a712-54ff-4603-b863-d69975f2f372",
+      "nameOnPlatform": "helion404"
+    },
+    {
+      "accountId": "ba06de15-1fb3-4ea3-b279-4283828151d6",
+      "nameOnPlatform": "xdennis090"
+    },
+    {
+      "accountId": "c0799fdc-d7a7-4d7e-ad9e-c9fcc4fc7bbf",
+      "nameOnPlatform": "JozoTm"
+    },
+    {
+      "accountId": "7aa19bef-a3f5-4aaa-aeae-ff2284bbadd8",
+      "nameOnPlatform": "Draggyyy"
+    },
+    {
+      "accountId": "71dd25f5-436b-459b-8fa0-c2c94d243990",
+      "nameOnPlatform": "ShadyIsntGay"
+    },
+    {
+      "accountId": "0a49fda3-ae53-4cd2-a332-f5d20facbe98",
+      "nameOnPlatform": "StigaaTM"
+    },
+    {
+      "accountId": "9214d740-f581-4529-858a-417405e463bf",
+      "nameOnPlatform": "Im2slow4you_"
+    },
+    {
+      "accountId": "78b59d52-1aed-4f79-a1ae-eee1cc7c3f9c",
+      "nameOnPlatform": "Raisis.core"
+    },
+    {
+      "accountId": "b3bb28c2-bbd1-4c4c-a316-939128df4d8b",
+      "nameOnPlatform": "Sir.Cato"
+    },
+    {
+      "accountId": "a47216d8-ad9e-495c-9592-a54766d7b50e",
+      "nameOnPlatform": "leboris36"
+    },
+    {
+      "accountId": "2d4cba8b-3b77-45af-a635-5e4d6e61cfa2",
+      "nameOnPlatform": "PacTM"
+    },
+    {
+      "accountId": "84440cfa-9b4f-4d01-885f-11741878823a",
+      "nameOnPlatform": "suMichan-"
+    },
+    {
+      "accountId": "e93f5716-079b-4996-b16d-b3474832a242",
+      "nameOnPlatform": "ShibalaTM"
+    },
+    {
+      "accountId": "f781e6ad-8a11-4093-a297-e48638d5fa1a",
+      "nameOnPlatform": "hug0220"
+    },
+    {
+      "accountId": "6a9b4f65-83ef-4d24-ac63-d040bc9ff44d",
+      "nameOnPlatform": "azinazz"
+    },
+    {
+      "accountId": "351c26a3-d706-45d5-ab18-505caff14714",
+      "nameOnPlatform": "Karhu_91"
+    },
+    {
+      "accountId": "b05db0f8-d845-47d2-b0e5-795717038ac6",
+      "nameOnPlatform": "MASSAAA-"
+    },
+    {
+      "accountId": "f64997c3-61a5-461b-b6ed-e71cf62aa6eb",
+      "nameOnPlatform": "chzgod-"
+    },
+    {
+      "accountId": "5cada1ac-a938-4468-af83-8e945d6251f3",
+      "nameOnPlatform": "PatroseTV"
+    },
+    {
+      "accountId": "8b636b33-6046-4be9-8b54-7b28634ac1e3",
+      "nameOnPlatform": "Fegir"
+    },
+    {
+      "accountId": "1f64d7b0-894c-4d3e-890d-e785c5a1b311",
+      "nameOnPlatform": "oNio92"
+    },
+    {
+      "accountId": "64bc0727-10b8-4dfb-8d70-ce92287dd514",
+      "nameOnPlatform": "maciey.pl"
+    },
+    {
+      "accountId": "89fcac73-9917-4278-855e-109ecd04db4f",
+      "nameOnPlatform": "Danio_TM"
+    },
+    {
+      "accountId": "1585e07f-f22f-48a6-b497-b78cf1444122",
+      "nameOnPlatform": "LinkMaxTm"
+    },
+    {
+      "accountId": "b6a9ef20-2a1c-4dd2-bb65-fb65f6dc4f1b",
+      "nameOnPlatform": "raizo_O"
+    },
+    {
+      "accountId": "def2b58e-a8c7-4e1f-ac48-6f5833fde76e",
+      "nameOnPlatform": "Teryo.LeG"
+    },
+    {
+      "accountId": "0f400a09-023c-4787-87ed-72261460f337",
+      "nameOnPlatform": "nsc.Paulmar"
+    },
+    {
+      "accountId": "28efc4d5-3dfb-4c3b-b2cd-e8b9050dc149",
+      "nameOnPlatform": "Bro.Bicougnon"
+    },
+    {
+      "accountId": "bd45204c-80f1-4809-b983-38b3f0ffc1ef",
+      "nameOnPlatform": "WirtualTM"
+    },
+    {
+      "accountId": "169fd394-6b72-4fec-9e34-ee606f529cda",
+      "nameOnPlatform": "RadianceTM"
+    },
+    {
+      "accountId": "1782655c-6ec9-49cb-a065-7f4c653aeab5",
+      "nameOnPlatform": "xDestiiiny"
+    },
+    {
+      "accountId": "da4642f9-6acf-43fe-88b6-b120ff1308ba",
+      "nameOnPlatform": "Scrapie98"
+    },
+    {
+      "accountId": "9b8673a3-7d2c-4472-89da-67ff8c083027",
+      "nameOnPlatform": "Ener_"
+    },
+    {
+      "accountId": "c87ebb17-83f4-46bc-8c3d-c5ece3657c3d",
+      "nameOnPlatform": "asqha"
+    },
+    {
+      "accountId": "9da54743-020c-4e87-82b9-1dad80f8162d",
+      "nameOnPlatform": "Vulnerra"
+    },
+    {
+      "accountId": "347e8fe9-4c6f-46c3-a0c6-a8ba9133f4a7",
+      "nameOnPlatform": "Arieug0n"
+    },
+    {
+      "accountId": "d320a237-1b0a-4069-af83-f2c09fbf042e",
+      "nameOnPlatform": "AR_Mudda"
+    },
+    {
+      "accountId": "7f4dc682-f121-4650-98ee-5fb28b7dc70d",
+      "nameOnPlatform": "f1ol3k"
+    },
+    {
+      "accountId": "d8051da7-99d6-4680-8aba-7fdd4a3c04c8",
+      "nameOnPlatform": "kripkeTM"
+    },
+    {
+      "accountId": "0d6b328b-7284-441e-8fac-c48fa5f3fa9a",
+      "nameOnPlatform": "Arth4nn"
+    },
+    {
+      "accountId": "73736c8e-d0e5-4284-82fb-a72c59506b35",
+      "nameOnPlatform": "Sketterhq55"
+    },
+    {
+      "accountId": "6c26b761-bd62-42b5-8190-e3e732c2b937",
+      "nameOnPlatform": "GNR-HASKELL"
+    },
+    {
+      "accountId": "dba55c7e-d5cd-40c0-a5e7-8e793fd295eb",
+      "nameOnPlatform": "Gwen_TM"
+    },
+    {
+      "accountId": "c471f6e7-2459-4da8-9d57-b55feb069da8",
+      "nameOnPlatform": "Navvkk"
+    },
+    {
+      "accountId": "b7d666e2-97df-44d7-867f-e2351c9479d5",
+      "nameOnPlatform": "azunai99"
+    },
+    {
+      "accountId": "cb137a6a-7112-4917-8e57-c457e082ea3d",
+      "nameOnPlatform": "xTigershark777"
+    },
+    {
+      "accountId": "16ee3d8e-ee78-4e77-b787-48f2247f96c3",
+      "nameOnPlatform": "DarkBringer94"
+    },
+    {
+      "accountId": "fc54a67c-7bd3-4b33-aa7d-a77f13a7b621",
+      "nameOnPlatform": "SSG_matt"
+    },
+    {
+      "accountId": "180f1856-db4a-449c-8bb0-fbbab30efd64",
+      "nameOnPlatform": "Buuuuurd"
+    },
+    {
+      "accountId": "ae6262f9-31ad-48a7-8445-3e701414a86a",
+      "nameOnPlatform": "KC.DarkeR"
+    },
+    {
+      "accountId": "cf0d1a6a-3f95-40a0-bca2-6294194508b1",
+      "nameOnPlatform": "TrilleKs"
+    },
+    {
+      "accountId": "c5b28ee7-7d85-4dbf-b311-30ca0e014d91",
+      "nameOnPlatform": "Dyzer__"
+    },
+    {
+      "accountId": "2f5735f4-04e5-4c9c-a60a-780648c02611",
+      "nameOnPlatform": "TresZ_"
+    },
+    {
+      "accountId": "5df2a40b-1333-4569-81bc-be91ee851ad8",
+      "nameOnPlatform": "GunteR_RL"
+    },
+    {
+      "accountId": "6cc16fcc-75f5-4c23-bc4f-9f6a890ce4c7",
+      "nameOnPlatform": "Pope.cut.tits"
+    },
+    {
+      "accountId": "f8843980-8d72-479b-97f2-8a14b4a0002f",
+      "nameOnPlatform": "SABER_TM"
+    },
+    {
+      "accountId": "53472f38-b606-4196-ac80-b1ef1b64629c",
+      "nameOnPlatform": "Fastxz"
+    },
+    {
+      "accountId": "e0795363-bce4-4d70-9557-982ee193ee0f",
+      "nameOnPlatform": "gargiTM"
+    },
+    {
+      "accountId": "eb5347e1-7c69-42ea-b754-4963dea149a9",
+      "nameOnPlatform": "Mat_ty151"
+    },
+    {
+      "accountId": "445621f8-7d34-455c-820a-7c688ec7a4ee",
+      "nameOnPlatform": "ViSleey"
+    },
+    {
+      "accountId": "d8298b26-efe1-469a-8e61-bec45bef955f",
+      "nameOnPlatform": "Dirty.TM"
+    },
+    {
+      "accountId": "8ea3ba94-3029-4bc5-b262-d9ae7f43740a",
+      "nameOnPlatform": "BeClement"
+    },
+    {
+      "accountId": "59774340-614e-43eb-991b-629b2fab8575",
+      "nameOnPlatform": "Sifflair"
+    },
+    {
+      "accountId": "88db15cf-81b6-40b7-92bc-72373264b056",
+      "nameOnPlatform": "pauliepaulnl"
+    },
+    {
+      "accountId": "803695f6-8319-4b8e-8c28-44856834fe3b",
+      "nameOnPlatform": "simo_900"
+    },
+    {
+      "accountId": "5c3e3b67-01c0-4d73-a9b8-4b7164f4a6dd",
+      "nameOnPlatform": "Madpie24"
+    },
+    {
+      "accountId": "2b26a6ce-4805-4154-908d-7a871c8d3cf8",
+      "nameOnPlatform": "Narcorek"
+    },
+    {
+      "accountId": "181bb12e-96b6-4b96-bded-75b72ce06c24",
+      "nameOnPlatform": "tthornn"
+    },
+    {
+      "accountId": "8f99036c-47a2-486c-baa6-bbe8fca7d7df",
+      "nameOnPlatform": "RiZZeR_5"
+    },
+    {
+      "accountId": "b1da19ab-4fb0-473b-a341-d137a45822ae",
+      "nameOnPlatform": "TmLuffy"
+    },
+    {
+      "accountId": "3f40f137-6a40-464d-b2b1-1e3ec39ad7d2",
+      "nameOnPlatform": "sokingTM"
+    },
+    {
+      "accountId": "e9345be4-1f4a-45fc-8032-e9be8a4286d5",
+      "nameOnPlatform": "HMUS_Jan"
+    },
+    {
+      "accountId": "14064bdc-a9e3-405b-994b-f53cd83a8d8c",
+      "nameOnPlatform": "Lasvigne"
+    },
+    {
+      "accountId": "e3aa7a59-7cbc-4316-8ab5-915042369092",
+      "nameOnPlatform": "PaddyProduction"
+    },
+    {
+      "accountId": "d46fb45d-d422-47c9-9785-67270a311e25",
+      "nameOnPlatform": "eLconn21"
+    },
+    {
+      "accountId": "027f9a06-7faf-449e-8ffb-f9d00978fed3",
+      "nameOnPlatform": "HeXeRMaN"
+    },
+    {
+      "accountId": "e57e6195-4845-44a9-9d30-48436d4abb75",
+      "nameOnPlatform": "DrimisbacK46"
+    },
+    {
+      "accountId": "c1e8bbec-8bb3-40b3-9b0e-52e3cb36015e",
+      "nameOnPlatform": "SkandeaR"
+    },
+    {
+      "accountId": "b1895865-9825-44e0-b83f-6d2af45389b8",
+      "nameOnPlatform": "ConiFox"
+    },
+    {
+      "accountId": "686a14b2-8b9f-4590-b408-d1aea84efb36",
+      "nameOnPlatform": "NaGuulTM"
+    },
+    {
+      "accountId": "eece69af-176a-4306-9d70-470c8e5e1391",
+      "nameOnPlatform": "theinsan3"
+    },
+    {
+      "accountId": "ba5ca0cf-50c8-4ec3-96a7-1b58ea1180e0",
+      "nameOnPlatform": "Telf_"
+    },
+    {
+      "accountId": "f40d3c02-135a-4c84-ad99-5e96f2431c41",
+      "nameOnPlatform": "NeqzoTM"
+    },
+    {
+      "accountId": "41c8470a-81ca-46fe-9063-b17129580aaa",
+      "nameOnPlatform": "ShockeurTM"
+    },
+    {
+      "accountId": "50559337-5d49-41f0-b8df-f026fd5cc6cb",
+      "nameOnPlatform": "Soft.41"
+    },
+    {
+      "accountId": "1fc035dd-5dbf-448c-b244-6c7aae88f0b2",
+      "nameOnPlatform": "Hefest10"
+    },
+    {
+      "accountId": "3c87b975-1d05-4424-8f9a-9534898abb7c",
+      "nameOnPlatform": "LorenziusTM"
+    },
+    {
+      "accountId": "aa57691a-dbde-4b5f-97e4-52bcf02156cf",
+      "nameOnPlatform": "frevtm"
+    },
+    {
+      "accountId": "1b36edfa-8243-49cd-8651-fdb76cf27d83",
+      "nameOnPlatform": "AR_bcp"
+    },
+    {
+      "accountId": "7cbba52b-bfa1-4d4f-8208-f9e0a0440f58",
+      "nameOnPlatform": "F1lthy.Casual"
+    },
+    {
+      "accountId": "95abee92-1174-45e3-8967-bc46d2e6afe3",
+      "nameOnPlatform": "c1taM"
+    },
+    {
+      "accountId": "cd209ccb-d8fe-45fd-a162-0a08d5b88ed9",
+      "nameOnPlatform": "div_tm"
+    },
+    {
+      "accountId": "f6a1ceb1-1928-4043-9df8-2c5465e65eaa",
+      "nameOnPlatform": "RainbowFS"
+    },
+    {
+      "accountId": "71140de7-ae6b-491e-a5af-7f926f644fc3",
+      "nameOnPlatform": "Drpzor"
+    },
+    {
+      "accountId": "60b87855-7dda-44c3-844a-86da686ca103",
+      "nameOnPlatform": "BRand0M_TM"
+    },
+    {
+      "accountId": "3d9d81a0-e58d-4052-8624-4e03c4064a78",
+      "nameOnPlatform": "unimork"
+    },
+    {
+      "accountId": "b90e91eb-bd87-41fd-8c69-6560dbeedd2e",
+      "nameOnPlatform": "Magorian0212"
+    },
+    {
+      "accountId": "0da0a251-20e8-4219-86eb-7d9c52847779",
+      "nameOnPlatform": "Cemkoo"
+    },
+    {
+      "accountId": "0c857beb-fd95-4449-a669-21fb310cacae",
+      "nameOnPlatform": "CarlJr."
+    },
+    {
+      "accountId": "5802f075-578f-4dd3-8860-e51e5287a8e4",
+      "nameOnPlatform": "grit.4W"
+    },
+    {
+      "accountId": "5f33f8c5-1acf-4e79-83c5-8ce8461ee7a5",
+      "nameOnPlatform": "bushff"
+    },
+    {
+      "accountId": "0016c90f-401b-4d25-9591-3b7c4319f770",
+      "nameOnPlatform": "ZazimutTM"
+    }
+  ]
+}
