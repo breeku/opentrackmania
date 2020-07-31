@@ -7,7 +7,8 @@
         "update": "ts-node updateLeaderboard",
         "start": "ts-node index.ts",
         "heroku-postbuild": "cd client && npm i && npm i --only=dev --no-shrinkwrap && npm run build",
-        "watch": "tsnd --respawn index.ts"
+        "watch": "tsnd --respawn index.ts",
+        "tslint": "tslint -c tslint.json -p tsconfig.json"
     },
     "cacheDirectories": [
         "node_modules",
@@ -31,6 +32,7 @@
         "@types/node": "^14.0.27"
     },
     "devDependencies": {
-        "ts-node-dev": "^1.0.0-pre.56"
+        "ts-node-dev": "^1.0.0-pre.56",
+        "tslint": "^6.1.2"
     }
 }

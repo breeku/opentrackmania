@@ -10,11 +10,12 @@ import {
 import { login } from './login'
 
 interface Database {
-    leaderboard: Array<any>
+    leaderboard: any[]
 }
 
 const adapter = new FileSync<Database>('db.json')
 const db = low(adapter)
+// tslint:disable-next-line: no-var-requires
 const sleep = require('util').promisify(setTimeout)
 
 export const topPlayersFromSeasons = async () => {
@@ -22,9 +23,9 @@ export const topPlayersFromSeasons = async () => {
     if (credentials) {
         const seasons = await getSeasons(credentials.nadeoTokens.accessToken)
         if (seasons) {
-            let result = []
+            const result = []
             for (const campaign of seasons.campaignList) {
-                let topPlayersMaps: any = []
+                const topPlayersMaps: any = []
                 for (const map of campaign.playlist) {
                     try {
                         const topPlayers = await getTopPlayersMap(
@@ -46,8 +47,8 @@ export const topPlayersFromSeasons = async () => {
                         const newTop = topPlayers.tops[0].top.map(record => {
                             const user = accounts.flatMap(a => {
                                 if (a.accountId === record.accountId) {
-                                    const user = profiles.find(p => p.profileId === a.uid)
-                                    return user
+                                    const u = profiles.find(p => p.profileId === a.uid)
+                                    return u
                                 } else {
                                     return []
                                 }
