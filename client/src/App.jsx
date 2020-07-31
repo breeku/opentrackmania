@@ -11,6 +11,13 @@ const useStyles = makeStyles(theme => ({
         fontFamily: `-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;`,
         borderRadius: 5,
     },
+    text_center: {
+        textAlign: 'center',
+    },
+    footer: {
+        textDecoration: 'none',
+        color: '#fff',
+    },
 }))
 
 export default function App() {
@@ -22,6 +29,13 @@ export default function App() {
     return (
         <div className={classes.root}>
             <Leaderboards />
+            <div className={classes.text_center}>
+                <a
+                    className={classes.footer}
+                    href="https://github.com/breeku/trackmania-leaderboards">
+                    Github
+                </a>
+            </div>
         </div>
     )
 }

@@ -68,6 +68,9 @@ const useStyles = makeStyles(theme => ({
     color_white: {
         color: '#fff',
     },
+    loading_container: {
+        minHeight: '80vh',
+    },
 }))
 
 const getTopTen = leaderboards => {
@@ -125,8 +128,9 @@ export default function Leaderboard() {
                 Time until next update: {60 - Math.round((new Date() % 3.6e6) / 6e4)}
                 min
             </p>
-            {leaderboards &&
-                topTen &&
+            {topTen === null ? (
+                <div className={classes.loading_container}></div>
+            ) : (
                 leaderboards.map((leaderboard, i) => (
                     <>
                         <h3>{leaderboard.name}</h3>
@@ -302,7 +306,8 @@ export default function Leaderboard() {
                             ))}
                         </Grid>
                     </>
-                ))}
+                ))
+            )}
         </div>
     )
 }
