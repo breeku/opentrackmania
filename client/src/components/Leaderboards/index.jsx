@@ -119,7 +119,6 @@ export default function Leaderboard() {
     const topTen = React.useMemo(() => {
         return leaderboards && getTopTen(leaderboards)
     }, [leaderboards])
-    console.log(leaderboards)
     return (
         <div className={classes.leaderboards}>
             <h1 style={{ fontWeight: 'lighter', letterSpacing: '2px' }}>Leaderboards</h1>
@@ -203,129 +202,143 @@ export default function Leaderboard() {
                                 </Grid>
                             </Grid>
                             <Grid container>
-                                {leaderboards.map((leaderboard, i) => {
-                                    return (
-                                        <>
-                                            <Grid item xs={12} sm={6}>
-                                                <Accordion className={classes.accordion}>
-                                                    <AccordionSummary
-                                                        aria-controls="panel1a-content"
-                                                        id="panel1a-header"
-                                                        classes={{
-                                                            content:
-                                                                classes.accordion_summary,
-                                                        }}>
-                                                        <h3>{i + 1}</h3>
-                                                    </AccordionSummary>
+                                {Array.from(leaderboards)
+                                    .sort((a, b) => a.id - b.id)
+                                    .map((leaderboard, i) => {
+                                        console.log(leaderboard)
+                                        return (
+                                            <>
+                                                <Grid item xs={12} sm={6}>
+                                                    <Accordion
+                                                        className={classes.accordion}>
+                                                        <AccordionSummary
+                                                            aria-controls="panel1a-content"
+                                                            id="panel1a-header"
+                                                            classes={{
+                                                                content:
+                                                                    classes.accordion_summary,
+                                                            }}>
+                                                            <h3>{i + 1}</h3>
+                                                        </AccordionSummary>
 
-                                                    {leaderboard.data.map((map, i) => (
-                                                        <AccordionDetails
-                                                            className={
-                                                                classes.flex_column
-                                                            }>
-                                                            <Paper
-                                                                elevation={3}
-                                                                className={classes.paper}>
-                                                                <Grid
-                                                                    container
-                                                                    direction="row">
-                                                                    <Grid
-                                                                        item
-                                                                        xs={12}
-                                                                        sm={12}
-                                                                        md={4}>
-                                                                        <span
-                                                                            className={
-                                                                                classes.paper_content
-                                                                            }>
-                                                                            <h4
-                                                                                className={
-                                                                                    classes.position
-                                                                                }>
-                                                                                #{i + 1}
-                                                                            </h4>
-                                                                            <h3>
-                                                                                {
-                                                                                    map.nameOnPlatform
-                                                                                }
-                                                                            </h3>
-                                                                        </span>
-                                                                    </Grid>
-                                                                    <Grid
-                                                                        item
-                                                                        xs={12}
-                                                                        sm={12}
-                                                                        md={4}>
-                                                                        <h4
-                                                                            className={
-                                                                                classes.paper_content
-                                                                            }>
-                                                                            {map.zoneName}
-                                                                        </h4>
-                                                                    </Grid>
-                                                                    <Grid
-                                                                        item
-                                                                        xs={12}
-                                                                        sm={12}
-                                                                        md={4}>
-                                                                        <span
-                                                                            className={
-                                                                                classes.paper_content
-                                                                            }>
-                                                                            <h2>
-                                                                                {i ===
-                                                                                0 ? (
-                                                                                    <>
-                                                                                        {(
-                                                                                            map.score /
-                                                                                            1000
-                                                                                        ).toFixed(
-                                                                                            3,
-                                                                                        )}
-                                                                                        s
-                                                                                    </>
-                                                                                ) : (
-                                                                                    <>
-                                                                                        {map.score /
-                                                                                            1000}
-                                                                                        s
-                                                                                        (
-                                                                                        <span
-                                                                                            className={
-                                                                                                classes.color_red
-                                                                                            }>
-                                                                                            +
-                                                                                            {(
-                                                                                                map.score /
-                                                                                                    1000 -
-                                                                                                leaderboard
-                                                                                                    .data[0]
-                                                                                                    .score /
+                                                        {leaderboard.data.map(
+                                                            (map, i) => (
+                                                                <AccordionDetails
+                                                                    className={
+                                                                        classes.flex_column
+                                                                    }>
+                                                                    <Paper
+                                                                        elevation={3}
+                                                                        className={
+                                                                            classes.paper
+                                                                        }>
+                                                                        <Grid
+                                                                            container
+                                                                            direction="row">
+                                                                            <Grid
+                                                                                item
+                                                                                xs={12}
+                                                                                sm={12}
+                                                                                md={4}>
+                                                                                <span
+                                                                                    className={
+                                                                                        classes.paper_content
+                                                                                    }>
+                                                                                    <h4
+                                                                                        className={
+                                                                                            classes.position
+                                                                                        }>
+                                                                                        #
+                                                                                        {i +
+                                                                                            1}
+                                                                                    </h4>
+                                                                                    <h3>
+                                                                                        {
+                                                                                            map.nameOnPlatform
+                                                                                        }
+                                                                                    </h3>
+                                                                                </span>
+                                                                            </Grid>
+                                                                            <Grid
+                                                                                item
+                                                                                xs={12}
+                                                                                sm={12}
+                                                                                md={4}>
+                                                                                <h4
+                                                                                    className={
+                                                                                        classes.paper_content
+                                                                                    }>
+                                                                                    {
+                                                                                        map.zoneName
+                                                                                    }
+                                                                                </h4>
+                                                                            </Grid>
+                                                                            <Grid
+                                                                                item
+                                                                                xs={12}
+                                                                                sm={12}
+                                                                                md={4}>
+                                                                                <span
+                                                                                    className={
+                                                                                        classes.paper_content
+                                                                                    }>
+                                                                                    <h2>
+                                                                                        {i ===
+                                                                                        0 ? (
+                                                                                            <>
+                                                                                                {(
+                                                                                                    map.score /
                                                                                                     1000
-                                                                                            ).toFixed(
-                                                                                                3,
-                                                                                            )}
-                                                                                        </span>
-                                                                                        <span
-                                                                                            className={
-                                                                                                classes.color_white
-                                                                                            }>
-                                                                                            )
-                                                                                        </span>
-                                                                                    </>
-                                                                                )}
-                                                                            </h2>
-                                                                        </span>
-                                                                    </Grid>
-                                                                </Grid>
-                                                            </Paper>
-                                                        </AccordionDetails>
-                                                    ))}
-                                                </Accordion>
-                                            </Grid>
-                                        </>
-                                    )
-                                })}
+                                                                                                ).toFixed(
+                                                                                                    3,
+                                                                                                )}
+
+                                                                                                s
+                                                                                            </>
+                                                                                        ) : (
+                                                                                            <>
+                                                                                                {map.score /
+                                                                                                    1000}
+
+                                                                                                s
+                                                                                                (
+                                                                                                <span
+                                                                                                    className={
+                                                                                                        classes.color_red
+                                                                                                    }>
+                                                                                                    +
+                                                                                                    {(
+                                                                                                        map.score /
+                                                                                                            1000 -
+                                                                                                        leaderboard
+                                                                                                            .data[0]
+                                                                                                            .score /
+                                                                                                            1000
+                                                                                                    ).toFixed(
+                                                                                                        3,
+                                                                                                    )}
+                                                                                                </span>
+                                                                                                <span
+                                                                                                    className={
+                                                                                                        classes.color_white
+                                                                                                    }>
+                                                                                                    )
+                                                                                                </span>
+                                                                                            </>
+                                                                                        )}
+                                                                                    </h2>
+                                                                                </span>
+                                                                            </Grid>
+                                                                        </Grid>
+                                                                    </Paper>
+                                                                </AccordionDetails>
+                                                            ),
+                                                        )}
+                                                    </Accordion>
+                                                </Grid>
+                                            </>
+                                        )
+                                    })}
                             </Grid>
                         </>
                     )}
