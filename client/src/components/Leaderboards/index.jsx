@@ -205,7 +205,6 @@ export default function Leaderboard() {
                                 {Array.from(leaderboards)
                                     .sort((a, b) => a.id - b.id)
                                     .map((leaderboard, i) => {
-                                        console.log(leaderboard)
                                         return (
                                             <>
                                                 <Grid item xs={12} sm={6}>
