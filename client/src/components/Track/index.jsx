@@ -58,7 +58,6 @@ export default function Track() {
         window.scrollTo(0, 0)
     }, [pathname])
 
-    console.log(track)
     return (
         <>
             {!track ? (
