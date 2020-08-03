@@ -1,16 +1,19 @@
 import express from 'express'
 import path from 'path'
+import dotenv from 'dotenv'
+dotenv.config()
 
-import { db } from './server/db'
+import { Op } from 'sequelize'
+import db from './server/models/index'
+import { leaderboardRouter } from './server/routes/leaderboards'
+import { totdRouter } from './server/routes/totd'
 
 const app = express()
 
 app.use(express.static(path.join(__dirname, 'build')))
 
-app.get('/api/leaderboard', (req, res) => {
-    const leaderboard = db.get('leaderboard').value()
-    return res.send(leaderboard)
-})
+app.use('/api/leaderboard', leaderboardRouter)
+app.use('/api/totds', totdRouter)
 
 if (process.env.NODE_ENV === 'production') {
     // Serve any static files
@@ -23,3 +26,9 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 app.listen(process.env.PORT || 8080)
+;(async () => {
+    try {
+    } catch (error) {
+        console.error('Unable to connect to the database:', error)
+    }
+})()

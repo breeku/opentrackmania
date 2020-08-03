@@ -1,6 +1,4 @@
 import { loginUbi, loginTrackmaniaUbi, loginTrackmaniaNadeo } from 'trackmania-api-node'
-import dotenv from 'dotenv'
-dotenv.config()
 
 export const login = async () => {
     const credentials = Buffer.from(process.env.USER + ':' + process.env.PASS).toString(

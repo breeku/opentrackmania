@@ -1,4 +1,4 @@
-import { db } from './db'
+import db from './models/index.js'
 import {
     getTopPlayersMap,
     getProfilesById,
@@ -19,7 +19,7 @@ export const topPlayersFromSeasons = async () => {
         const seasons = await getSeasons(credentials.nadeoTokens.accessToken)
         if (seasons) {
             const result = []
-            const dbAccounts = db.get('accounts').value()
+            const dbAccounts = await db.Users.findAll({ raw: true })
             for (const campaign of seasons.campaignList) {
                 const topPlayersMaps: any = []
                 for (const map of campaign.playlist) {
@@ -86,12 +86,19 @@ export const topPlayersFromSeasons = async () => {
                                         accountId: record.accountId,
                                         nameOnPlatform: user.nameOnPlatform,
                                     })
-
+                                console.log(user)
                                 return { ...record, nameOnPlatform: user.nameOnPlatform }
                             }
                         })
 
-                        db.set('accounts', dbAccounts).write()
+                        for (const account of dbAccounts) {
+                            if (
+                                !(await db.Users.findOne({
+                                    where: { accountId: account.accountId },
+                                }))
+                            )
+                                await db.Users.create(account)
+                        }
 
                         topPlayersMaps.push({ map: map.mapUid, top: newTop })
 
@@ -103,7 +110,7 @@ export const topPlayersFromSeasons = async () => {
                                 (campaign.playlist.length - 1) +
                                 ')',
                         )
-                        await sleep(2500)
+                        await sleep(500)
                     } catch (e) {
                         console.error(e)
                         console.warn('get top players map failed')
@@ -112,7 +119,40 @@ export const topPlayersFromSeasons = async () => {
                 }
                 result.push({ name: campaign.name, maps: topPlayersMaps })
             }
-            db.set('leaderboard', result).write()
+            for (const campaign of result) {
+                for (const maps of campaign.maps) {
+                    try {
+                        if (
+                            await db.Leaderboards.findOne({
+                                where: {
+                                    map: maps.map,
+                                },
+                            })
+                        ) {
+                            await db.Leaderboards.update(
+                                {
+                                    campaign: campaign.name,
+                                    map: maps.map,
+                                    data: maps.top,
+                                },
+                                {
+                                    where: {
+                                        map: maps.map,
+                                    },
+                                },
+                            )
+                        } else {
+                            await db.Leaderboards.create({
+                                campaign: campaign.name,
+                                map: maps.map,
+                                data: maps.top,
+                            })
+                        }
+                    } catch (e) {
+                        console.error(e)
+                    }
+                }
+            }
             return true
         } else {
             return false
