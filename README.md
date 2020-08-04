@@ -1,3 +1,3 @@
-# [opentrackmania](https://opentrackmania.herokuapp.com/)
+# [opentrackmania](https://opentrackmania.com/)
 
 ### [trackmania-api-node](https://github.com/breeku/trackmania-api-node)
