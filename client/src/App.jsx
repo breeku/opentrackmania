@@ -8,6 +8,7 @@ import Home from './components/Home'
 import Seasons from './components/Seasons'
 import TrackOfTheDay from './components/TrackOfTheDay'
 import Track from './components/Track'
+import Players from './components/Players'
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -69,6 +70,12 @@ export default function App() {
                                     container
                                     direction="row"
                                     className={classes.buttons}>
+                                    <Link to="/players" className={classes.no_decoration}>
+                                        <Button className={classes.button}>
+                                            players
+                                        </Button>
+                                    </Link>
+
                                     <Link to="/seasons" className={classes.no_decoration}>
                                         <Button className={classes.button}>
                                             seasons
@@ -85,6 +92,9 @@ export default function App() {
                         </Toolbar>
                     </AppBar>
                     <Switch>
+                        <Route path="/players">
+                            <Players />
+                        </Route>
                         <Route path="/seasons">
                             <Seasons />
                         </Route>

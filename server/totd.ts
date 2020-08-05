@@ -27,6 +27,7 @@ export const TOTDs = async () => {
                         where: {
                             map: t.map,
                         },
+                        raw: true,
                     }))
                 )
                     db.Totds.create(t)
@@ -34,14 +35,13 @@ export const TOTDs = async () => {
             const mapsToAdd = []
 
             for (const t of totd) {
-                if (
-                    !(await db.Maps.findOne({
-                        where: {
-                            map: t.map,
-                        },
-                    }))
-                )
-                    mapsToAdd.push(t.map)
+                const map = await db.Maps.findOne({
+                    where: {
+                        map: t.map,
+                    },
+                    raw: true,
+                })
+                if (!map) mapsToAdd.push(t.map)
             }
 
             if (mapsToAdd.length > 0) {

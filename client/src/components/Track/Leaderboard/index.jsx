@@ -57,13 +57,7 @@ export default function Leaderboard({ leaderboard }) {
                 </h4>
             )}
             {data.map((record, i) => (
-                <Paper
-                    className={classes.leaderboard}
-                    style={{
-                        border: leaderboard.closed
-                            ? '1px solid rgba(230, 0, 0, 0.15)'
-                            : '',
-                    }}>
+                <Paper className={classes.leaderboard}>
                     <Grid container direction="row">
                         <Grid item xs={12} sm={12} md={4}>
                             <span className={classes.paper_content}>
