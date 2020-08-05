@@ -9,7 +9,11 @@ import { useLocation } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles'
 import { Paper, Grid } from '@material-ui/core'
 
-import { textParser } from '../../utils/textParser'
+import { textParser } from '../../utils/'
+import { getLeaderboard } from '../../services/leaderboards'
+
+import SLeaderboard from './SLeaderboard'
+import Leaderboard from './Leaderboard'
 
 const useStyles = makeStyles(theme => ({
     paper: {
@@ -42,14 +46,28 @@ const useStyles = makeStyles(theme => ({
     times: {
         color: '#fff',
         backgroundColor: '#202020',
-        marginTop: 20,
-        padding: 20,
+        marginTop: 10,
+        padding: 10,
         width: '50%',
         margin: 'auto',
+    },
+    leaderboard: {
+        backgroundColor: '#111',
+        padding: 5,
+        marginLeft: 7,
+        marginBottom: 7,
+        color: '#fff',
+    },
+    trophies: {
+        backgroundColor: '#111',
+        padding: 5,
+        marginRight: 7,
+        color: '#fff',
     },
 }))
 
 export default function Track() {
+    const [leaderboard, setLeaderboard] = React.useState(null)
     const { track } = useSelector(state => state.tracks)
     const classes = useStyles()
     const { pathname } = useLocation()
@@ -57,6 +75,14 @@ export default function Track() {
     React.useEffect(() => {
         window.scrollTo(0, 0)
     }, [pathname])
+
+    React.useEffect(() => {
+        const getData = async () => {
+            setLeaderboard(await getLeaderboard(track.mapUid))
+        }
+
+        if (!leaderboard && track) getData()
+    }, [])
 
     return (
         <>
@@ -84,35 +110,60 @@ export default function Track() {
                             </div>
                         </div>
                     </Paper>
-                    <h1 style={{ textAlign: 'center' }}>Times</h1>
-                    <Grid container direction="column" justify="center" align="center">
-                        <Grid item>
-                            <Paper className={classes.times}>
-                                <h3>🏆Author</h3>
-                                <h3>{(track.authorScore / 1000).toFixed(3)}s</h3>
+                    <Grid container>
+                        <Grid item xs={12} sm={4}>
+                            <Paper className={classes.trophies} elevation={5}>
+                                <h1 style={{ textAlign: 'center' }}>Trophies</h1>
+                                <Grid
+                                    container
+                                    direction="column"
+                                    justify="center"
+                                    align="center">
+                                    <Grid item>
+                                        <Paper className={classes.times}>
+                                            <h3>🏆Author</h3>
+                                            <h3>
+                                                {(track.authorScore / 1000).toFixed(3)}s
+                                            </h3>
+                                        </Paper>
+                                    </Grid>
+                                    <Grid item>
+                                        <Paper className={classes.times}>
+                                            <h3>🥇Gold</h3>
+                                            <h3>
+                                                {(track.goldScore / 1000).toFixed(3)}s
+                                            </h3>
+                                        </Paper>
+                                    </Grid>
+                                    <Grid item>
+                                        <Paper className={classes.times}>
+                                            <h3>🥈Silver</h3>
+                                            <h3>
+                                                {(track.silverScore / 1000).toFixed(3)}s
+                                            </h3>
+                                        </Paper>
+                                    </Grid>
+                                    <Grid item>
+                                        <Paper className={classes.times}>
+                                            <h3>🥉Bronze</h3>
+                                            <h3>
+                                                {(track.bronzeScore / 1000).toFixed(3)}s
+                                            </h3>
+                                        </Paper>
+                                    </Grid>
+                                </Grid>
                             </Paper>
                         </Grid>
-                        <Grid item>
-                            <Paper className={classes.times}>
-                                <h3>🥇Gold</h3>
-                                <h3>{(track.goldScore / 1000).toFixed(3)}s</h3>
-                            </Paper>
-                        </Grid>
-                        <Grid item>
-                            <Paper className={classes.times}>
-                                <h3>🥈Silver</h3>
-                                <h3>{(track.silverScore / 1000).toFixed(3)}s</h3>
-                            </Paper>
-                        </Grid>
-                        <Grid item>
-                            <Paper className={classes.times}>
-                                <h3>🥉Bronze</h3>
-                                <h3>{(track.bronzeScore / 1000).toFixed(3)}s</h3>
+                        <Grid item xs={12} sm={8}>
+                            <Paper className={classes.leaderboard} elevation={5}>
+                                {!leaderboard ? (
+                                    <SLeaderboard />
+                                ) : (
+                                    <Leaderboard leaderboard={leaderboard} />
+                                )}
                             </Paper>
                         </Grid>
                     </Grid>
-                    <h1 style={{ textAlign: 'center' }}>Leaderboards</h1>
-                    <h5 style={{ textAlign: 'center' }}>Coming soon!</h5>
                 </>
             )}
         </>

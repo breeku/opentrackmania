@@ -4,3 +4,9 @@ export const getLeaderboards = async () => {
     const { data } = await axios.get('/api/leaderboard')
     return data
 }
+
+export const getLeaderboard = async map => {
+    const { data } = await axios.get('/api/leaderboard/map/' + map)
+    console.log(data)
+    return data
+}

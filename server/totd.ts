@@ -31,22 +31,33 @@ export const TOTDs = async () => {
                 )
                     db.Totds.create(t)
             }
+            const mapsToAdd = []
 
-            const maps = await getMaps(
-                credentials.ubiTokens.accessToken,
-                totd.map(x => x.map),
-            )
-
-            for (const map of maps) {
+            for (const t of totd) {
                 if (
                     !(await db.Maps.findOne({
                         where: {
-                            map: map.mapUid,
+                            map: t.map,
                         },
                     }))
                 )
-                    db.Maps.create({ map: map.mapUid, data: map })
+                    mapsToAdd.push(t.map)
             }
+
+            if (mapsToAdd.length > 0) {
+                const maps = await getMaps(
+                    credentials.ubiTokens.accessToken,
+                    totd.map(x => x.map),
+                )
+                for (const map of maps) {
+                    db.Maps.create({
+                        map: map.mapUid,
+                        data: map,
+                        campaign: 'totd',
+                    })
+                }
+            }
+
             return true
         } catch (e) {
             console.error(e)

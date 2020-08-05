@@ -3,159 +3,154 @@ import {
     getTopPlayersMap,
     getProfilesById,
     getProfiles,
-    getSeasons,
     IwebIdentity,
 } from 'trackmania-api-node'
 
 import { login } from './login'
+import { cache } from './cache'
 
-// tslint:disable-next-line: no-var-requires
-const sleep = require('util').promisify(setTimeout)
-
-export const topPlayersFromSeasons = async () => {
-    // probably should task a worker to this
-    const credentials = await login()
+export const topPlayersMap = async (
+    maps: string[],
+    retry: boolean = false,
+    close: boolean = false,
+) => {
+    const credentials = (cache.get('credentials') as any) || (await login())
     if (credentials) {
-        const seasons = await getSeasons(credentials.nadeoTokens.accessToken)
-        if (seasons) {
-            const result = []
-            const dbAccounts = await db.Users.findAll({ raw: true })
-            for (const campaign of seasons.campaignList) {
-                const topPlayersMaps: any = []
-                for (const map of campaign.playlist) {
-                    try {
-                        const topPlayers = await getTopPlayersMap(
-                            credentials.nadeoTokens.accessToken,
-                            map.mapUid,
-                        )
-                        const accountIds = topPlayers.tops[0].top.flatMap(
-                            (a: { accountId: string }) => {
-                                if (
-                                    !dbAccounts.find(
-                                        (d: { accountId: string }) =>
-                                            a.accountId === d.accountId,
-                                    )
-                                ) {
-                                    return a.accountId
-                                } else {
-                                    return []
-                                }
-                            },
-                        )
+        const dbAccounts = []
+        const topPlayersMaps: any = []
+        for (const map of maps) {
+            try {
+                const topPlayers = await getTopPlayersMap(
+                    credentials.nadeoTokens.accessToken,
+                    map,
+                )
 
-                        let accounts: IwebIdentity[] = []
-                        let profile: any[] = []
-
-                        if (accountIds.length > 0) {
-                            console.log('Get new account ids')
-                            accounts = await getProfiles(
-                                credentials.ubiTokens.accessToken,
-                                accountIds,
-                            )
-                            const { profiles } = await getProfilesById(
-                                credentials.ticket,
-                                accounts.map(x => x.uid),
-                            )
-                            profile = profiles
-                        } else {
-                            console.log('All account ids are known')
-                        }
-
-                        const newTop = topPlayers.tops[0].top.map(record => {
-                            const user =
-                                dbAccounts.find(
-                                    (x: { accountId: string }) =>
-                                        x.accountId === record.accountId,
-                                ) ||
-                                accounts.flatMap(a => {
-                                    if (a.accountId === record.accountId) {
-                                        const u = profile.find(p => p.profileId === a.uid)
-                                        return u
-                                    } else {
-                                        return []
-                                    }
-                                })[0]
-                            if (user) {
-                                if (
-                                    !dbAccounts.find(
-                                        (x: { accountId: string }) =>
-                                            x.accountId === record.accountId,
-                                    )
-                                )
-                                    dbAccounts.push({
-                                        accountId: record.accountId,
-                                        nameOnPlatform: user.nameOnPlatform,
-                                    })
-                                console.log(user)
-                                return { ...record, nameOnPlatform: user.nameOnPlatform }
-                            }
-                        })
-
-                        for (const account of dbAccounts) {
-                            if (
-                                !(await db.Users.findOne({
-                                    where: { accountId: account.accountId },
-                                }))
-                            )
-                                await db.Users.create(account)
-                        }
-
-                        topPlayersMaps.push({ map: map.mapUid, top: newTop })
-
-                        console.log(
-                            map.position +
-                                ' (' +
-                                map.position +
-                                '/' +
-                                (campaign.playlist.length - 1) +
-                                ')',
-                        )
-                        await sleep(500)
-                    } catch (e) {
-                        console.error(e)
-                        console.warn('get top players map failed')
-                        return false
-                    }
+                for (const value of topPlayers.tops[0].top) {
+                    const user = await db.Users.findOne({
+                        where: { accountId: value.accountId },
+                        raw: true,
+                    })
+                    if (user) dbAccounts.push(user)
                 }
-                result.push({ name: campaign.name, maps: topPlayersMaps })
-            }
-            for (const campaign of result) {
-                for (const maps of campaign.maps) {
-                    try {
+
+                const accountIds = topPlayers.tops[0].top.flatMap(
+                    (a: { accountId: string }) => {
                         if (
-                            await db.Leaderboards.findOne({
-                                where: {
-                                    map: maps.map,
-                                },
-                            })
-                        ) {
-                            await db.Leaderboards.update(
-                                {
-                                    campaign: campaign.name,
-                                    map: maps.map,
-                                    data: maps.top,
-                                },
-                                {
-                                    where: {
-                                        map: maps.map,
-                                    },
-                                },
+                            !dbAccounts.find(
+                                (d: { accountId: string }) => a.accountId === d.accountId,
                             )
+                        ) {
+                            return a.accountId
                         } else {
-                            await db.Leaderboards.create({
-                                campaign: campaign.name,
-                                map: maps.map,
-                                data: maps.top,
-                            })
+                            return []
                         }
-                    } catch (e) {
-                        console.error(e)
+                    },
+                )
+
+                let accounts: IwebIdentity[] = []
+                let profile: any[] = []
+
+                if (accountIds.length > 0) {
+                    console.log('Get new account ids')
+                    accounts = await getProfiles(
+                        credentials.ubiTokens.accessToken,
+                        accountIds,
+                    )
+                    const { profiles } = await getProfilesById(
+                        credentials.ticket,
+                        accounts.map(x => x.uid),
+                    )
+                    profile = profiles
+                } else {
+                    console.log('All account ids are known')
+                }
+
+                const newTop = topPlayers.tops[0].top.map(record => {
+                    const user =
+                        dbAccounts.find(
+                            (x: { accountId: string }) =>
+                                x.accountId === record.accountId,
+                        ) ||
+                        accounts.flatMap(a => {
+                            if (a.accountId === record.accountId) {
+                                const u = profile.find(p => p.profileId === a.uid)
+                                return u
+                            } else {
+                                return []
+                            }
+                        })[0]
+                    if (user) {
+                        if (
+                            !dbAccounts.find(
+                                (x: { accountId: string }) =>
+                                    x.accountId === record.accountId,
+                            )
+                        )
+                            dbAccounts.push({
+                                accountId: record.accountId,
+                                nameOnPlatform: user.nameOnPlatform,
+                            })
+                        return { ...record, nameOnPlatform: user.nameOnPlatform }
                     }
+                })
+
+                for (const account of dbAccounts) {
+                    if (
+                        !(await db.Users.findOne({
+                            where: { accountId: account.accountId },
+                        }))
+                    )
+                        await db.Users.create(account)
+                }
+
+                topPlayersMaps.push({ map, top: newTop })
+            } catch (e) {
+                console.warn(e.response)
+                if (e.response.status === 401 && !retry) {
+                    await login()
+                    return await topPlayersMap(maps, true)
                 }
             }
-            return true
-        } else {
+        }
+
+        return await createOrUpdateLeaderboard(topPlayersMaps, close)
+    }
+}
+
+const createOrUpdateLeaderboard = async (maps, close) => {
+    for (const data of maps) {
+        const { map, top } = data
+        try {
+            if (
+                await db.Leaderboards.findOne({
+                    where: {
+                        map,
+                    },
+                })
+            ) {
+                await db.Leaderboards.update(
+                    {
+                        map,
+                        data: top,
+                        closed: close,
+                    },
+                    {
+                        where: {
+                            map,
+                        },
+                    },
+                )
+            } else {
+                await db.Leaderboards.create({
+                    map,
+                    data: top,
+                    closed: close,
+                })
+            }
+        } catch (e) {
+            console.error(e)
             return false
         }
     }
+    return true
 }

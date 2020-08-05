@@ -5,7 +5,7 @@ import { AppBar, Toolbar, Button, Grid } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 
 import Home from './components/Home'
-import Leaderboards from './components/Leaderboards'
+import Seasons from './components/Seasons'
 import TrackOfTheDay from './components/TrackOfTheDay'
 import Track from './components/Track'
 
@@ -69,11 +69,9 @@ export default function App() {
                                     container
                                     direction="row"
                                     className={classes.buttons}>
-                                    <Link
-                                        to="/leaderboards"
-                                        className={classes.no_decoration}>
+                                    <Link to="/seasons" className={classes.no_decoration}>
                                         <Button className={classes.button}>
-                                            leaderboards
+                                            seasons
                                         </Button>
                                     </Link>
 
@@ -87,8 +85,8 @@ export default function App() {
                         </Toolbar>
                     </AppBar>
                     <Switch>
-                        <Route path="/leaderboards">
-                            <Leaderboards />
+                        <Route path="/seasons">
+                            <Seasons />
                         </Route>
                         <Route path="/totd/" exact={true}>
                             <TrackOfTheDay />

@@ -3,8 +3,9 @@ import path from 'path'
 import dotenv from 'dotenv'
 dotenv.config()
 
-import { Op } from 'sequelize'
+import { Sequelize, Op } from 'sequelize'
 import db from './server/models/index'
+import { cache } from './server/cache'
 import { leaderboardRouter } from './server/routes/leaderboards'
 import { totdRouter } from './server/routes/totd'
 

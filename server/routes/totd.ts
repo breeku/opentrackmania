@@ -1,25 +1,21 @@
 import express from 'express'
 import db from '../models/index'
+import { Sequelize, fn } from 'sequelize'
 
 export const totdRouter = express.Router()
 
 totdRouter.get('/', async (req, res) => {
-    const maps = []
     const totds = await db.Totds.findAll({ raw: true })
 
-    for (const item of totds) {
-        maps.push(
-            await db.Maps.findOne({
-                where: {
-                    map: item.map,
-                },
-                raw: true,
-            }),
-        )
-    }
+    const maps = await db.Maps.findAll({
+        where: {
+            campaign: 'totd',
+        },
+        raw: true,
+    })
 
-    const response = totds.flatMap(totd => {
-        return maps.flatMap(map => {
+    const response = totds.flatMap((totd: any[]) => {
+        return maps.flatMap((map: { map: any; data: any }) => {
             if (map.map === totd.map) {
                 return { ...totd, map: map.data }
             } else {
@@ -29,4 +25,20 @@ totdRouter.get('/', async (req, res) => {
     })
 
     res.send(response)
+})
+
+totdRouter.get('/random', async (req, res) => {
+    const totd = await db.Totds.findOne({
+        order: fn('random'),
+        raw: true,
+    })
+
+    const map = await db.Maps.findOne({
+        where: {
+            map: totd.map,
+        },
+        raw: true,
+    })
+
+    res.send(map)
 })

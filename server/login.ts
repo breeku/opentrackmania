@@ -1,4 +1,5 @@
 import { loginUbi, loginTrackmaniaUbi, loginTrackmaniaNadeo } from 'trackmania-api-node'
+import { cache } from './cache'
 
 export const login = async () => {
     const credentials = Buffer.from(process.env.USER + ':' + process.env.PASS).toString(
@@ -11,12 +12,10 @@ export const login = async () => {
             ubiTokens.accessToken,
             'NadeoLiveServices',
         )
-        return {
-            ticket,
-            ubiTokens,
-            nadeoTokens,
-            accountId: nadeoTokens.accountId,
-        }
+        const obj = { ticket, ubiTokens, nadeoTokens, accountId: nadeoTokens.accountId }
+        cache.set('credentials', obj)
+        console.log('set cache')
+        return obj
     } catch (e) {
         console.log(e.toJSON())
     }

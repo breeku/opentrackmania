@@ -2,15 +2,15 @@ import React from 'react'
 
 import { useDispatch, useSelector } from 'react-redux'
 
-import { Link } from 'react-router-dom'
-
-import { Paper, Grid } from '@material-ui/core'
+import { Grid } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 
 import { getTOTDs } from '../../services/totds'
-import { setTrack } from '../../redux/store/tracks'
-import { textParser } from '../../utils/textParser'
+
+import { groupBy } from '../../utils/'
 import { setTOTDs } from '../../redux/store/totd'
+
+import List from './List'
 
 const useStyles = makeStyles(theme => ({
     TOTDs: {
@@ -65,15 +65,6 @@ const monthNames = [
     'December',
 ]
 
-const groupBy = (items, key) =>
-    items.reduce(
-        (result, item) => ({
-            ...result,
-            [item[key]]: [...(result[item[key]] || []), item],
-        }),
-        {},
-    )
-
 export default function TrackOfTheDay() {
     const { TOTDs } = useSelector(state => state.totd)
     const classes = useStyles()
@@ -88,7 +79,7 @@ export default function TrackOfTheDay() {
         }
 
         if (!TOTDs) getData()
-    }, [])
+    }, [TOTDs, dispatch])
 
     return (
         <div className={classes.TOTDs}>
@@ -117,51 +108,7 @@ export default function TrackOfTheDay() {
                                             )
                                             .map(totd => {
                                                 return (
-                                                    <Grid item xs={12} sm={6} md={4}>
-                                                        <Link
-                                                            to={{
-                                                                pathname: `/track/${totd.map.mapUid}`,
-                                                            }}
-                                                            style={{
-                                                                textDecoration: 'none',
-                                                            }}
-                                                            onClick={() =>
-                                                                dispatch(
-                                                                    setTrack(totd.map),
-                                                                )
-                                                            }>
-                                                            <Paper
-                                                                className={classes.TOTD}
-                                                                style={{
-                                                                    backgroundImage: `${`url(${totd.map.thumbnailUrl}`}`,
-                                                                    backgroundPosition:
-                                                                        'center',
-                                                                    backgroundSize:
-                                                                        'cover',
-                                                                }}>
-                                                                <div
-                                                                    className={
-                                                                        classes.TOTD_cover
-                                                                    }>
-                                                                    <h4
-                                                                        className={
-                                                                            classes.TOTD_date
-                                                                        }>
-                                                                        {totd.day}/
-                                                                        {totd.month}
-                                                                    </h4>
-                                                                    <h2
-                                                                        className={
-                                                                            classes.TOTD_map
-                                                                        }>
-                                                                        {textParser(
-                                                                            totd.map.name,
-                                                                        )}
-                                                                    </h2>
-                                                                </div>
-                                                            </Paper>
-                                                        </Link>
-                                                    </Grid>
+                                                    <List totd={totd} classes={classes} />
                                                 )
                                             })}
                                     </Grid>

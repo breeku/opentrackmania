@@ -1,5 +1,14 @@
 import React from 'react'
 
+export const groupBy = (items, key) =>
+    items.reduce(
+        (result, item) => ({
+            ...result,
+            [item[key]]: [...(result[item[key]] || []), item],
+        }),
+        {},
+    )
+
 export const textParser = title => {
     const arr = title.split('')
     let str = '<span>'
