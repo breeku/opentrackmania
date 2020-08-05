@@ -7,6 +7,5 @@ export const getLeaderboards = async () => {
 
 export const getLeaderboard = async map => {
     const { data } = await axios.get('/api/leaderboard/map/' + map)
-    console.log(data)
     return data
 }

@@ -45,7 +45,6 @@ const useStyles = makeStyles(theme => ({
 export default function Leaderboard({ leaderboard }) {
     const classes = useStyles()
     const { data } = leaderboard
-    console.log(data)
     return (
         <>
             <h1 style={{ textAlign: 'center' }}>Leaderboards</h1>
