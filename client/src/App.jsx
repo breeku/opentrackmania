@@ -9,6 +9,7 @@ import Seasons from './components/Seasons'
 import TrackOfTheDay from './components/TrackOfTheDay'
 import Track from './components/Track'
 import Players from './components/Players'
+import Servers from './components/Servers'
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -70,6 +71,12 @@ export default function App() {
                                     container
                                     direction="row"
                                     className={classes.buttons}>
+                                    <Link to="/servers" className={classes.no_decoration}>
+                                        <Button className={classes.button}>
+                                            servers
+                                        </Button>
+                                    </Link>
+
                                     <Link to="/players" className={classes.no_decoration}>
                                         <Button className={classes.button}>
                                             players
@@ -92,6 +99,9 @@ export default function App() {
                         </Toolbar>
                     </AppBar>
                     <Switch>
+                        <Route path="/servers">
+                            <Servers />
+                        </Route>
                         <Route path="/players">
                             <Players />
                         </Route>
