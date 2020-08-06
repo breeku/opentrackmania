@@ -18,10 +18,9 @@ seasonRouter.get('/', async (req, res) => {
             },
             raw: true,
         })
-
         const seasonMaps = playlist.flatMap((track: { mapUid: any }) => {
-            return maps.flatMap((map: { map: any; data: any }) => {
-                if (map.map === track.mapUid) {
+            return maps.flatMap((map: { mapUid: any; data: any }) => {
+                if (map.mapUid === track.mapUid) {
                     return { ...track, map: map.data }
                 } else {
                     return []

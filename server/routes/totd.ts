@@ -13,17 +13,17 @@ totdRouter.get('/', async (req, res) => {
         },
         raw: true,
     })
-
-    const response = totds.flatMap((totd: any[]) => {
-        return maps.flatMap((map: { map: any; data: any }) => {
-            if (map.map === totd.map) {
+    console.log(maps.length)
+    const response = totds.flatMap(totd => {
+        return maps.flatMap((map: { mapUid: any; data: any }) => {
+            if (map.mapUid === totd.mapUid) {
                 return { ...totd, map: map.data }
             } else {
                 return []
             }
         })
     })
-
+    console.log(response.length)
     res.send(response)
 })
 
@@ -35,7 +35,7 @@ totdRouter.get('/random', async (req, res) => {
 
     const map = await db.Maps.findOne({
         where: {
-            map: totd.map,
+            mapUid: totd.mapUid,
         },
         raw: true,
     })

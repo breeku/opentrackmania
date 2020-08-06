@@ -3,6 +3,7 @@ import {
     getTopPlayersMap,
     getProfilesById,
     getProfiles,
+    getMapRecords,
     IwebIdentity,
 } from 'trackmania-api-node'
 
@@ -20,6 +21,10 @@ export const topPlayersMap = async (
         const topPlayersMaps: any = []
         for (const map of maps) {
             try {
+                const { mapId } = await db.Maps.findOne({
+                    where: { mapUid: map },
+                    raw: true,
+                })
                 const topPlayers = await getTopPlayersMap(
                     credentials.nadeoTokens.accessToken,
                     map,
@@ -65,34 +70,50 @@ export const topPlayersMap = async (
                     console.log('All account ids are known')
                 }
 
-                const newTop = topPlayers.tops[0].top.map(record => {
-                    const user =
-                        dbAccounts.find(
-                            (x: { accountId: string }) =>
-                                x.accountId === record.accountId,
-                        ) ||
-                        accounts.flatMap(a => {
-                            if (a.accountId === record.accountId) {
-                                const u = profile.find(p => p.profileId === a.uid)
-                                return u
-                            } else {
-                                return []
-                            }
-                        })[0]
-                    if (user) {
-                        if (
-                            !dbAccounts.find(
+                const newTop = await Promise.all(
+                    topPlayers.tops[0].top.map(async record => {
+                        const user =
+                            dbAccounts.find(
                                 (x: { accountId: string }) =>
                                     x.accountId === record.accountId,
+                            ) ||
+                            accounts.flatMap(a => {
+                                if (a.accountId === record.accountId) {
+                                    const u = profile.find(p => p.profileId === a.uid)
+                                    return u
+                                } else {
+                                    return []
+                                }
+                            })[0]
+                        if (user) {
+                            if (
+                                !dbAccounts.find(
+                                    (x: { accountId: string }) =>
+                                        x.accountId === record.accountId,
+                                )
                             )
-                        )
-                            dbAccounts.push({
-                                accountId: record.accountId,
-                                nameOnPlatform: user.nameOnPlatform,
-                            })
-                        return { ...record, nameOnPlatform: user.nameOnPlatform }
-                    }
-                })
+                                dbAccounts.push({
+                                    accountId: record.accountId,
+                                    nameOnPlatform: user.nameOnPlatform,
+                                })
+
+                            try {
+                                const mapRecord = await getMapRecords(
+                                    credentials.ubiTokens.accessToken,
+                                    record.accountId,
+                                    mapId,
+                                )
+                                return {
+                                    ...record,
+                                    nameOnPlatform: user.nameOnPlatform,
+                                    ghost: mapRecord[0].url,
+                                }
+                            } catch (e) {
+                                console.error(e.response.data)
+                            }
+                        }
+                    }),
+                )
 
                 for (const account of dbAccounts) {
                     if (
@@ -124,25 +145,25 @@ const createOrUpdateLeaderboard = async (maps, close) => {
             if (
                 await db.Leaderboards.findOne({
                     where: {
-                        map,
+                        mapUid: map,
                     },
                 })
             ) {
                 await db.Leaderboards.update(
                     {
-                        map,
+                        mapUid: map,
                         data: top,
                         closed: close,
                     },
                     {
                         where: {
-                            map,
+                            mapUid: map,
                         },
                     },
                 )
             } else {
                 await db.Leaderboards.create({
-                    map,
+                    mapUid: map,
                     data: top,
                     closed: close,
                 })

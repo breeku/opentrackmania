@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { makeStyles } from '@material-ui/core/styles'
-import { Paper, Grid } from '@material-ui/core'
+import { Paper, Grid, Button } from '@material-ui/core'
 
 const useStyles = makeStyles(theme => ({
     leaderboard: {
@@ -59,20 +59,20 @@ export default function Leaderboard({ leaderboard }) {
             {data.map((record, i) => (
                 <Paper className={classes.leaderboard}>
                     <Grid container direction="row">
-                        <Grid item xs={12} sm={12} md={4}>
+                        <Grid item xs={12} sm={12} md={3}>
                             <span className={classes.paper_content}>
                                 <h4 className={classes.position}>#{i + 1}</h4>
                                 <h3>{record.nameOnPlatform}</h3>
                             </span>
                         </Grid>
-                        <Grid item xs={12} sm={12} md={4}>
+                        <Grid item xs={12} sm={12} md={3}>
                             <h4
                                 className={classes.paper_content}
                                 style={{ padding: 0, margin: 0 }}>
                                 {record.zoneName}
                             </h4>
                         </Grid>
-                        <Grid item xs={12} sm={12} md={4}>
+                        <Grid item xs={12} sm={12} md={3}>
                             <span className={classes.paper_content}>
                                 <h2>
                                     {i === 0 ? (
@@ -91,6 +91,20 @@ export default function Leaderboard({ leaderboard }) {
                                         </>
                                     )}
                                 </h2>
+                            </span>
+                        </Grid>
+                        <Grid item xs={12} sm={12} md={3}>
+                            <span className={classes.paper_content}>
+                                <Button
+                                    href={record.ghost}
+                                    target="_blank"
+                                    variant="outlined"
+                                    style={{ color: '#fff' }}>
+                                    Download
+                                    <span role="img" aria-label="ghost">
+                                        👻
+                                    </span>
+                                </Button>
                             </span>
                         </Grid>
                     </Grid>

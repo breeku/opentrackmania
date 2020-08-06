@@ -16,14 +16,14 @@ leaderboardRouter.get('/map/:id', async (req, res) => {
     const id = req.params.id
     let leaderboard = await db.Leaderboards.findOne({
         where: {
-            map: id,
+            mapUid: id,
         },
         raw: true,
     })
 
     if (leaderboard && leaderboard.closed) return res.send(leaderboard)
 
-    const totd = await db.Totds.findOne({ where: { map: id }, raw: true })
+    const totd = await db.Totds.findOne({ where: { mapUid: id }, raw: true })
     const latest = await db.Totds.findOne({
         order: [
             [literal('year'), 'desc'],
@@ -62,7 +62,7 @@ leaderboardRouter.get('/map/:id', async (req, res) => {
 
     leaderboard = await db.Leaderboards.findOne({
         where: {
-            map: id,
+            mapUid: id,
         },
     })
 

@@ -8,7 +8,7 @@ trackRouter.get('/:id', async (req, res) => {
 
     const track = await db.Maps.findOne({
         where: {
-            map: id,
+            mapUid: id,
         },
         raw: true,
     })

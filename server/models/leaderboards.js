@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     Leaderboards.init(
         {
             campaign: DataTypes.STRING,
-            map: DataTypes.STRING,
+            mapUid: DataTypes.STRING,
             closed: DataTypes.BOOLEAN,
             data: DataTypes.JSONB,
         },

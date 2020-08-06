@@ -7,7 +7,7 @@ export const saveTOTD = async () => {
     const credentials = await login()
     if (credentials) {
         try {
-            const totds = await getTOTDs(credentials.nadeoTokens.accessToken, 0, 1)
+            const totds = await getTOTDs(credentials.nadeoTokens.accessToken, 0, 2)
             const totd = []
             for (const month of totds.monthList) {
                 for (const day of month.days) {
@@ -17,7 +17,7 @@ export const saveTOTD = async () => {
                             year: month.year,
                             month: month.month,
                             day: day.monthDay,
-                            map: uid,
+                            mapUid: uid,
                         })
                 }
             }
@@ -25,7 +25,7 @@ export const saveTOTD = async () => {
                 if (
                     !(await db.Totds.findOne({
                         where: {
-                            map: t.map,
+                            mapUid: t.mapUid,
                         },
                         raw: true,
                     }))
@@ -37,7 +37,7 @@ export const saveTOTD = async () => {
             for (const t of totd) {
                 const map = await db.Maps.findOne({
                     where: {
-                        map: t.map,
+                        mapUid: t.mapUid,
                     },
                     raw: true,
                 })
@@ -48,7 +48,8 @@ export const saveTOTD = async () => {
                 const maps = await getMaps(credentials.ubiTokens.accessToken, mapsToAdd)
                 for (const map of maps) {
                     db.Maps.create({
-                        map: map.mapUid,
+                        mapId: map.mapId,
+                        mapUid: map.mapUid,
                         data: map,
                         campaign: 'totd',
                     })

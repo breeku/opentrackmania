@@ -39,7 +39,7 @@ export const saveSeasons = async () => {
                     for (const p of playlist) {
                         const map = await db.Maps.findOne({
                             where: {
-                                map: p.mapUid,
+                                mapUid: p.mapUid,
                             },
                             raw: true,
                         })
@@ -53,7 +53,8 @@ export const saveSeasons = async () => {
                         )
                         for (const map of maps) {
                             db.Maps.create({
-                                map: map.mapUid,
+                                mapId: map.mapId,
+                                mapUid: map.mapUid,
                                 data: map,
                                 campaign: seasonUid,
                             })
