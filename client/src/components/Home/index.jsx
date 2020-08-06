@@ -54,7 +54,7 @@ export default function Home() {
             dispatch(setRandomTOTD(response))
         }
         if (!randomTOTD) getData()
-    }, [])
+    }, [dispatch, randomTOTD])
 
     return (
         <>

@@ -1,6 +1,6 @@
 import express from 'express'
 import db from '../models/index'
-import { Sequelize, fn } from 'sequelize'
+import { fn } from 'sequelize'
 
 export const totdRouter = express.Router()
 

@@ -3,11 +3,10 @@ import path from 'path'
 import dotenv from 'dotenv'
 dotenv.config()
 
-import { Sequelize, Op } from 'sequelize'
-import db from './server/models/index'
-import { cache } from './server/cache'
+import { trackRouter } from './server/routes/tracks'
 import { leaderboardRouter } from './server/routes/leaderboards'
 import { totdRouter } from './server/routes/totd'
+import { seasonRouter } from './server/routes/seasons'
 
 const app = express()
 
@@ -15,6 +14,8 @@ app.use(express.static(path.join(__dirname, 'build')))
 
 app.use('/api/leaderboard', leaderboardRouter)
 app.use('/api/totds', totdRouter)
+app.use('/api/tracks', trackRouter)
+app.use('/api/seasons', seasonRouter)
 
 if (process.env.NODE_ENV === 'production') {
     // Serve any static files
@@ -27,9 +28,12 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 app.listen(process.env.PORT || 8080)
+
+/*
 ;(async () => {
     try {
     } catch (error) {
         console.error('Unable to connect to the database:', error)
     }
 })()
+*/

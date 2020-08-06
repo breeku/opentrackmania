@@ -3,7 +3,7 @@ import { getTOTDs, getMaps } from 'trackmania-api-node'
 
 import { login } from './login'
 
-export const TOTDs = async () => {
+export const saveTOTD = async () => {
     const credentials = await login()
     if (credentials) {
         try {
@@ -45,10 +45,7 @@ export const TOTDs = async () => {
             }
 
             if (mapsToAdd.length > 0) {
-                const maps = await getMaps(
-                    credentials.ubiTokens.accessToken,
-                    totd.map(x => x.map),
-                )
+                const maps = await getMaps(credentials.ubiTokens.accessToken, mapsToAdd)
                 for (const map of maps) {
                     db.Maps.create({
                         map: map.mapUid,

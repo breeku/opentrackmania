@@ -1,16 +1,16 @@
 import React from 'react'
 
-import { Redirect } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
 
-import { useSelector } from 'react-redux'
-
-import { useLocation } from 'react-router-dom'
+import { useLocation, useParams } from 'react-router-dom'
 
 import { makeStyles } from '@material-ui/core/styles'
 import { Paper, Grid } from '@material-ui/core'
 
 import { textParser } from '../../utils/'
 import { getLeaderboard } from '../../services/leaderboards'
+import { getTrack } from '../../services/tracks'
+import { setTrack } from '../../redux/store/tracks'
 
 import SLeaderboard from './SLeaderboard'
 import Leaderboard from './Leaderboard'
@@ -69,8 +69,10 @@ const useStyles = makeStyles(theme => ({
 export default function Track() {
     const [leaderboard, setLeaderboard] = React.useState(null)
     const { track } = useSelector(state => state.tracks)
+    const dispatch = useDispatch()
     const classes = useStyles()
     const { pathname } = useLocation()
+    const { id } = useParams()
 
     React.useEffect(() => {
         window.scrollTo(0, 0)
@@ -78,21 +80,24 @@ export default function Track() {
 
     React.useEffect(() => {
         const getData = async () => {
+            const response = await getTrack(id)
+            dispatch(setTrack(response.data))
+        }
+
+        if (!track) getData()
+    }, [dispatch, id, track])
+
+    React.useEffect(() => {
+        const getData = async () => {
             setLeaderboard(await getLeaderboard(track.mapUid))
         }
 
         if (!leaderboard && track) getData()
-    }, [])
+    }, [track, leaderboard])
 
     return (
         <>
-            {!track ? (
-                <Redirect
-                    to={{
-                        pathname: '/totd',
-                    }}
-                />
-            ) : (
+            {track && (
                 <>
                     <Paper className={classes.paper}>
                         <div
@@ -121,7 +126,12 @@ export default function Track() {
                                     align="center">
                                     <Grid item>
                                         <Paper className={classes.times}>
-                                            <h3>🏆Author</h3>
+                                            <h3>
+                                                <span role="img" aria-label="trophy">
+                                                    🏆
+                                                </span>
+                                                Author
+                                            </h3>
                                             <h3>
                                                 {(track.authorScore / 1000).toFixed(3)}s
                                             </h3>
@@ -129,7 +139,12 @@ export default function Track() {
                                     </Grid>
                                     <Grid item>
                                         <Paper className={classes.times}>
-                                            <h3>🥇Gold</h3>
+                                            <h3>
+                                                <span role="img" aria-label="gold">
+                                                    🥇
+                                                </span>
+                                                Gold
+                                            </h3>
                                             <h3>
                                                 {(track.goldScore / 1000).toFixed(3)}s
                                             </h3>
@@ -137,7 +152,12 @@ export default function Track() {
                                     </Grid>
                                     <Grid item>
                                         <Paper className={classes.times}>
-                                            <h3>🥈Silver</h3>
+                                            <h3>
+                                                <span role="img" aria-label="silver">
+                                                    🥈
+                                                </span>
+                                                Silver
+                                            </h3>
                                             <h3>
                                                 {(track.silverScore / 1000).toFixed(3)}s
                                             </h3>
@@ -145,7 +165,12 @@ export default function Track() {
                                     </Grid>
                                     <Grid item>
                                         <Paper className={classes.times}>
-                                            <h3>🥉Bronze</h3>
+                                            <h3>
+                                                <span role="img" aria-label="bronze">
+                                                    🥉
+                                                </span>
+                                                Bronze
+                                            </h3>
                                             <h3>
                                                 {(track.bronzeScore / 1000).toFixed(3)}s
                                             </h3>

@@ -10,43 +10,16 @@ import { getTOTDs } from '../../services/totds'
 import { groupBy } from '../../utils/'
 import { setTOTDs } from '../../redux/store/totd'
 
-import List from './List'
+import TrackList from '../TrackList'
 
 const useStyles = makeStyles(theme => ({
     TOTDs: {
         textAlign: 'center',
     },
-    TOTD: {
-        minHeight: 150,
-        backgroundColor: '#202020',
-        color: '#fff',
-        height: '100%',
-        transition: 'all 0.1s',
-        cursor: 'pointer',
-        '&:hover': {
-            scale: '1.02',
-        },
-    },
+
     TOTD_grid: {
         width: '100%',
         margin: 'auto',
-    },
-    TOTD_date: {
-        padding: 0,
-        margin: 0,
-    },
-    TOTD_map: {
-        padding: 0,
-        margin: 0,
-    },
-    TOTD_cover: {
-        color: '#fff',
-        backgroundColor: 'rgba(0,0,0,0.35)',
-        borderRadius: 4,
-        display: 'flex',
-        justifyContent: 'center',
-        flexDirection: 'column',
-        height: '100%',
     },
 }))
 
@@ -107,9 +80,7 @@ export default function TrackOfTheDay() {
                                                     : 0,
                                             )
                                             .map(totd => {
-                                                return (
-                                                    <List totd={totd} classes={classes} />
-                                                )
+                                                return <TrackList track={totd} />
                                             })}
                                     </Grid>
                                 </>

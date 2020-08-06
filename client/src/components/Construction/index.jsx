@@ -24,7 +24,15 @@ export default function Construction() {
     const classes = useStyles()
     return (
         <Paper className={classes.paper} elevation={4}>
-            <h3>🚧 Under construction 🚧</h3>
+            <h3>
+                <span role="img" aria-label="construction">
+                    🚧
+                </span>{' '}
+                Under construction{' '}
+                <span role="img" aria-label="construction">
+                    🚧
+                </span>
+            </h3>
             <h4>
                 Check out progress at{' '}
                 <a

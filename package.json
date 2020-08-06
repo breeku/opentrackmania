@@ -4,6 +4,7 @@
     "description": "",
     "main": "index.js",
     "scripts": {
+        "update:seasons": "ts-node updateSeasons.ts",
         "update:leaderboard": "ts-node updateLeaderboard.ts",
         "update:totd": "ts-node updateTOTD.ts",
         "start": "ts-node index.ts",
