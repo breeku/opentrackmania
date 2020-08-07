@@ -1,4 +1,5 @@
 import React from 'react'
+
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 
 import { AppBar, Toolbar, Button, Grid } from '@material-ui/core'
@@ -10,6 +11,8 @@ import TrackOfTheDay from './components/TrackOfTheDay'
 import Track from './components/Track'
 import Players from './components/Players'
 import Servers from './components/Servers'
+
+import Analytics from 'react-router-ga'
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -55,69 +58,82 @@ export default function App() {
         <>
             <div className={classes.root}>
                 <Router>
-                    <AppBar position="static">
-                        <Toolbar className={classes.appbar}>
-                            <div style={{ display: 'flex' }}>
-                                <Grid container direction="row" className={classes.title}>
-                                    <Link to="/" className={classes.no_decoration}>
-                                        <h3
-                                            style={{
-                                                fontWeight: 'lighter',
-                                                letterSpacing: '2px',
-                                            }}>{`<OPENTRACKMANIA/>`}</h3>
-                                    </Link>
-                                </Grid>
-                                <Grid
-                                    container
-                                    direction="row"
-                                    className={classes.buttons}>
-                                    <Link to="/servers" className={classes.no_decoration}>
-                                        <Button className={classes.button}>
-                                            servers
-                                        </Button>
-                                    </Link>
+                    <Analytics id="UA-112318085-4">
+                        <AppBar position="static">
+                            <Toolbar className={classes.appbar}>
+                                <div style={{ display: 'flex' }}>
+                                    <Grid
+                                        container
+                                        direction="row"
+                                        className={classes.title}>
+                                        <Link to="/" className={classes.no_decoration}>
+                                            <h3
+                                                style={{
+                                                    fontWeight: 'lighter',
+                                                    letterSpacing: '2px',
+                                                }}>{`<OPENTRACKMANIA/>`}</h3>
+                                        </Link>
+                                    </Grid>
+                                    <Grid
+                                        container
+                                        direction="row"
+                                        className={classes.buttons}>
+                                        <Link
+                                            to="/servers"
+                                            className={classes.no_decoration}>
+                                            <Button className={classes.button}>
+                                                servers
+                                            </Button>
+                                        </Link>
 
-                                    <Link to="/players" className={classes.no_decoration}>
-                                        <Button className={classes.button}>
-                                            players
-                                        </Button>
-                                    </Link>
+                                        <Link
+                                            to="/players"
+                                            className={classes.no_decoration}>
+                                            <Button className={classes.button}>
+                                                players
+                                            </Button>
+                                        </Link>
 
-                                    <Link to="/seasons" className={classes.no_decoration}>
-                                        <Button className={classes.button}>
-                                            seasons
-                                        </Button>
-                                    </Link>
+                                        <Link
+                                            to="/seasons"
+                                            className={classes.no_decoration}>
+                                            <Button className={classes.button}>
+                                                seasons
+                                            </Button>
+                                        </Link>
 
-                                    <Link to="/totd" className={classes.no_decoration}>
-                                        <Button className={classes.button}>
-                                            track of the day
-                                        </Button>
-                                    </Link>
-                                </Grid>
-                            </div>
-                        </Toolbar>
-                    </AppBar>
-                    <Switch>
-                        <Route path="/servers">
-                            <Servers />
-                        </Route>
-                        <Route path="/players">
-                            <Players />
-                        </Route>
-                        <Route path="/seasons">
-                            <Seasons />
-                        </Route>
-                        <Route path="/totd/" exact={true}>
-                            <TrackOfTheDay />
-                        </Route>
-                        <Route path="/track/:id">
-                            <Track />
-                        </Route>
-                        <Route path="/">
-                            <Home />
-                        </Route>
-                    </Switch>
+                                        <Link
+                                            to="/totd"
+                                            className={classes.no_decoration}>
+                                            <Button className={classes.button}>
+                                                track of the day
+                                            </Button>
+                                        </Link>
+                                    </Grid>
+                                </div>
+                            </Toolbar>
+                        </AppBar>
+                        <Switch>
+                            <Route path="/servers">
+                                <Servers />
+                            </Route>
+                            <Route path="/players">
+                                <Players />
+                            </Route>
+                            <Route path="/seasons">
+                                <Seasons />
+                            </Route>
+                            <Route path="/totd/" exact={true}>
+                                <TrackOfTheDay />
+                            </Route>
+                            <Route path="/track/:id">
+                                <Track />
+                            </Route>
+                            <Route path="/">
+                                <Home />
+                            </Route>
+                        </Switch>
+                    </Analytics>
                 </Router>
             </div>
         </>
