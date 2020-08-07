@@ -13,7 +13,6 @@ totdRouter.get('/', async (req, res) => {
         },
         raw: true,
     })
-    console.log(maps.length)
     const response = totds.flatMap(totd => {
         return maps.flatMap((map: { mapUid: any; data: any }) => {
             if (map.mapUid === totd.mapUid) {
@@ -23,7 +22,6 @@ totdRouter.get('/', async (req, res) => {
             }
         })
     })
-    console.log(response.length)
     res.send(response)
 })
 

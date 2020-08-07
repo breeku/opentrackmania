@@ -41,7 +41,7 @@ export const saveTOTD = async () => {
                     },
                     raw: true,
                 })
-                if (!map) mapsToAdd.push(t.map)
+                if (!map) mapsToAdd.push(t.mapUid)
             }
 
             if (mapsToAdd.length > 0) {
