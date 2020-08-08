@@ -1,28 +1,31 @@
 {
-    "name": "opentrackmania",
-    "version": "3.0.0",
-    "description": "",
-    "engines": {
-      "node": "10.x"
-    },
-    "scripts": {
-      "postinstall": "cd client/ && npm i && npm run build && cd ../server/ && npm i",
-      "start": "ts-node server"
-    },
-    "cacheDirectories": [
-      "server/node_modules",
-      "client/node_modules"
-    ],
-    "repository": {
-      "type": "git",
-      "url": "https://github.com/breeku/opentrackmania.git"
-    },
-    "keywords": [
-      "trackmania"
-    ],
-    "license": "MIT",
-    "dependencies": {
-        "ts-node": "^8.10.2"
-    },
-    "devDependencies": {}
-  }
+  "name": "opentrackmania",
+  "version": "3.0.0",
+  "description": "",
+  "engines": {
+    "node": "10.x"
+  },
+  "scripts": {
+    "build": "cd client/ && npm i && npm run build && cd ../server/ && npm i",
+    "postinstall": "npm run build",
+    "start": "ts-node server"
+  },
+  "cacheDirectories": [
+    "server/node_modules",
+    "client/node_modules",
+    "node_modules"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/breeku/opentrackmania.git"
+  },
+  "keywords": [
+    "trackmania"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.7"
+  },
+  "devDependencies": {}
+}
