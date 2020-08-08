@@ -6,5 +6,5 @@ export const namesFromAccountIds = async (accountIds, credentials) => {
         credentials.ticket,
         accounts.map(x => x.uid),
     )
-    return profiles
+    return { accounts, profiles }
 }

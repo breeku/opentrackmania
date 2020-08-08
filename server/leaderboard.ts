@@ -9,6 +9,7 @@ import {
 
 import { login } from './login'
 import { cache } from './cache'
+import { namesFromAccountIds } from './players'
 
 export const topPlayersMap = async (
     maps: string[],
@@ -54,24 +55,9 @@ export const topPlayersMap = async (
                     },
                 )
 
-                const accounts: IwebIdentity[] = []
-                const accountProfiles: any[] = []
-                if (accountIds.length > 0) {
-                    console.log('Get new account ids')
-                    accounts.push(
-                        ...(await getProfiles(
-                            credentials.ubiTokens.accessToken,
-                            accountIds,
-                        )),
-                    )
-                    const { profiles } = await getProfilesById(
-                        credentials.ticket,
-                        accounts.map(x => x.uid),
-                    )
-                    accountProfiles.push(...profiles)
-                } else {
-                    console.log('All account ids are known')
-                }
+                const { accounts, profiles } =
+                    accountIds.length > 0 &&
+                    (await namesFromAccountIds(accountIds, credentials))
 
                 const newTop = await Promise.all(
                     topPlayers.tops[0].top.map(async record => {
@@ -82,9 +68,8 @@ export const topPlayersMap = async (
                             ) ||
                             accounts.flatMap(account => {
                                 if (account.accountId === record.accountId) {
-                                    return accountProfiles.find(
-                                        accountProfile =>
-                                            accountProfile.profileId === account.uid,
+                                    return profiles.find(
+                                        profile => profile.profileId === account.uid,
                                     )
                                 } else {
                                     return []
