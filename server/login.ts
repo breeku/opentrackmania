@@ -1,7 +1,12 @@
 import { loginUbi, loginTrackmaniaUbi, loginTrackmaniaNadeo } from 'trackmania-api-node'
 import { cache } from './cache'
 
-export const login = async () => {
+export const login = async (): Promise<{
+    ticket: string
+    ubiTokens: any
+    nadeoTokens: any
+    accountId: string
+}> => {
     const credentials = Buffer.from(process.env.USER + ':' + process.env.PASS).toString(
         'base64',
     )

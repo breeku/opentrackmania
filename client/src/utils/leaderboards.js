@@ -1,5 +1,4 @@
 export const getTopTen = leaderboards => {
-    let result = []
     const maps = leaderboards.flatMap(x => x.data)
 
     const names = maps.flatMap(x => x.nameOnPlatform)

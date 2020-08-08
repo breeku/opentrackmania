@@ -10,7 +10,7 @@ seasonRouter.get('/', async (req, res) => {
     })
 
     for (const season of seasons) {
-        const { name, seasonUid, leaderboardGroupUid, publishedDate, playlist } = season
+        const { playlist } = season
 
         const maps = await db.Maps.findAll({
             where: {

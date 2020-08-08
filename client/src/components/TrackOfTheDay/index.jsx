@@ -21,6 +21,7 @@ const useStyles = makeStyles(theme => ({
         width: '100%',
         margin: 'auto',
     },
+    title: theme.title,
 }))
 
 const monthNames = [
@@ -56,9 +57,7 @@ export default function TrackOfTheDay() {
 
     return (
         <div className={classes.TOTDs}>
-            <h1 style={{ fontWeight: 'lighter', letterSpacing: '2px' }}>
-                Track of the day
-            </h1>
+            <h1 className={classes.title}>Track of the day</h1>
             {TOTDs && (
                 <>
                     {Array.from(Object.keys(TOTDs))

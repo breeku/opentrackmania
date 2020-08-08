@@ -1,24 +1,20 @@
 import db from './models/index.js'
-import {
-    getTopPlayersMap,
-    getProfilesById,
-    getProfiles,
-    getMapRecords,
-    IwebIdentity,
-} from 'trackmania-api-node'
+import { getTopPlayersMap, getMapRecords } from 'trackmania-api-node'
 
 import { login } from './login'
 import { cache } from './cache'
+import { namesFromAccountIds } from './players'
 
 export const topPlayersMap = async (
     maps: string[],
-    retry: boolean = false,
-    close: boolean = false,
-) => {
+    retry = false,
+    close = false,
+): Promise<boolean> => {
     const credentials = (cache.get('credentials') as any) || (await login())
     if (credentials) {
         const dbAccounts = []
         const topPlayersMaps: any = []
+
         for (const map of maps) {
             try {
                 const { mapId } = await db.Maps.findOne({
@@ -39,36 +35,23 @@ export const topPlayersMap = async (
                 }
 
                 const accountIds = topPlayers.tops[0].top.flatMap(
-                    (a: { accountId: string }) => {
+                    (account: { accountId: string }) => {
                         if (
                             !dbAccounts.find(
-                                (d: { accountId: string }) => a.accountId === d.accountId,
+                                (dbAccount: { accountId: string }) =>
+                                    account.accountId === dbAccount.accountId,
                             )
                         ) {
-                            return a.accountId
+                            return account.accountId
                         } else {
                             return []
                         }
                     },
                 )
 
-                let accounts: IwebIdentity[] = []
-                let profile: any[] = []
-
-                if (accountIds.length > 0) {
-                    console.log('Get new account ids')
-                    accounts = await getProfiles(
-                        credentials.ubiTokens.accessToken,
-                        accountIds,
-                    )
-                    const { profiles } = await getProfilesById(
-                        credentials.ticket,
-                        accounts.map(x => x.uid),
-                    )
-                    profile = profiles
-                } else {
-                    console.log('All account ids are known')
-                }
+                const { accounts, profiles } =
+                    accountIds.length > 0 &&
+                    (await namesFromAccountIds(accountIds, credentials))
 
                 const newTop = await Promise.all(
                     topPlayers.tops[0].top.map(async record => {
@@ -77,10 +60,11 @@ export const topPlayersMap = async (
                                 (x: { accountId: string }) =>
                                     x.accountId === record.accountId,
                             ) ||
-                            accounts.flatMap(a => {
-                                if (a.accountId === record.accountId) {
-                                    const u = profile.find(p => p.profileId === a.uid)
-                                    return u
+                            accounts.flatMap(account => {
+                                if (account.accountId === record.accountId) {
+                                    return profiles.find(
+                                        profile => profile.profileId === account.uid,
+                                    )
                                 } else {
                                     return []
                                 }
@@ -138,7 +122,10 @@ export const topPlayersMap = async (
     }
 }
 
-const createOrUpdateLeaderboard = async (maps, close) => {
+const createOrUpdateLeaderboard = async (
+    maps: { map: string; top: any[] }[],
+    close: boolean,
+) => {
     for (const data of maps) {
         const { map, top } = data
         try {

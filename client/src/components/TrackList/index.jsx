@@ -16,8 +16,10 @@ const useStyles = makeStyles(theme => ({
         backgroundColor: '#202020',
         color: '#fff',
         height: '100%',
-        transition: 'all 0.1s',
         cursor: 'pointer',
+        backgroundPosition: 'center',
+        backgroundSize: 'cover',
+        transition: 'all 0.5s',
         '&:hover': {
             scale: '1.02',
         },
@@ -39,6 +41,9 @@ const useStyles = makeStyles(theme => ({
         flexDirection: 'column',
         height: '100%',
     },
+    no_decoration: {
+        textDecoration: 'none',
+    },
 }))
 
 export default function TrackList({ track }) {
@@ -53,18 +58,13 @@ export default function TrackList({ track }) {
                 to={{
                     pathname: `/track/${map.mapUid}`,
                 }}
-                style={{
-                    textDecoration: 'none',
-                }}
+                className={classes.no_decoration}
                 onClick={() => dispatch(setTrack(map))}>
                 <Paper
                     className={classes.track}
                     style={{
                         backgroundImage: loaded && `${`url(${loaded})`}`,
-                        opacity: loaded ? '100' : '0',
-                        backgroundPosition: 'center',
-                        backgroundSize: 'cover',
-                        transition: 'all 0.5s',
+                        opacity: loaded ? 100 : 0,
                     }}>
                     <div className={classes.track_cover}>
                         {day && month && (

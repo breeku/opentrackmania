@@ -27,11 +27,9 @@ const useStyles = makeStyles(theme => ({
         bottom: 5,
         width: '100%',
     },
-    no_decoration: {
-        textDecoration: 'none',
-        color: '#fff',
-    },
-    title: {
+    link_white: theme.link_white,
+    title: theme.title,
+    home: {
         justifyContent: 'flex-start',
         alignSelf: 'center',
     },
@@ -65,13 +63,12 @@ export default function App() {
                                     <Grid
                                         container
                                         direction="row"
-                                        className={classes.title}>
-                                        <Link to="/" className={classes.no_decoration}>
+                                        className={classes.home}>
+                                        <Link to="/" className={classes.link_white}>
                                             <h3
-                                                style={{
-                                                    fontWeight: 'lighter',
-                                                    letterSpacing: '2px',
-                                                }}>{`<OPENTRACKMANIA/>`}</h3>
+                                                className={
+                                                    classes.title
+                                                }>{`<OPENTRACKMANIA/>`}</h3>
                                         </Link>
                                     </Grid>
                                     <Grid

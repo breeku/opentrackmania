@@ -12,33 +12,16 @@ import { useProgressiveImage } from '../../utils/imageLoader'
 import Construction from '../Construction'
 
 const useStyles = makeStyles(theme => ({
-    paper: {
-        backgroundColor: '#202020',
-        position: 'relative',
-        overflow: 'hidden',
-        width: '100%',
-        minHeight: '40vh',
-    },
-    hero: {
-        width: '100%',
-        height: '100%',
-        position: 'absolute',
-    },
-    cover: {
-        color: '#fff',
-        backgroundColor: 'rgba(0,0,0,0.35)',
-        padding: 3,
-        borderRadius: 4,
-        height: '100%',
-        width: '100%',
-        position: 'absolute',
-    },
-    title: {
+    hero: theme.hero,
+    background_image: theme.background_image,
+    cover: theme.cover,
+    home: {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
         height: '100%',
     },
+    title: theme.title,
 }))
 
 export default function Home() {
@@ -58,23 +41,17 @@ export default function Home() {
 
     return (
         <>
-            <Paper className={classes.paper}>
+            <Paper className={classes.hero}>
                 <div
-                    className={classes.hero}
+                    className={classes.background_image}
                     style={{
                         backgroundImage: loaded && `${`url(${loaded})`}`,
                         opacity: loaded ? '100' : '0',
-                        backgroundPosition: 'center',
-                        backgroundSize: 'cover',
-                        filter: 'blur(8px)',
-                        transition: 'all 0.5s',
                     }}
                 />
                 <div className={classes.cover}>
-                    <div className={classes.title}>
-                        <h1 style={{ fontWeight: 'lighter', letterSpacing: '2px' }}>
-                            OPENTRACKMANIA
-                        </h1>
+                    <div className={classes.home}>
+                        <h1 className={classes.title}>OPENTRACKMANIA</h1>
                     </div>
                 </div>
             </Paper>

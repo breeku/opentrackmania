@@ -1,9 +1,10 @@
 import db from './models/index.js'
-import { getSeasons, getMaps } from 'trackmania-api-node'
+import { getSeasons } from 'trackmania-api-node'
+import { saveMaps } from './maps'
 
 import { login } from './login'
 
-export const saveSeasons = async () => {
+export const saveSeasons = async (): Promise<boolean> => {
     const credentials = await login()
     if (credentials) {
         try {
@@ -34,32 +35,7 @@ export const saveSeasons = async () => {
                         playlist,
                     })
 
-                    const mapsToAdd = []
-
-                    for (const p of playlist) {
-                        const map = await db.Maps.findOne({
-                            where: {
-                                mapUid: p.mapUid,
-                            },
-                            raw: true,
-                        })
-                        if (!map) mapsToAdd.push(p.mapUid)
-                    }
-
-                    if (mapsToAdd.length > 0) {
-                        const maps = await getMaps(
-                            credentials.ubiTokens.accessToken,
-                            mapsToAdd,
-                        )
-                        for (const map of maps) {
-                            db.Maps.create({
-                                mapId: map.mapId,
-                                mapUid: map.mapUid,
-                                data: map,
-                                campaign: seasonUid,
-                            })
-                        }
-                    }
+                    await saveMaps(playlist, seasonUid, credentials)
                 }
             }
             return true
