@@ -55,7 +55,7 @@ export const topPlayersMap = async (
                 )
 
                 const accounts: IwebIdentity[] = []
-                const profileIds: string[] = []
+                const accountProfiles: any[] = []
                 if (accountIds.length > 0) {
                     console.log('Get new account ids')
                     accounts.push(
@@ -68,7 +68,7 @@ export const topPlayersMap = async (
                         credentials.ticket,
                         accounts.map(x => x.uid),
                     )
-                    profileIds.push(...profiles.map(x => x.profileId))
+                    accountProfiles.push(...profiles)
                 } else {
                     console.log('All account ids are known')
                 }
@@ -82,8 +82,9 @@ export const topPlayersMap = async (
                             ) ||
                             accounts.flatMap(account => {
                                 if (account.accountId === record.accountId) {
-                                    return profileIds.find(
-                                        profileId => profileId === account.uid,
+                                    return accountProfiles.find(
+                                        accountProfile =>
+                                            accountProfile.profileId === account.uid,
                                     )
                                 } else {
                                     return []
