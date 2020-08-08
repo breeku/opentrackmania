@@ -17,14 +17,12 @@ app.use('/api/totds', totdRouter)
 app.use('/api/tracks', trackRouter)
 app.use('/api/seasons', seasonRouter)
 
-if (process.env.NODE_ENV === 'production') {
-    // Serve any static files
-    app.use(express.static(path.join(__dirname, '../client/build')))
+// Serve any static files
+app.use(express.static(path.join(__dirname, '../client/build')))
 
-    // Handle React routing, return all requests to React app
-    app.get('*', (req, res) => {
-        res.sendFile(path.join(__dirname, '../client/build', 'index.html'))
-    })
-}
+// Handle React routing, return all requests to React app
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../client/build', 'index.html'))
+})
 
 app.listen(process.env.PORT || 8080)
