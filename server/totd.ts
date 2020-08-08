@@ -8,7 +8,7 @@ export const saveTOTD = async (): Promise<boolean> => {
     const credentials = await login()
     if (credentials) {
         try {
-            const totds = await getTOTDs(credentials.nadeoTokens.accessToken, 0, 2)
+            const totds = await getTOTDs(credentials.nadeoTokens.accessToken, 0, 1)
             const totd = []
             for (const month of totds.monthList) {
                 for (const day of month.days) {
