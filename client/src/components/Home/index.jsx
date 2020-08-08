@@ -21,10 +21,7 @@ const useStyles = makeStyles(theme => ({
         alignItems: 'center',
         height: '100%',
     },
-    title: {
-        fontWeight: 'lighter',
-        letterSpacing: '2px',
-    },
+    title: theme.title,
 }))
 
 export default function Home() {

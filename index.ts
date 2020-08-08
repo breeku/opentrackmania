@@ -28,12 +28,3 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 app.listen(process.env.PORT || 8080)
-
-/*
-;(async () => {
-    try {
-    } catch (error) {
-        console.error('Unable to connect to the database:', error)
-    }
-})()
-*/

@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 
 import { useLocation, useParams } from 'react-router-dom'
 
-import { makeStyles, useTheme } from '@material-ui/core/styles'
+import { makeStyles } from '@material-ui/core/styles'
 import { Paper, Grid } from '@material-ui/core'
 
 import { textParser } from '../../utils/'

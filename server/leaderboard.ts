@@ -19,6 +19,7 @@ export const topPlayersMap = async (
     if (credentials) {
         const dbAccounts = []
         const topPlayersMaps: any = []
+
         for (const map of maps) {
             try {
                 const { mapId } = await db.Maps.findOne({
@@ -39,33 +40,35 @@ export const topPlayersMap = async (
                 }
 
                 const accountIds = topPlayers.tops[0].top.flatMap(
-                    (a: { accountId: string }) => {
+                    (account: { accountId: string }) => {
                         if (
                             !dbAccounts.find(
-                                (d: { accountId: string }) => a.accountId === d.accountId,
+                                (dbAccount: { accountId: string }) =>
+                                    account.accountId === dbAccount.accountId,
                             )
                         ) {
-                            return a.accountId
+                            return account.accountId
                         } else {
                             return []
                         }
                     },
                 )
 
-                let accounts: IwebIdentity[] = []
-                let profile: any[] = []
-
+                const accounts: IwebIdentity[] = []
+                const profileIds: string[] = []
                 if (accountIds.length > 0) {
                     console.log('Get new account ids')
-                    accounts = await getProfiles(
-                        credentials.ubiTokens.accessToken,
-                        accountIds,
+                    accounts.push(
+                        ...(await getProfiles(
+                            credentials.ubiTokens.accessToken,
+                            accountIds,
+                        )),
                     )
                     const { profiles } = await getProfilesById(
                         credentials.ticket,
                         accounts.map(x => x.uid),
                     )
-                    profile = profiles
+                    profileIds.push(...profiles.map(x => x.profileId))
                 } else {
                     console.log('All account ids are known')
                 }
@@ -77,10 +80,11 @@ export const topPlayersMap = async (
                                 (x: { accountId: string }) =>
                                     x.accountId === record.accountId,
                             ) ||
-                            accounts.flatMap(a => {
-                                if (a.accountId === record.accountId) {
-                                    const u = profile.find(p => p.profileId === a.uid)
-                                    return u
+                            accounts.flatMap(account => {
+                                if (account.accountId === record.accountId) {
+                                    return profileIds.find(
+                                        profileId => profileId === account.uid,
+                                    )
                                 } else {
                                     return []
                                 }
@@ -138,7 +142,10 @@ export const topPlayersMap = async (
     }
 }
 
-const createOrUpdateLeaderboard = async (maps, close) => {
+const createOrUpdateLeaderboard = async (
+    maps: { map: string; top: any[] }[],
+    close: boolean,
+) => {
     for (const data of maps) {
         const { map, top } = data
         try {
