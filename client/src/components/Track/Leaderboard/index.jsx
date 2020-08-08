@@ -72,7 +72,7 @@ export default function Leaderboard({ leaderboard }) {
                                 {record.zoneName}
                             </h4>
                         </Grid>
-                        <Grid item xs={12} sm={12} md={3}>
+                        <Grid item xs={12} sm={12} md={4}>
                             <span className={classes.paper_content}>
                                 <h2>
                                     {i === 0 ? (
@@ -93,18 +93,32 @@ export default function Leaderboard({ leaderboard }) {
                                 </h2>
                             </span>
                         </Grid>
-                        <Grid item xs={12} sm={12} md={3}>
+                        <Grid item xs={12} sm={12} md={2}>
                             <span className={classes.paper_content}>
                                 <Button
                                     href={record.ghost}
                                     target="_blank"
                                     variant="outlined"
-                                    style={{ color: '#fff' }}>
-                                    Download
-                                    <span role="img" aria-label="ghost">
-                                        👻
-                                    </span>
+                                    color="default"
+                                    style={{
+                                        color: '#fff',
+                                        border: '1px solid rgba(255, 255, 255, 0.23)',
+                                    }}>
+                                    download
                                 </Button>
+                                <a
+                                    href="https://www.reddit.com/r/TrackMania/comments/i51q98/download_and_view_wr_ghosts_in_replay_editor/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    style={{
+                                        position: 'absolute',
+                                        right: '5px',
+                                        fontSize: 13,
+                                    }}>
+                                    <span role="img" aria-label="question mark">
+                                        ❔
+                                    </span>
+                                </a>
                             </span>
                         </Grid>
                     </Grid>
