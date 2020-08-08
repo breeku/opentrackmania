@@ -4,7 +4,7 @@ import { saveMaps } from './maps'
 
 import { login } from './login'
 
-export const saveSeasons = async () => {
+export const saveSeasons = async (): Promise<boolean> => {
     const credentials = await login()
     if (credentials) {
         try {

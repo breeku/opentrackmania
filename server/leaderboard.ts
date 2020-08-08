@@ -1,11 +1,5 @@
 import db from './models/index.js'
-import {
-    getTopPlayersMap,
-    getProfilesById,
-    getProfiles,
-    getMapRecords,
-    IwebIdentity,
-} from 'trackmania-api-node'
+import { getTopPlayersMap, getMapRecords } from 'trackmania-api-node'
 
 import { login } from './login'
 import { cache } from './cache'
@@ -13,9 +7,9 @@ import { namesFromAccountIds } from './players'
 
 export const topPlayersMap = async (
     maps: string[],
-    retry: boolean = false,
-    close: boolean = false,
-) => {
+    retry = false,
+    close = false,
+): Promise<boolean> => {
     const credentials = (cache.get('credentials') as any) || (await login())
     if (credentials) {
         const dbAccounts = []

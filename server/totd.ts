@@ -4,7 +4,7 @@ import { saveMaps } from './maps'
 
 import { login } from './login'
 
-export const saveTOTD = async () => {
+export const saveTOTD = async (): Promise<boolean> => {
     const credentials = await login()
     if (credentials) {
         try {

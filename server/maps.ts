@@ -1,7 +1,16 @@
 import db from './models/index.js'
 import { getMaps } from 'trackmania-api-node'
 
-export const saveMaps = async (maps, campaign, credentials) => {
+export const saveMaps = async (
+    maps: any[],
+    campaign: string,
+    credentials: {
+        ticket?: string
+        ubiTokens: any
+        nadeoTokens: any
+        accountId?: string
+    },
+): Promise<void> => {
     try {
         const mapsToAdd = []
 
