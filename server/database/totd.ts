@@ -1,8 +1,8 @@
-import db from './models/index.js'
+import db from '../models/index.js'
 import { getTOTDs } from 'trackmania-api-node'
 import { saveMaps } from './maps'
 
-import { login } from './login'
+import { login } from '../utils/login'
 
 export const saveTOTD = async (): Promise<boolean> => {
     const credentials = await login()

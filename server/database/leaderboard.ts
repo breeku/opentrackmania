@@ -1,8 +1,8 @@
-import db from './models/index.js'
+import db from '../models/index.js'
 import { getTopPlayersMap, getMapRecords } from 'trackmania-api-node'
 
-import { login } from './login'
-import { cache } from './cache'
+import { login } from '../utils/login'
+import { cache } from '../utils/cache'
 import { namesFromAccountIds } from './players'
 
 export const topPlayersMap = async (
