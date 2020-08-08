@@ -17,6 +17,7 @@ const useStyles = makeStyles(theme => ({
         width: '100%',
         margin: 'auto',
     },
+    title: theme.title,
 }))
 
 export default function Campaigns() {
@@ -34,7 +35,7 @@ export default function Campaigns() {
 
     return (
         <div className={classes.seasons}>
-            <h1 style={{ fontWeight: 'lighter', letterSpacing: '2px' }}>Seasons</h1>
+            <h1 className={classes.title}>Seasons</h1>
             {seasons && (
                 <>
                     {seasons.map(season => {

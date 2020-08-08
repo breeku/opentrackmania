@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 
 import { useLocation, useParams } from 'react-router-dom'
 
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles, useTheme } from '@material-ui/core/styles'
 import { Paper, Grid } from '@material-ui/core'
 
 import { textParser } from '../../utils/'
@@ -17,31 +17,9 @@ import SLeaderboard from './SLeaderboard'
 import Leaderboard from './Leaderboard'
 
 const useStyles = makeStyles(theme => ({
-    paper: {
-        backgroundColor: '#202020',
-        position: 'relative',
-        overflow: 'hidden',
-        width: '100%',
-        minHeight: '40vh',
-    },
-    hero: {
-        width: '100%',
-        height: '100%',
-        position: 'absolute',
-        backgroundPosition: 'center',
-        backgroundSize: 'cover',
-        filter: 'blur(8px)',
-        transition: 'all 0.5s',
-    },
-    cover: {
-        color: '#fff',
-        backgroundColor: 'rgba(0,0,0,0.35)',
-        padding: 3,
-        borderRadius: 4,
-        height: '100%',
-        width: '100%',
-        position: 'absolute',
-    },
+    hero: theme.hero,
+    background_image: theme.background_image,
+    cover: theme.cover,
     title: {
         display: 'flex',
         justifyContent: 'center',
@@ -106,9 +84,9 @@ export default function Track() {
         <>
             {track && (
                 <>
-                    <Paper className={classes.paper}>
+                    <Paper className={classes.hero}>
                         <div
-                            className={classes.hero}
+                            className={classes.background_image}
                             style={{
                                 backgroundImage: loaded && `${`url(${loaded})`}`,
                                 opacity: loaded ? '100' : '0',

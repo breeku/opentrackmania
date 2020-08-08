@@ -13,15 +13,9 @@ const useStyles = makeStyles(theme => ({
         backgroundColor: '#202020',
         display: 'flex',
     },
-    color_red: {
-        color: '#E60000',
-    },
-    color_green: {
-        color: '#44be00',
-    },
-    color_white: {
-        color: '#fff',
-    },
+    color_red: theme.color_red,
+    color_green: theme.color_green,
+    color_white: theme.color_white,
     paper_content: {
         display: 'flex',
         flexDirection: 'row',

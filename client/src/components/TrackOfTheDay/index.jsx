@@ -21,7 +21,7 @@ const useStyles = makeStyles(theme => ({
         width: '100%',
         margin: 'auto',
     },
-    title: { fontWeight: 'lighter', letterSpacing: '2px' },
+    title: theme.title,
 }))
 
 const monthNames = [
