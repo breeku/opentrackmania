@@ -23,6 +23,10 @@ const useStyles = makeStyles(theme => ({
         width: '100%',
         height: '100%',
         position: 'absolute',
+        backgroundPosition: 'center',
+        backgroundSize: 'cover',
+        filter: 'blur(8px)',
+        transition: 'all 0.5s',
     },
     cover: {
         color: '#fff',
@@ -33,11 +37,15 @@ const useStyles = makeStyles(theme => ({
         width: '100%',
         position: 'absolute',
     },
-    title: {
+    home: {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
         height: '100%',
+    },
+    title: {
+        fontWeight: 'lighter',
+        letterSpacing: '2px',
     },
 }))
 
@@ -64,17 +72,11 @@ export default function Home() {
                     style={{
                         backgroundImage: loaded && `${`url(${loaded})`}`,
                         opacity: loaded ? '100' : '0',
-                        backgroundPosition: 'center',
-                        backgroundSize: 'cover',
-                        filter: 'blur(8px)',
-                        transition: 'all 0.5s',
                     }}
                 />
                 <div className={classes.cover}>
-                    <div className={classes.title}>
-                        <h1 style={{ fontWeight: 'lighter', letterSpacing: '2px' }}>
-                            OPENTRACKMANIA
-                        </h1>
+                    <div className={classes.home}>
+                        <h1 className={classes.title}>OPENTRACKMANIA</h1>
                     </div>
                 </div>
             </Paper>

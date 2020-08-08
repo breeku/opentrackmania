@@ -11,6 +11,7 @@ import { textParser } from '../../utils/'
 import { getLeaderboard } from '../../services/leaderboards'
 import { getTrack } from '../../services/tracks'
 import { setTrack } from '../../redux/store/tracks'
+import { useProgressiveImage } from '../../utils/imageLoader'
 
 import SLeaderboard from './SLeaderboard'
 import Leaderboard from './Leaderboard'
@@ -27,6 +28,10 @@ const useStyles = makeStyles(theme => ({
         width: '100%',
         height: '100%',
         position: 'absolute',
+        backgroundPosition: 'center',
+        backgroundSize: 'cover',
+        filter: 'blur(8px)',
+        transition: 'all 0.5s',
     },
     cover: {
         color: '#fff',
@@ -64,6 +69,7 @@ const useStyles = makeStyles(theme => ({
         marginRight: 7,
         color: '#fff',
     },
+    text_center: { textAlign: 'center' },
 }))
 
 export default function Track() {
@@ -73,6 +79,7 @@ export default function Track() {
     const classes = useStyles()
     const { pathname } = useLocation()
     const { id } = useParams()
+    const loaded = useProgressiveImage(track && track.thumbnailUrl)
 
     React.useEffect(() => {
         window.scrollTo(0, 0)
@@ -103,10 +110,8 @@ export default function Track() {
                         <div
                             className={classes.hero}
                             style={{
-                                backgroundImage: `${`url(${track.thumbnailUrl}`}`,
-                                backgroundPosition: 'center',
-                                backgroundSize: 'cover',
-                                filter: 'blur(8px)',
+                                backgroundImage: loaded && `${`url(${loaded})`}`,
+                                opacity: loaded ? '100' : '0',
                             }}
                         />
                         <div className={classes.cover}>
@@ -118,7 +123,7 @@ export default function Track() {
                     <Grid container>
                         <Grid item xs={12} sm={4}>
                             <Paper className={classes.trophies} elevation={5}>
-                                <h1 style={{ textAlign: 'center' }}>Trophies</h1>
+                                <h1 className={classes.text_center}>Trophies</h1>
                                 <Grid
                                     container
                                     direction="column"

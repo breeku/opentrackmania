@@ -40,6 +40,19 @@ const useStyles = makeStyles(theme => ({
         position: 'absolute',
         left: '5px',
     },
+    question_mark: {
+        position: 'absolute',
+        right: '5px',
+        fontSize: 13,
+    },
+    button_download: {
+        color: '#fff',
+        border: '1px solid rgba(255, 255, 255, 0.23)',
+    },
+    no_margin_padding: {
+        padding: 0,
+        margin: 0,
+    },
 }))
 
 export default function Leaderboard({ leaderboard }) {
@@ -67,8 +80,7 @@ export default function Leaderboard({ leaderboard }) {
                         </Grid>
                         <Grid item xs={12} sm={12} md={3}>
                             <h4
-                                className={classes.paper_content}
-                                style={{ padding: 0, margin: 0 }}>
+                                className={`${classes.paper_content} ${classes.no_margin_padding}`}>
                                 {record.zoneName}
                             </h4>
                         </Grid>
@@ -100,21 +112,14 @@ export default function Leaderboard({ leaderboard }) {
                                     target="_blank"
                                     variant="outlined"
                                     color="default"
-                                    style={{
-                                        color: '#fff',
-                                        border: '1px solid rgba(255, 255, 255, 0.23)',
-                                    }}>
+                                    className={classes.button_download}>
                                     download
                                 </Button>
                                 <a
                                     href="https://www.reddit.com/r/TrackMania/comments/i51q98/download_and_view_wr_ghosts_in_replay_editor/"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    style={{
-                                        position: 'absolute',
-                                        right: '5px',
-                                        fontSize: 13,
-                                    }}>
+                                    className={classes.question_mark}>
                                     <span role="img" aria-label="question mark">
                                         ❔
                                     </span>
