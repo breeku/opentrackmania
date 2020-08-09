@@ -21,6 +21,15 @@ leaderboardRouter.get('/map/:id', async (req, res) => {
         raw: true,
     })
 
+    // 1. if leaderboard exists and is closed, return it
+    // 2. if leaderboard doesn't exist, get leaderboard
+    // 2.1 if we're looking for totd, check if it is the today's totd
+    // 2.2 in case it is, get it
+    // 2.3 in case if it is not, get it and close it
+    // 3. update if leaderboard exists, is not closed and it's been a hour since it's been updated
+    // 3.1 and do the same check's for totd.
+    // TODO: make topPlayersMap return the leaderboard
+
     if (leaderboard && leaderboard.closed) return res.send(leaderboard)
 
     const totd = await db.Totds.findOne({ where: { mapUid: id }, raw: true })

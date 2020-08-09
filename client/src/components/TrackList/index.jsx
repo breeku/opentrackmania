@@ -6,9 +6,9 @@ import { makeStyles } from '@material-ui/core/styles'
 import { Grid, Paper } from '@material-ui/core'
 import { Link } from 'react-router-dom'
 
-import { setTrack } from '../../redux/store/tracks'
-import { textParser } from '../../utils'
-import { useProgressiveImage } from '../../utils/imageLoader'
+import { setTrack } from '@redux/store/tracks'
+import { textParser } from '@utils'
+import { useProgressiveImage } from '@utils/imageLoader'
 
 const useStyles = makeStyles(theme => ({
     track: {
@@ -20,6 +20,8 @@ const useStyles = makeStyles(theme => ({
         backgroundPosition: 'center',
         backgroundSize: 'cover',
         transition: 'all 0.5s',
+        backgroundImage: props => props.loaded && `${`url(${props.loaded})`}`,
+        opacity: props => (props.loaded ? 100 : 0),
         '&:hover': {
             scale: '1.02',
         },
@@ -48,8 +50,8 @@ const useStyles = makeStyles(theme => ({
 
 export default function TrackList({ track }) {
     const { day, month, map } = track
-    const classes = useStyles()
     const loaded = useProgressiveImage(track && map.thumbnailUrl)
+    const classes = useStyles({ loaded })
     const dispatch = useDispatch()
 
     return (
@@ -60,12 +62,7 @@ export default function TrackList({ track }) {
                 }}
                 className={classes.no_decoration}
                 onClick={() => dispatch(setTrack(map))}>
-                <Paper
-                    className={classes.track}
-                    style={{
-                        backgroundImage: loaded && `${`url(${loaded})`}`,
-                        opacity: loaded ? 100 : 0,
-                    }}>
+                <Paper className={classes.track} elevation={2}>
                     <div className={classes.track_cover}>
                         {day && month && (
                             <h4 className={classes.track_date}>

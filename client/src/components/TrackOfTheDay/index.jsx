@@ -5,12 +5,12 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Grid } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 
-import { getTOTDs } from '../../services/totds'
+import { getTOTDs } from '@services/totds'
 
-import { groupBy } from '../../utils/'
-import { setTOTDs } from '../../redux/store/totd'
+import { groupBy } from '@utils/'
+import { setTOTDs } from '@redux/store/totd'
 
-import TrackList from '../TrackList'
+import TrackList from '@components/TrackList'
 
 const useStyles = makeStyles(theme => ({
     TOTDs: {

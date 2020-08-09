@@ -7,18 +7,22 @@ import { useLocation, useParams } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles'
 import { Paper, Grid } from '@material-ui/core'
 
-import { textParser } from '../../utils/'
-import { getLeaderboard } from '../../services/leaderboards'
-import { getTrack } from '../../services/tracks'
-import { setTrack } from '../../redux/store/tracks'
-import { useProgressiveImage } from '../../utils/imageLoader'
+import { textParser } from '@utils/'
+import { getLeaderboard } from '@services/leaderboards'
+import { getTrack } from '@services/tracks'
+import { setTrack } from '@redux/store/tracks'
+import { useProgressiveImage } from '@utils/imageLoader'
 
 import SLeaderboard from './SLeaderboard'
 import Leaderboard from './Leaderboard'
 
 const useStyles = makeStyles(theme => ({
     hero: theme.hero,
-    background_image: theme.background_image,
+    background_image: {
+        ...theme.background_image,
+        backgroundImage: props => props.loaded && `${`url(${props.loaded})`}`,
+        opacity: props => (props.loaded ? 100 : 0),
+    },
     cover: theme.cover,
     title: {
         display: 'flex',
@@ -54,10 +58,10 @@ export default function Track() {
     const [leaderboard, setLeaderboard] = React.useState(null)
     const { track } = useSelector(state => state.tracks)
     const dispatch = useDispatch()
-    const classes = useStyles()
     const { pathname } = useLocation()
     const { id } = useParams()
     const loaded = useProgressiveImage(track && track.thumbnailUrl)
+    const classes = useStyles({ loaded })
 
     React.useEffect(() => {
         window.scrollTo(0, 0)
@@ -85,13 +89,7 @@ export default function Track() {
             {track && (
                 <>
                     <Paper className={classes.hero}>
-                        <div
-                            className={classes.background_image}
-                            style={{
-                                backgroundImage: loaded && `${`url(${loaded})`}`,
-                                opacity: loaded ? '100' : '0',
-                            }}
-                        />
+                        <div className={classes.background_image} />
                         <div className={classes.cover}>
                             <div className={classes.title}>
                                 <h1>{textParser(track.name)}</h1>
