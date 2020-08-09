@@ -62,7 +62,7 @@ export default function TrackList({ track }) {
                 }}
                 className={classes.no_decoration}
                 onClick={() => dispatch(setTrack(map))}>
-                <Paper className={classes.track} elevation={0}>
+                <Paper className={classes.track} elevation={2}>
                     <div className={classes.track_cover}>
                         {day && month && (
                             <h4 className={classes.track_date}>
