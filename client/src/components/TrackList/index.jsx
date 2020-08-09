@@ -6,9 +6,9 @@ import { makeStyles } from '@material-ui/core/styles'
 import { Grid, Paper } from '@material-ui/core'
 import { Link } from 'react-router-dom'
 
-import { setTrack } from '../../redux/store/tracks'
-import { textParser } from '../../utils'
-import { useProgressiveImage } from '../../utils/imageLoader'
+import { setTrack } from '@redux/store/tracks'
+import { textParser } from '@utils'
+import { useProgressiveImage } from '@utils/imageLoader'
 
 const useStyles = makeStyles(theme => ({
     track: {

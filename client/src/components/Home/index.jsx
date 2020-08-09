@@ -5,9 +5,9 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Paper } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 
-import { getRandomTOTD } from '../../services/totds'
-import { setRandomTOTD } from '../../redux/store/totd'
-import { useProgressiveImage } from '../../utils/imageLoader'
+import { getRandomTOTD } from '@services/totds'
+import { setRandomTOTD } from '@redux/store/totd'
+import { useProgressiveImage } from '@utils/imageLoader'
 
 import Construction from '../Construction'
 

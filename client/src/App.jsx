@@ -5,12 +5,12 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 import { AppBar, Toolbar, Button, Grid } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 
-import Home from './components/Home'
-import Seasons from './components/Seasons'
-import TrackOfTheDay from './components/TrackOfTheDay'
-import Track from './components/Track'
-import Players from './components/Players'
-import Servers from './components/Servers'
+import Home from '@components/Home'
+import Seasons from '@components/Seasons'
+import TrackOfTheDay from '@components/TrackOfTheDay'
+import Track from '@components/Track'
+import Players from '@components/Players'
+import Servers from '@components/Servers'
 
 import Analytics from 'react-router-ga'
 

@@ -5,9 +5,9 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Grid } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 
-import { getSeasons } from '../../services/seasons'
-import { setSeasons } from '../../redux/store/seasons'
-import TrackList from '../TrackList'
+import { getSeasons } from '@services/seasons'
+import { setSeasons } from '@redux/store/seasons'
+import TrackList from '@components/TrackList'
 
 const useStyles = makeStyles(theme => ({
     seasons: {
