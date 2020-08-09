@@ -45,7 +45,6 @@ export const updateRankings = async (): Promise<boolean> => {
             const users = await db.Users.findAll({ raw: true })
 
             for (let i = 0, offset = 24; i < users.length; offset *= 2, i += 24) {
-                console.log(i, offset)
                 const sliced = users
                     .map((x: { accountId: any }) => x.accountId)
                     .slice(i, offset)
@@ -53,8 +52,7 @@ export const updateRankings = async (): Promise<boolean> => {
                     credentials.nadeoTokens.accessToken,
                     sliced,
                 )
-                console.log(sliced)
-                console.log(rankings)
+
                 for (const ranking of rankings) {
                     if (
                         await db.Rankings.findOne({
