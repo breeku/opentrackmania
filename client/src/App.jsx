@@ -10,6 +10,7 @@ import Seasons from '@components/Seasons'
 import TrackOfTheDay from '@components/TrackOfTheDay'
 import Track from '@components/Track'
 import Players from '@components/Players'
+import Player from '@components/Player'
 import Servers from '@components/Servers'
 
 import Analytics from 'react-router-ga'
@@ -103,6 +104,9 @@ export default function App() {
                             </Route>
                             <Route path="/players">
                                 <Players />
+                            </Route>
+                            <Route path="/player/:id" exact={true}>
+                                <Player />
                             </Route>
                             <Route path="/seasons">
                                 <Seasons />

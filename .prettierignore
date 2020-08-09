@@ -1,0 +1,4 @@
+server/models/*
+server/migrations/*
+server/seeders/*
+server/config/*

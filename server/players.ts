@@ -1,4 +1,11 @@
-import { getProfilesById, getProfiles } from 'trackmania-api-node'
+import db from './models/index.js'
+import {
+    getProfilesById,
+    getProfiles,
+    getTrophyCount,
+    getPlayerRankings,
+} from 'trackmania-api-node'
+import { login } from './login'
 
 export const namesFromAccountIds = async (
     accountIds: any[],
@@ -11,4 +18,67 @@ export const namesFromAccountIds = async (
     )
     const result = { accounts, profiles }
     return result
+}
+
+export const saveTrophies = async (accountId: string): Promise<boolean> => {
+    const credentials = await login()
+    if (credentials) {
+        try {
+            /*
+            const trophies = await getTrophyCount(
+                credentials.ubiTokens.accessToken,
+                accountId,
+            )
+            */
+            return true
+        } catch (e) {
+            console.error(e)
+            return false
+        }
+    }
+}
+
+export const updateRankings = async (): Promise<boolean> => {
+    const credentials = await login()
+    if (credentials) {
+        try {
+            const users = await db.Users.findAll({ raw: true })
+
+            for (let i = 0, offset = 24; i < users.length; offset *= 2, i += 24) {
+                console.log(i, offset)
+                const sliced = users
+                    .map((x: { accountId: any }) => x.accountId)
+                    .slice(i, offset)
+                const { rankings } = await getPlayerRankings(
+                    credentials.nadeoTokens.accessToken,
+                    sliced,
+                )
+                console.log(sliced)
+                console.log(rankings)
+                for (const ranking of rankings) {
+                    if (
+                        await db.Rankings.findOne({
+                            where: {
+                                accountId: ranking.accountId,
+                            },
+                        })
+                    ) {
+                        await db.Rankings.update(ranking, {
+                            where: {
+                                accountId: ranking.accountId,
+                            },
+                        })
+                    } else {
+                        await db.Rankings.create(ranking)
+                    }
+                }
+
+                await new Promise(r => setTimeout(r, 1000))
+            }
+            return true
+        } catch (e) {
+            console.error(e)
+            return false
+        }
+    }
 }
