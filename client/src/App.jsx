@@ -44,7 +44,7 @@ const useStyles = makeStyles(theme => ({
     },
     appbar: {
         background: 'linear-gradient(360deg, rgba(18,18,18,1) 0%, rgba(13,13,13,1) 100%)',
-        display: 'grid',
+        display: 'flex',
         flexDirection: 'row',
     },
 }))
@@ -59,55 +59,42 @@ export default function App() {
                     <Analytics id="UA-112318085-4">
                         <AppBar position="static">
                             <Toolbar className={classes.appbar}>
-                                <div style={{ display: 'flex' }}>
-                                    <Grid
-                                        container
-                                        direction="row"
-                                        className={classes.home}>
-                                        <Link to="/" className={classes.link_white}>
-                                            <h3
-                                                className={
-                                                    classes.title
-                                                }>{`<OPENTRACKMANIA/>`}</h3>
-                                        </Link>
-                                    </Grid>
-                                    <Grid
-                                        container
-                                        direction="row"
-                                        className={classes.buttons}>
-                                        <Link
-                                            to="/servers"
-                                            className={classes.no_decoration}>
-                                            <Button className={classes.button}>
-                                                servers
-                                            </Button>
-                                        </Link>
+                                <Grid container direction="row" className={classes.home}>
+                                    <Link to="/" className={classes.link_white}>
+                                        <h3
+                                            className={
+                                                classes.title
+                                            }>{`<OPENTRACKMANIA/>`}</h3>
+                                    </Link>
+                                </Grid>
+                                <Grid
+                                    container
+                                    direction="row"
+                                    className={classes.buttons}>
+                                    <Link to="/servers" className={classes.no_decoration}>
+                                        <Button className={classes.button}>
+                                            servers
+                                        </Button>
+                                    </Link>
 
-                                        <Link
-                                            to="/players"
-                                            className={classes.no_decoration}>
-                                            <Button className={classes.button}>
-                                                players
-                                            </Button>
-                                        </Link>
+                                    <Link to="/players" className={classes.no_decoration}>
+                                        <Button className={classes.button}>
+                                            players
+                                        </Button>
+                                    </Link>
 
-                                        <Link
-                                            to="/seasons"
-                                            className={classes.no_decoration}>
-                                            <Button className={classes.button}>
-                                                seasons
-                                            </Button>
-                                        </Link>
+                                    <Link to="/seasons" className={classes.no_decoration}>
+                                        <Button className={classes.button}>
+                                            seasons
+                                        </Button>
+                                    </Link>
 
-                                        <Link
-                                            to="/totd"
-                                            className={classes.no_decoration}>
-                                            <Button className={classes.button}>
-                                                track of the day
-                                            </Button>
-                                        </Link>
-                                    </Grid>
-                                </div>
+                                    <Link to="/totd" className={classes.no_decoration}>
+                                        <Button className={classes.button}>
+                                            track of the day
+                                        </Button>
+                                    </Link>
+                                </Grid>
                             </Toolbar>
                         </AppBar>
                         <Switch>
