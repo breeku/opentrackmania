@@ -18,7 +18,7 @@
     },
     "cacheDirectories": [
         "node_modules",
-        "react-ui/node_modules"
+        "client/node_modules"
     ],
     "keywords": [],
     "author": "",
