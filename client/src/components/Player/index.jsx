@@ -78,7 +78,7 @@ export default function Player() {
 
     React.useEffect(() => {
         const getData = async () => {
-            if (!player) {
+            if (!player || (player && player.accountId !== id)) {
                 const response = await getPlayer(id)
                 dispatch(setPlayer(response))
             }
