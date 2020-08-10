@@ -18,6 +18,7 @@ const useStyles = makeStyles(theme => ({
     color_red: theme.color_red,
     color_green: theme.color_green,
     color_white: theme.color_white,
+    color_blue: theme.color_blue,
     paper_content: {
         display: 'flex',
         flexDirection: 'row',
@@ -74,7 +75,7 @@ export default function Leaderboard({ leaderboard }) {
                                 <Link
                                     style={{ textDecoration: 'none' }}
                                     to={`/player/${record.accountId}`}>
-                                    <h3 style={{ color: '#fff' }}>
+                                    <h3 className={classes.color_blue}>
                                         {record.nameOnPlatform}
                                     </h3>
                                 </Link>
