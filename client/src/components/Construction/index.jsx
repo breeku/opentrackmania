@@ -10,6 +10,7 @@ const useStyles = makeStyles(theme => ({
         overflow: 'hidden',
         margin: 'auto',
         marginTop: 30,
+        marginBottom: 30,
         color: '#fff',
         height: 'max-content',
         width: 'max-content',

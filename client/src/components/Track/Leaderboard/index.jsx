@@ -3,6 +3,8 @@ import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import { Paper, Grid, Button } from '@material-ui/core'
 
+import { Link } from 'react-router-dom'
+
 const useStyles = makeStyles(theme => ({
     leaderboard: {
         margin: 20,
@@ -69,7 +71,13 @@ export default function Leaderboard({ leaderboard }) {
                         <Grid item xs={12} sm={12} md={3}>
                             <span className={classes.paper_content}>
                                 <h4 className={classes.position}>#{i + 1}</h4>
-                                <h3>{record.nameOnPlatform}</h3>
+                                <Link
+                                    style={{ textDecoration: 'none' }}
+                                    to={`/player/${record.accountId}`}>
+                                    <h3 style={{ color: '#fff' }}>
+                                        {record.nameOnPlatform}
+                                    </h3>
+                                </Link>
                             </span>
                         </Grid>
                         <Grid item xs={12} sm={12} md={3}>
