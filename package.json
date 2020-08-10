@@ -8,7 +8,7 @@
         "update:leaderboard": "ts-node updateLeaderboard.ts",
         "update:totd": "ts-node updateTOTD.ts",
         "start": "ts-node index.ts",
-        "heroku-postbuild": "npm run migrate && cd client && npm i && npm i --only=dev --no-shrinkwrap && npm run build",
+        "heroku-postbuild": "cd client && npm i && npm i --only=dev --no-shrinkwrap && npm run build",
         "watch": "tsnd --respawn index.ts",
         "tslint": "tslint -c tslint.json -p tsconfig.json",
         "migrate": "sequelize db:migrate",
