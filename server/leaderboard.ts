@@ -100,6 +100,10 @@ export const topPlayersMap = async (
                 )
 
                 if (dbAccounts.length > 0) {
+                    const { rankings } = await getPlayerRankings(
+                        credentials.nadeoTokens.accessToken,
+                        dbAccounts.map(x => x.accountId),
+                    )
                     for (const account of dbAccounts) {
                         if (
                             !(await db.Users.findOne({
@@ -107,14 +111,12 @@ export const topPlayersMap = async (
                             }))
                         ) {
                             await db.Users.create(account)
+                            const ranking = rankings.find(
+                                (x: { accountId: any }) =>
+                                    x.accountId === account.accountId,
+                            )
+                            await db.Rankings.create(ranking)
                         }
-                    }
-                    const { rankings } = await getPlayerRankings(
-                        credentials.nadeoTokens.accessToken,
-                        dbAccounts.map(x => x.accountId),
-                    )
-                    for (const ranking of rankings) {
-                        await db.Rankings.create(ranking)
                     }
                 }
 
