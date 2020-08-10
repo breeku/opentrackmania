@@ -54,6 +54,7 @@ const theme = createMuiTheme({
     color_white: {
         color: '#fff',
     },
+    background_color: '#202020',
 })
 
 ReactDOM.render(
