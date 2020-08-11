@@ -21,17 +21,29 @@ export const namesFromAccountIds = async (
     return result
 }
 
-export const saveTrophies = async (accountId: string): Promise<boolean> => {
+export const saveTrophies = async (accountId: string, mode: string) => {
     const credentials = await login()
     if (credentials) {
         try {
-            /*
-            const trophies = await getTrophyCount(
+            let trophies = await getTrophyCount(
                 credentials.ubiTokens.accessToken,
                 accountId,
             )
-            */
-            return true
+
+            if (mode === 'CREATE') {
+                trophies = await db.Trophies.create({ accountId, data: trophies })
+            } else if (mode === 'UPDATE') {
+                trophies = await db.Trophies.update(
+                    { accountId, data: trophies },
+                    {
+                        where: {
+                            accountId,
+                        },
+                    },
+                )
+            }
+
+            return trophies
         } catch (e) {
             console.error(e)
             return false

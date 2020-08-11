@@ -19,7 +19,7 @@ const useStyles = makeStyles(theme => ({
     },
 }))
 
-export default function Leaderboard() {
+export default function SLeaderboard() {
     const classes = useStyles()
     return (
         <div className={classes.leaderboard}>

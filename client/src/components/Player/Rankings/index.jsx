@@ -1,7 +1,5 @@
 import React from 'react'
 
-import { useDispatch, useSelector } from 'react-redux'
-
 import { makeStyles } from '@material-ui/core/styles'
 import { Paper, ButtonGroup, Button } from '@material-ui/core'
 
@@ -15,7 +13,6 @@ import {
     Tooltip,
 } from 'recharts'
 
-import { setPlayerRanking } from '@redux/store/players'
 import { getPlayerRanking } from '@services/players'
 
 const useStyles = makeStyles(theme => ({
@@ -30,23 +27,21 @@ const useStyles = makeStyles(theme => ({
         whiteSpace: 'nowrap',
         width: '100%',
     },
-    buttons: {},
 }))
 
 export default function Rankings({ id }) {
     const [zoneName, setZoneName] = React.useState('World')
-    const { playerRanking } = useSelector(state => state.players)
+    const [playerRanking, setPlayerRanking] = React.useState(null)
     const classes = useStyles()
-    const dispatch = useDispatch()
 
     React.useEffect(() => {
         const getData = async () => {
             const response = await getPlayerRanking(id)
-            dispatch(setPlayerRanking(response))
+            setPlayerRanking(response)
         }
 
         getData()
-    }, [dispatch, id])
+    }, [id])
 
     const rankings = React.useMemo(
         () =>

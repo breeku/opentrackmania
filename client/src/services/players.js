@@ -14,3 +14,8 @@ export const getPlayer = async id => {
     const { data } = await axios.get('/api/players/' + id)
     return data
 }
+
+export const getPlayerTrophies = async id => {
+    const { data } = await axios.get('/api/players/trophies/' + id)
+    return data
+}

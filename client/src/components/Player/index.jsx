@@ -7,11 +7,12 @@ import { useParams } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles'
 import { Paper, Grid } from '@material-ui/core'
 
-import { setPlayerRanking, setPlayer } from '@redux/store/players'
-import { getPlayerRanking, getPlayer } from '@services/players'
+import { setPlayer } from '@redux/store/players'
+import { getPlayer } from '@services/players'
 
 import Construction from '@components/Construction'
 import Rankings from './Rankings'
+import Trophies from './Trophies'
 
 const useStyles = makeStyles(theme => ({
     player: {
@@ -47,8 +48,6 @@ export default function Player() {
                 const response = await getPlayer(id)
                 dispatch(setPlayer(response))
             }
-            const response = await getPlayerRanking(id)
-            dispatch(setPlayerRanking(response))
         }
 
         getData()
@@ -69,8 +68,7 @@ export default function Player() {
                         </Grid>
                         <Grid item xs={12} sm={6}>
                             <Paper className={classes.paper} elevation={3}>
-                                <h3>Records</h3>
-                                <Construction />
+                                <Trophies id={id} />
                             </Paper>
                         </Grid>
                         <Grid item xs={12} sm={6}>
@@ -87,7 +85,7 @@ export default function Player() {
                         </Grid>
                         <Grid item xs={12} sm={6}>
                             <Paper className={classes.paper} elevation={3}>
-                                <h3>Trophies</h3>
+                                <h3>Records</h3>
                                 <Construction />
                             </Paper>
                         </Grid>

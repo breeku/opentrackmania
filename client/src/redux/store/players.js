@@ -6,7 +6,6 @@ const slice = createSlice({
     initialState: {
         players: null,
         player: null,
-        playerRanking: null,
     },
     reducers: {
         SET_PLAYERS: (state, action) => {
@@ -15,15 +14,12 @@ const slice = createSlice({
         SET_PLAYER: (state, action) => {
             state.player = action.payload
         },
-        SET_PLAYER_RANKING: (state, action) => {
-            state.playerRanking = action.payload
-        },
     },
 })
 export default slice.reducer
 
 // Actions
-const { SET_PLAYERS, SET_PLAYER, SET_PLAYER_RANKING } = slice.actions
+const { SET_PLAYERS, SET_PLAYER } = slice.actions
 
 export const setPlayers = players => async dispatch => {
     dispatch(SET_PLAYERS(players))
@@ -31,8 +27,4 @@ export const setPlayers = players => async dispatch => {
 
 export const setPlayer = player => async dispatch => {
     dispatch(SET_PLAYER(player))
-}
-
-export const setPlayerRanking = ranking => async dispatch => {
-    dispatch(SET_PLAYER_RANKING(ranking))
 }
