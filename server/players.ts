@@ -72,7 +72,7 @@ export const updateRankings = async (): Promise<boolean> => {
                             createdAt: {
                                 [Op.lte]: oldest.createdAt,
                                 [Op.gte]: new Date(
-                                    oldest.createdAt - 6 * 3600 * 1000,
+                                    oldest.createdAt - 23 * 3600 * 1000,
                                 ).toISOString(),
                             },
                         },
