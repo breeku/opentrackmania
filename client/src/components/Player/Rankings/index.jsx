@@ -103,6 +103,11 @@ export default function Rankings({ id }) {
                                     type="monotone"
                                     dataKey="zone.ranking.position"
                                     stroke="#8884d8"
+                                    label={{
+                                        fill: 'white',
+                                        fontSize: 11,
+                                        dy: -13,
+                                    }}
                                 />
                                 <CartesianGrid
                                     stroke="rgba(255,255,255,0.3)"
