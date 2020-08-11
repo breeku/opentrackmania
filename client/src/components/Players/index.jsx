@@ -141,7 +141,6 @@ export default function Players() {
                                 download: false,
                                 print: false,
                                 searchPlaceholder: 'Player name',
-                                searchOpen: true,
                                 onRowClick: (d, m) => {
                                     const { accountId, nameOnPlatform } = data[
                                         m.dataIndex
