@@ -92,11 +92,11 @@ playerRouter.get('/trophies/:id', async (req, res) => {
     if (!trophies) {
         trophies = await saveTrophies(id, 'CREATE')
     } else {
-        // if trophies are old, get them again
+        // if trophies are 24h old, get them again
         if (
             Math.abs(new Date().getTime() - new Date(trophies.updatedAt).getTime()) /
                 36e5 >
-            1
+            24
         ) {
             trophies = await saveTrophies(id, 'UPDATE')
         }
