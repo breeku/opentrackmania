@@ -24,7 +24,7 @@ A web app for viewing trackmania 2020 data
     -   Express
     -   Sequelize
     -   node-cache
-    -   [trackmania-api-node](trackmania-api-node)
+    -   [trackmania-api-node](https://github.com/breeku/trackmania-api-node)
 
 ## Contributing
 
