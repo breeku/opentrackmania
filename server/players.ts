@@ -7,6 +7,7 @@ import {
 } from 'trackmania-api-node'
 import { login } from './login'
 import { Op } from 'sequelize'
+import { cache } from './cache'
 
 export const namesFromAccountIds = async (
     accountIds: any[],
@@ -22,7 +23,7 @@ export const namesFromAccountIds = async (
 }
 
 export const saveTrophies = async (accountId: string, mode: string) => {
-    const credentials = await login()
+    const credentials = (cache.get('credentials') as any) || (await login())
     if (credentials) {
         try {
             let trophies = await getTrophyCount(
@@ -33,16 +34,18 @@ export const saveTrophies = async (accountId: string, mode: string) => {
             if (mode === 'CREATE') {
                 trophies = await db.Trophies.create({ accountId, data: trophies })
             } else if (mode === 'UPDATE') {
-                trophies = await db.Trophies.update(
+                const updated = await db.Trophies.update(
                     { accountId, data: trophies },
                     {
                         where: {
                             accountId,
                         },
+                        returning: true,
+                        raw: true,
                     },
                 )
+                trophies = updated[1][0]
             }
-
             return trophies
         } catch (e) {
             console.error(e)
