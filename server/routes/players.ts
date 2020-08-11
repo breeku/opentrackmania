@@ -21,7 +21,7 @@ playerRouter.get('/rankings/', async (req, res) => {
         where: {
             createdAt: {
                 [Op.lte]: recent.createdAt,
-                [Op.gte]: new Date(recent.createdAt - 23 * 3600 * 1000).toISOString(),
+                [Op.gte]: new Date(recent.createdAt - 23.99 * 3600 * 1000).toISOString(),
             },
         },
         order: [['countPoint', 'DESC']],
