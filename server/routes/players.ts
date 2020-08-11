@@ -17,7 +17,8 @@ playerRouter.get('/rankings/', async (req, res) => {
 
     if (!recent) return res.send(null)
 
-    const rankings = await db.Rankings.findAll({
+    let rankings = await db.Rankings.findAll({
+        distinct: true,
         raw: true,
         where: {
             createdAt: {
@@ -27,6 +28,11 @@ playerRouter.get('/rankings/', async (req, res) => {
         },
         order: [['countPoint', 'DESC']],
     })
+
+    rankings = rankings.filter(
+        (item, index, self) =>
+            index === self.findIndex(t => t.accountId === item.accountId),
+    )
 
     const response = []
 
