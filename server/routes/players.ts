@@ -9,7 +9,6 @@ playerRouter.get('/rankings/', async (req, res) => {
     const users = await db.Users.findAll({
         raw: true,
     })
-
     const recent = await db.Rankings.findOne({
         raw: true,
         order: [['createdAt', 'DESC']],
@@ -72,7 +71,7 @@ playerRouter.get('/rankings/:id', async (req, res) => {
         where: {
             accountId: id,
         },
-        order: [['createdAt', 'DESC']],
+        order: [['createdAt', 'ASC']],
     })
     if (rankings.length === 0) return res.send(null)
     res.send(rankings)
