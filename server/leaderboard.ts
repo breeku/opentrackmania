@@ -101,11 +101,11 @@ export const topPlayersMap = async (
 
                 if (dbAccounts.length > 0) {
                     for (const account of dbAccounts) {
-                        if (
-                            !(await db.Users.findOne({
-                                where: { accountId: account.accountId },
-                            }))
-                        ) {
+                        const user = await db.Users.findOne({
+                            where: { accountId: account.accountId },
+                            raw: true,
+                        })
+                        if (!user) {
                             const { rankings } = await getPlayerRankings(
                                 credentials.nadeoTokens.accessToken,
                                 [account.accountId],
@@ -118,10 +118,10 @@ export const topPlayersMap = async (
 
                 topPlayersMaps.push({ map, top: newTop })
             } catch (e) {
-                console.warn(e.response)
-                if (e.response.status === 401 && !retry) {
+                console.warn(e)
+                if (e.response && e.response.status === 401 && !retry) {
                     await login()
-                    return await topPlayersMap(maps, true)
+                    return await topPlayersMap(maps, true, close)
                 }
             }
         }

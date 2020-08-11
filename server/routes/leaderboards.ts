@@ -44,7 +44,7 @@ leaderboardRouter.get('/map/:id', async (req, res) => {
 
     if (!leaderboard) {
         if (totd) {
-            if (totd.map === latest.map) {
+            if (totd.mapUid === latest.mapUid) {
                 await topPlayersMap([id]) // if totd is the latest
             } else {
                 await topPlayersMap([id], false, true) // if totd is not the latest, update and close
@@ -59,7 +59,7 @@ leaderboardRouter.get('/map/:id', async (req, res) => {
             1
     ) {
         if (totd) {
-            if (totd.map === latest.map) {
+            if (totd.mapUid === latest.mapUid) {
                 await topPlayersMap([id]) // if totd is the latest
             } else if (!leaderboard.closed) {
                 await topPlayersMap([id], false, true) // if totd is not the latest and is not closed, update and close
