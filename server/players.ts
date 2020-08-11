@@ -22,7 +22,7 @@ export const namesFromAccountIds = async (
     return result
 }
 
-export const saveTrophies = async (accountId: string, mode: string) => {
+export const saveTrophies = async (accountId: string, retry = false, mode: string) => {
     const credentials = (cache.get('credentials') as any) || (await login())
     if (credentials) {
         try {
@@ -48,8 +48,11 @@ export const saveTrophies = async (accountId: string, mode: string) => {
             }
             return trophies
         } catch (e) {
-            console.error(e)
-            return false
+            console.warn(e.response)
+            if (e.response.status === 401 && !retry) {
+                await login()
+                return await saveTrophies(accountId, true, mode)
+            }
         }
     }
 }
