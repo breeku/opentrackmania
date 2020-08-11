@@ -12,7 +12,7 @@ const useStyles = makeStyles(theme => ({
         marginRight: 30,
         padding: 10,
         color: '#fff',
-        backgroundColor: '#202020',
+        backgroundColor: theme.background_color,
         display: 'flex',
     },
     color_red: theme.color_red,

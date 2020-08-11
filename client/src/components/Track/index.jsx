@@ -32,7 +32,7 @@ const useStyles = makeStyles(theme => ({
     },
     times: {
         color: '#fff',
-        backgroundColor: '#202020',
+        backgroundColor: theme.background_color,
         marginTop: 10,
         padding: 10,
         width: '50%',

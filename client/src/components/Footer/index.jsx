@@ -29,10 +29,7 @@ const useStyles = makeStyles(theme => ({
         alignSelf: 'center',
         color: 'rgba(255,255,255,0.5)',
     },
-    link: {
-        color: 'rgba(0, 140, 253,0.5)',
-        textDecoration: 'none',
-    },
+    link: theme.link_blue,
 }))
 
 export default function Footer() {

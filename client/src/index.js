@@ -45,6 +45,10 @@ const theme = createMuiTheme({
         textDecoration: 'none',
         color: '#fff',
     },
+    link_blue: {
+        color: 'rgba(0, 140, 253,1)',
+        textDecoration: 'none',
+    },
     color_red: {
         color: '#E60000',
     },
@@ -57,7 +61,7 @@ const theme = createMuiTheme({
     color_blue: {
         color: '#008cfd',
     },
-    background_color: '#202020',
+    background_color: '#1e1e1e',
 })
 
 ReactDOM.render(
