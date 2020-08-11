@@ -1,6 +1,6 @@
 import express from 'express'
 import db from '../models/index'
-import { Op } from 'sequelize'
+import { QueryTypes } from 'sequelize'
 import { saveTrophies } from '../players'
 
 export const playerRouter = express.Router()
@@ -17,23 +17,21 @@ playerRouter.get('/rankings/', async (req, res) => {
 
     if (!recent) return res.send(null)
 
-    let rankings = await db.Rankings.findAll({
-        distinct: true,
-        raw: true,
-        where: {
-            createdAt: {
-                [Op.between]: [
-                    new Date(recent.createdAt - 23.9 * 3600 * 1000).toISOString(),
-                    recent.createdAt,
-                ],
-            },
-        },
-        order: [['countPoint', 'DESC']],
-    })
-
-    rankings = rankings.filter(
-        (item, index, self) =>
-            index === self.findIndex(t => t.accountId === item.accountId),
+    const fromDate = new Date(recent.createdAt - 23.9 * 3600 * 1000).toISOString()
+    const toDate = recent.createdAt.toISOString()
+    const rankings = await db.sequelize.query(
+        `
+        SELECT *
+        FROM  (
+            SELECT DISTINCT ON ("accountId") *
+            FROM "Rankings" AS "Rankings" 
+            WHERE "Rankings"."createdAt" 
+            BETWEEN '${fromDate}'
+            AND '${toDate}'
+            ) p
+        ORDER BY "countPoint" DESC;
+        `,
+        { type: QueryTypes.SELECT },
     )
 
     const response = []
