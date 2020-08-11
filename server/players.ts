@@ -88,10 +88,12 @@ export const updateRankings = async (): Promise<boolean> => {
                     await db.Rankings.destroy({
                         where: {
                             createdAt: {
-                                [Op.lte]: oldest.createdAt,
-                                [Op.gte]: new Date(
-                                    oldest.createdAt - 23.99 * 3600 * 1000,
-                                ).toISOString(),
+                                [Op.between]: [
+                                    new Date(
+                                        oldest.createdAt - 23.9 * 3600 * 1000,
+                                    ).toISOString(),
+                                    recent.createdAt,
+                                ],
                             },
                         },
                     })
