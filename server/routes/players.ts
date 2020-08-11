@@ -1,6 +1,7 @@
 import express from 'express'
 import db from '../models/index'
 import { Op } from 'sequelize'
+import { saveTrophies } from '../players'
 
 export const playerRouter = express.Router()
 
@@ -81,7 +82,7 @@ playerRouter.get('/trophies/:id', async (req, res) => {
         raw: true,
     })
 
-    const trophies = await db.Trophies.findAll({
+    let trophies = await db.Trophies.findOne({
         where: {
             accountId: user.accountId,
         },
@@ -89,10 +90,19 @@ playerRouter.get('/trophies/:id', async (req, res) => {
     })
 
     if (!trophies) {
-        // get trophies
+        trophies = await saveTrophies(id, 'CREATE')
+    } else {
+        // if trophies are 24h old, get them again
+        if (
+            Math.abs(new Date().getTime() - new Date(trophies.updatedAt).getTime()) /
+                36e5 >
+            24
+        ) {
+            trophies = await saveTrophies(id, 'UPDATE')
+        }
     }
 
-    res.send({ user, trophies })
+    res.send(trophies)
 })
 
 playerRouter.get('/:id', async (req, res) => {

@@ -59,7 +59,7 @@ export default function Leaderboard({ leaderboard }) {
         <>
             <h1 style={{ textAlign: 'center' }}>Leaderboards</h1>
             <h6 style={{ textAlign: 'center' }}>
-                Last updated at {new Date(leaderboard.updatedAt).toTimeString()}
+                Last updated {new Date(leaderboard.updatedAt).toTimeString()}
             </h6>
             {leaderboard.closed && (
                 <h4 style={{ textAlign: 'center', color: '#E60000' }}>
