@@ -12,10 +12,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
-    - name: Dokku deploy
-      uses: vitalyliber/dokku-github-action@v4.0
-      env:
-        PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
-        HOST: https://api.opentrackmania.com
-        PROJECT: opentrackmania-api
+      - uses: actions/checkout@v2
+        with:
+            fetch-depth: 0
+      - id: deploy
+        name: Deploy to dokku
+        uses: idoberko2/dokku-deploy-github-action@v1
+        with:
+            ssh-private-key: ${{ secrets.PRIVATE_KEY }}
+            dokku-host: 'api.opentrackmania.com'
+            app-name: 'opentrackmania-api'
+            dokku-user: root
