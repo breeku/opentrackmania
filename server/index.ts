@@ -13,7 +13,7 @@ import { playerRouter } from './routes/players'
 const app = express()
 
 app.use(cors())
-app.use(express.static(path.join(__dirname, 'build')))
+
 
 app.use('/leaderboard', leaderboardRouter)
 app.use('/totds', totdRouter)
