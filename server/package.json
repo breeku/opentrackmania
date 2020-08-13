@@ -7,7 +7,6 @@
         "update:seasons": "ts-node cron/updateSeasons.ts",
         "update:leaderboard": "ts-node cron/updateLeaderboard.ts",
         "update:rankings": "ts-node cron/updateRankings.ts",
-        "update:test": "ts-node cron/test.ts",
         "update:totd": "ts-node updateTOTD.ts",
         "start": "ts-node index.ts",
         "watch": "tsnd --respawn index.ts",
@@ -24,8 +23,10 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
+        "@types/cors": "^2.8.7",
         "@types/express": "^4.17.7",
         "@types/node": "^14.0.27",
+        "cors": "^2.8.5",
         "dotenv": "^8.2.0",
         "dotenv-cli": "^3.2.0",
         "express": "^4.17.1",

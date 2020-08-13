@@ -1,0 +1,1 @@
+export const BASEURL = process.env.NODE_ENV === 'development' ? 'http://localhost:8080' : 'https://api.opentrackmania.com'

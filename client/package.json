@@ -43,7 +43,6 @@
             "last 1 safari version"
         ]
     },
-    "proxy": "http://localhost:8080",
     "devDependencies": {
         "craco-alias": "^2.1.1"
     }

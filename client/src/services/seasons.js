@@ -1,6 +1,7 @@
 import axios from 'axios'
+import { BASEURL } from "./config"
 
 export const getSeasons = async () => {
-    const { data } = await axios.get('/api/seasons/')
+    const { data } = await axios.get(BASEURL + '/seasons/')
     return data
 }
