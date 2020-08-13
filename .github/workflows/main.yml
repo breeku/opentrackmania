@@ -21,5 +21,5 @@ jobs:
         with:
             ssh-private-key: ${{ secrets.PRIVATE_KEY }}
             dokku-host: 'api.opentrackmania.com'
-            app-name: 'opentrackmania-api'
+            app-name: 'opentrackmania'
             dokku-user: root
