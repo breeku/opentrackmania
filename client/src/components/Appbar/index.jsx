@@ -1,9 +1,40 @@
 import React from 'react'
 
-import { Link } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 
-import { AppBar, Toolbar, Button, Grid } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
+import { Link, useHistory } from 'react-router-dom'
+
+import { AppBar, Toolbar, Button, Grid, TextField } from '@material-ui/core'
+import { makeStyles, withStyles } from '@material-ui/core/styles'
+
+import { searchPlayer } from '@services/players'
+import { setPlayer } from '@redux/store/players'
+import { setSearchResults } from '@redux/store/search'
+
+const CustomTextField = withStyles({
+    root: {
+        marginRight: 10,
+        '& .MuiFormLabel-root': {
+            color: 'rgb(125,125,125)',
+        },
+        '& .MuiInputBase-root': {
+            '& .MuiInputBase-input': {
+                color: 'rgb(255,255,255)',
+            },
+        },
+        '& .MuiOutlinedInput-root': {
+            '& fieldset': {
+                borderColor: 'rgb(125,125,125)',
+            },
+            '&:hover fieldset': {
+                borderColor: 'rgb(255,255,255)',
+            },
+            '&.Mui-focused fieldset': {
+                borderColor: 'rgb(255,255,255)',
+            },
+        },
+    },
+})(TextField)
 
 const useStyles = makeStyles(theme => ({
     link_white: theme.link_white,
@@ -26,10 +57,38 @@ const useStyles = makeStyles(theme => ({
         display: 'flex',
         flexDirection: 'row',
     },
+    no_decoration: theme.no_decoration,
+    link: {
+        alignSelf: 'center',
+    },
 }))
 
 export default function Appbar() {
+    const [searchValue, setSearchValue] = React.useState('')
     const classes = useStyles()
+    const history = useHistory()
+    const dispatch = useDispatch()
+
+    const handleSubmit = async e => {
+        e.preventDefault()
+        const players = await searchPlayer(searchValue)
+        if (players.length === 0) {
+            dispatch(setSearchResults(null))
+            history.push('/players/search/' + searchValue)
+        } else if (players.length === 1) {
+            const player = players[0]
+            if (player.nameOnPlatform === searchValue) {
+                dispatch(setPlayer(player))
+                history.push('/player/' + player.accountId)
+            } else {
+                dispatch(setSearchResults(players))
+                history.push('/players/search/' + searchValue)
+            }
+        } else {
+            dispatch(setSearchResults(players))
+            history.push('/players/search/' + searchValue)
+        }
+    }
     return (
         <AppBar position="static">
             <Toolbar className={classes.appbar}>
@@ -39,19 +98,37 @@ export default function Appbar() {
                     </Link>
                 </Grid>
                 <Grid container direction="row" className={classes.buttons}>
-                    <Link to="/servers" className={classes.no_decoration}>
+                    <form onSubmit={handleSubmit}>
+                        <CustomTextField
+                            id="outlined-basic"
+                            label="Search player"
+                            variant="outlined"
+                            size="small"
+                            value={searchValue}
+                            onChange={e => setSearchValue(e.target.value)}
+                        />
+                    </form>
+                    <Link
+                        to="/servers"
+                        className={`${classes.no_decoration} ${classes.link}`}>
                         <Button className={classes.button}>servers</Button>
                     </Link>
 
-                    <Link to="/players" className={classes.no_decoration}>
+                    <Link
+                        to="/players"
+                        className={`${classes.no_decoration} ${classes.link}`}>
                         <Button className={classes.button}>players</Button>
                     </Link>
 
-                    <Link to="/seasons" className={classes.no_decoration}>
+                    <Link
+                        to="/seasons"
+                        className={`${classes.no_decoration} ${classes.link}`}>
                         <Button className={classes.button}>seasons</Button>
                     </Link>
 
-                    <Link to="/totd" className={classes.no_decoration}>
+                    <Link
+                        to="/totd"
+                        className={`${classes.no_decoration} ${classes.link}`}>
                         <Button className={classes.button}>track of the day</Button>
                     </Link>
                 </Grid>

@@ -11,6 +11,7 @@ import Seasons from '@components/Seasons'
 import TrackOfTheDay from '@components/TrackOfTheDay'
 import Track from '@components/Track'
 import Players from '@components/Players'
+import Search from '@components/Players/Search'
 import Player from '@components/Player'
 import Servers from '@components/Servers'
 
@@ -40,8 +41,12 @@ export default function App() {
                             <Route path="/servers">
                                 <Servers />
                             </Route>
-                            <Route path="/players">
+
+                            <Route path="/players" exact={true}>
                                 <Players />
+                            </Route>
+                            <Route path="/players/search/:name">
+                                <Search />
                             </Route>
                             <Route path="/player/:id" exact={true}>
                                 <Player />
@@ -49,7 +54,7 @@ export default function App() {
                             <Route path="/seasons">
                                 <Seasons />
                             </Route>
-                            <Route path="/totd/" exact={true}>
+                            <Route path="/totd/">
                                 <TrackOfTheDay />
                             </Route>
                             <Route path="/track/:id">
