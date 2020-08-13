@@ -3,11 +3,11 @@ import path from 'path'
 import dotenv from 'dotenv'
 dotenv.config()
 
-import { trackRouter } from './server/routes/tracks'
-import { leaderboardRouter } from './server/routes/leaderboards'
-import { totdRouter } from './server/routes/totd'
-import { seasonRouter } from './server/routes/seasons'
-import { playerRouter } from './server/routes/players'
+import { trackRouter } from './routes/tracks'
+import { leaderboardRouter } from './routes/leaderboards'
+import { totdRouter } from './routes/totd'
+import { seasonRouter } from './routes/seasons'
+import { playerRouter } from './routes/players'
 
 const app = express()
 

@@ -6,7 +6,6 @@ import {
     getPlayerRankings,
 } from 'trackmania-api-node'
 import { login } from './login'
-import { Op } from 'sequelize'
 import { cache } from './cache'
 
 export const namesFromAccountIds = async (
