@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable prettier/prettier */
+
 'use strict'
 const { Model } = require('sequelize')
 module.exports = (sequelize, DataTypes) => {
@@ -9,6 +12,10 @@ module.exports = (sequelize, DataTypes) => {
          */
         static associate(models) {
             // define association here
+            this.belongsTo(models.Maps, {
+                foreignKey: 'mapUid',
+                targetKey: 'mapUid',
+            })
         }
     }
     Leaderboards.init(
