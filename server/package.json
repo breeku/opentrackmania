@@ -4,12 +4,10 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "update:seasons": "ts-node updateSeasons.ts",
-        "update:leaderboard": "ts-node updateLeaderboard.ts",
-        "update:rankings": "ts-node updateRankings.ts",
-        "update:totd": "ts-node updateTOTD.ts",
+        "update:seasons": "ts-node cron/updateSeasons.ts",
+        "update:rankings": "ts-node cron/updateRankings.ts",
+        "update:totd": "ts-node cron/updateTOTD.ts",
         "start": "ts-node index.ts",
-        "heroku-postbuild": "cd client && npm i && npm i --only=dev --no-shrinkwrap && npm run build",
         "watch": "tsnd --respawn index.ts",
         "tslint": "tslint -c tslint.json -p tsconfig.json",
         "migrate": "sequelize db:migrate",
@@ -18,15 +16,16 @@
         "seed:undo:all": "sequelize db:seed:undo:all"
     },
     "cacheDirectories": [
-        "node_modules",
-        "client/node_modules"
+        "node_modules"
     ],
     "keywords": [],
     "author": "",
     "license": "ISC",
     "dependencies": {
+        "@types/cors": "^2.8.7",
         "@types/express": "^4.17.7",
         "@types/node": "^14.0.27",
+        "cors": "^2.8.5",
         "dotenv": "^8.2.0",
         "dotenv-cli": "^3.2.0",
         "express": "^4.17.1",

@@ -1,26 +1,27 @@
 import axios from 'axios'
+import { BASEURL } from "./config"
 
 export const getPlayerRankings = async () => {
-    const { data } = await axios.get('/api/players/rankings')
+    const { data } = await axios.get(BASEURL + '/players/rankings')
     return data
 }
 
 export const getPlayerRanking = async id => {
-    const { data } = await axios.get('/api/players/rankings/' + id)
+    const { data } = await axios.get(BASEURL + '/players/rankings/' + id)
     return data
 }
 
 export const getPlayer = async id => {
-    const { data } = await axios.get('/api/players/' + id)
+    const { data } = await axios.get( BASEURL+ '/players/' + id)
     return data
 }
 
 export const getPlayerTrophies = async id => {
-    const { data } = await axios.get('/api/players/trophies/' + id)
+    const { data } = await axios.get(BASEURL + '/players/trophies/' + id)
     return data
 }
 
 export const searchPlayer = async name => {
-    const { data } = await axios.get('/api/players/search/' + name)
+    const { data } = await axios.get(BASEURL + '/players/search/' + name)
     return data
 }

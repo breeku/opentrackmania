@@ -1,4 +1,4 @@
-import db from './models/index.js'
+import db from '../models/index.js'
 import {
     getProfilesById,
     getProfiles,
@@ -6,8 +6,7 @@ import {
     getPlayerRankings,
 } from 'trackmania-api-node'
 import { login } from './login'
-import { Op } from 'sequelize'
-import { cache } from './cache'
+import { cache } from '../cache'
 
 export const namesFromAccountIds = async (
     accountIds: any[],

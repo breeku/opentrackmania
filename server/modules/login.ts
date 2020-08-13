@@ -1,5 +1,5 @@
 import { loginUbi, loginTrackmaniaUbi, loginTrackmaniaNadeo } from 'trackmania-api-node'
-import { cache } from './cache'
+import { cache } from '../cache'
 
 export const login = async (): Promise<{
     ticket: string

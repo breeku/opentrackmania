@@ -1,4 +1,4 @@
-import db from './models/index.js'
+import db from '../models/index.js'
 import { getTOTDs } from 'trackmania-api-node'
 import { saveMaps } from './maps'
 
@@ -31,7 +31,7 @@ export const saveTOTD = async (): Promise<boolean> => {
                         raw: true,
                     }))
                 )
-                    db.Totds.create(t)
+                    await db.Totds.create(t)
             }
 
             await saveMaps(totd, 'totd', credentials)
