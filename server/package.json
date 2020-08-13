@@ -5,9 +5,8 @@
     "main": "index.js",
     "scripts": {
         "update:seasons": "ts-node cron/updateSeasons.ts",
-        "update:leaderboard": "ts-node cron/updateLeaderboard.ts",
         "update:rankings": "ts-node cron/updateRankings.ts",
-        "update:totd": "ts-node updateTOTD.ts",
+        "update:totd": "ts-node cron/updateTOTD.ts",
         "start": "ts-node index.ts",
         "watch": "tsnd --respawn index.ts",
         "tslint": "tslint -c tslint.json -p tsconfig.json",

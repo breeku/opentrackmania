@@ -31,7 +31,7 @@ export const saveTOTD = async (): Promise<boolean> => {
                         raw: true,
                     }))
                 )
-                    db.Totds.create(t)
+                    await db.Totds.create(t)
             }
 
             await saveMaps(totd, 'totd', credentials)
