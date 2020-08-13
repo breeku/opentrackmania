@@ -1,6 +1,6 @@
 import express from 'express'
 import db from '../models/index'
-import { QueryTypes } from 'sequelize'
+import { QueryTypes, Op } from 'sequelize'
 import { saveTrophies } from '../players'
 
 export const playerRouter = express.Router()
@@ -80,16 +80,9 @@ playerRouter.get('/rankings/:id', async (req, res) => {
 playerRouter.get('/trophies/:id', async (req, res) => {
     const id = req.params.id
 
-    const user = await db.Users.findOne({
-        where: {
-            accountId: id,
-        },
-        raw: true,
-    })
-
     let trophies = await db.Trophies.findOne({
         where: {
-            accountId: user.accountId,
+            accountId: id,
         },
         raw: true,
     })
@@ -113,12 +106,30 @@ playerRouter.get('/trophies/:id', async (req, res) => {
 playerRouter.get('/:id', async (req, res) => {
     const id = req.params.id
 
-    const { accountId, nameOnPlatform } = await db.Users.findOne({
+    const user = await db.Users.findOne({
         raw: true,
         where: {
             accountId: id,
         },
+        attributes: ['accountId', 'nameOnPlatform'],
     })
 
-    res.send({ accountId, nameOnPlatform })
+    res.send(user)
+})
+
+playerRouter.get('/search/:name', async (req, res) => {
+    const name = req.params.name
+
+    const users = await db.Users.findAll({
+        raw: true,
+        where: {
+            nameOnPlatform: {
+                [Op.iLike]: '%' + name + '%',
+            },
+        },
+        limit: 10,
+        attributes: ['accountId', 'nameOnPlatform'],
+    })
+
+    res.send(users)
 })
