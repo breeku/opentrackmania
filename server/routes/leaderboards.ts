@@ -1,6 +1,6 @@
 import express from 'express'
 import db from '../models/index'
-import { topPlayersMap } from '../leaderboard'
+import { topPlayersMap } from '../modules/leaderboard'
 import { literal } from 'sequelize'
 
 export const leaderboardRouter = express.Router()

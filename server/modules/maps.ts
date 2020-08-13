@@ -1,4 +1,4 @@
-import db from './models/index.js'
+import db from '../models/index.js'
 import { getMaps } from 'trackmania-api-node'
 
 export const saveMaps = async (

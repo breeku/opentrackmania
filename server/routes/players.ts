@@ -1,7 +1,7 @@
 import express from 'express'
 import db from '../models/index'
 import { QueryTypes, Op } from 'sequelize'
-import { saveTrophies } from '../players'
+import { saveTrophies } from '../modules/players'
 
 export const playerRouter = express.Router()
 

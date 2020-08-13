@@ -13,10 +13,10 @@ const app = express()
 
 app.use(express.static(path.join(__dirname, 'build')))
 
-app.use('/api/leaderboard', leaderboardRouter)
-app.use('/api/totds', totdRouter)
-app.use('/api/tracks', trackRouter)
-app.use('/api/seasons', seasonRouter)
-app.use('/api/players', playerRouter)
+app.use('/leaderboard', leaderboardRouter)
+app.use('/totds', totdRouter)
+app.use('/tracks', trackRouter)
+app.use('/seasons', seasonRouter)
+app.use('/players', playerRouter)
 
 app.listen(process.env.PORT || 8080)

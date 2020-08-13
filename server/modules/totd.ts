@@ -1,4 +1,4 @@
-import db from './models/index.js'
+import db from '../models/index.js'
 import { getTOTDs } from 'trackmania-api-node'
 import { saveMaps } from './maps'
 
