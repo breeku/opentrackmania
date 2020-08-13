@@ -4,9 +4,10 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "update:seasons": "ts-node updateSeasons.ts",
-        "update:leaderboard": "ts-node updateLeaderboard.ts",
-        "update:rankings": "ts-node updateRankings.ts",
+        "update:seasons": "ts-node cron/updateSeasons.ts",
+        "update:leaderboard": "ts-node cron/updateLeaderboard.ts",
+        "update:rankings": "ts-node cron/updateRankings.ts",
+        "update:test": "ts-node cron/test.ts",
         "update:totd": "ts-node updateTOTD.ts",
         "start": "ts-node index.ts",
         "watch": "tsnd --respawn index.ts",
