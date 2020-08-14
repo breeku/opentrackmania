@@ -20,6 +20,10 @@ module.exports = (sequelize, DataTypes) => {
                 foreignKey: 'mapUid',
                 sourceKey: 'mapUid',
             })
+            this.hasOne(models.Users, {
+                foreignKey: 'accountId',
+                sourceKey: 'accountId',
+            })
         }
     }
     Maps.init(
@@ -28,6 +32,7 @@ module.exports = (sequelize, DataTypes) => {
             mapUid: DataTypes.STRING,
             data: DataTypes.JSONB,
             campaign: DataTypes.STRING,
+            accountId: DataTypes.STRING,
         },
         {
             sequelize,
