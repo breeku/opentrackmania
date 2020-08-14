@@ -1,11 +1,12 @@
 import db from '../models/index.js'
 import { getMaps } from 'trackmania-api-node'
+import { createUser } from './players'
 
 export const saveMaps = async (
     maps: any[],
     campaign: string,
     credentials: {
-        ticket?: string
+        ticket: string
         ubiTokens: any
         nadeoTokens: any
         accountId?: string
@@ -33,6 +34,8 @@ export const saveMaps = async (
                     data: map,
                     campaign,
                 })
+                const user = await db.Users.find(x => x.accountId === map.author)
+                if (!user) await createUser(map.author, credentials)
             }
         }
     } catch (e) {

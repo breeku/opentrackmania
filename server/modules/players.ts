@@ -90,3 +90,23 @@ export const updateRankings = async (): Promise<boolean> => {
         return false
     }
 }
+
+export const createUser = async (
+    accountId: string,
+    credentials: {
+        ticket: string
+        ubiTokens: any
+        nadeoTokens: any
+        accountId?: string
+    },
+): Promise<void> => {
+    const { profiles } = await namesFromAccountIds([accountId], credentials)
+    const { rankings } = await getPlayerRankings(credentials.nadeoTokens.accessToken, [
+        accountId,
+    ])
+    await db.Users.create({
+        nameOnPlatform: profiles[0].nameOnPlatform,
+        accountId: accountId,
+    })
+    await db.Rankings.create(rankings[0])
+}
