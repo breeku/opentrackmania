@@ -26,7 +26,6 @@ totdRouter.get('/', async (req, res) => {
 })
 
 totdRouter.get('/random', async (req, res) => {
-    console.log('get random totd')
     const totd = await db.Totds.findOne({
         order: fn('random'),
         raw: true,
