@@ -34,7 +34,12 @@ export const saveMaps = async (
                     data: map,
                     campaign,
                 })
-                const user = await db.Users.find(x => x.accountId === map.author)
+                const user = await db.Users.findOne({
+                    where: {
+                        accountId: map.author,
+                    },
+                    raw: true,
+                })
                 if (!user) await createUser(map.author, credentials)
             }
         }
