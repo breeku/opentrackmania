@@ -20,6 +20,10 @@ module.exports = (sequelize, DataTypes) => {
                 foreignKey: 'accountId',
                 sourceKey: 'accountId',
             })
+            this.hasMany(models.Maps, {
+                foreignKey: 'accountId',
+                sourceKey: 'accountId',
+            })
         }
     }
     Users.init(

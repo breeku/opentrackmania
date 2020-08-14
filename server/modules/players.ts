@@ -7,18 +7,23 @@ import {
 } from 'trackmania-api-node'
 import { login } from './login'
 import { cache } from '../cache'
+import { array_chunks } from '../utils/'
 
 export const namesFromAccountIds = async (
     accountIds: any[],
     credentials: { ubiTokens: { accessToken: string }; ticket: string },
 ): Promise<{ accounts: any[]; profiles: any[] }> => {
-    const accounts = await getProfiles(credentials.ubiTokens.accessToken, accountIds)
-    const { profiles } = await getProfilesById(
-        credentials.ticket,
-        accounts.map(x => x.uid),
-    )
-    const result = { accounts, profiles }
-    return result
+    try {
+        const accounts = await getProfiles(credentials.ubiTokens.accessToken, accountIds)
+        const { profiles } = await getProfilesById(
+            credentials.ticket,
+            accounts.map(x => x.uid),
+        )
+        const result = { accounts, profiles }
+        return result
+    } catch (e) {
+        console.warn(e)
+    }
 }
 
 export const saveTrophies = async (accountId: string, retry = false, mode: string) => {
@@ -62,13 +67,14 @@ export const updateRankings = async (): Promise<boolean> => {
     try {
         const users = await db.Users.findAll({ raw: true })
 
-        for (let i = 0, offset = 100; i < users.length; offset *= 2, i += 100) {
-            const sliced = users
-                .map((x: { accountId: any }) => x.accountId)
-                .slice(i, offset)
+        const chunks = array_chunks(
+            users.map((x: { accountId: any }) => x.accountId),
+            100,
+        )
+        for (const chunk of chunks) {
             const { rankings } = await getPlayerRankings(
                 credentials.nadeoTokens.accessToken,
-                sliced,
+                chunk,
             )
 
             for (const ranking of rankings) {

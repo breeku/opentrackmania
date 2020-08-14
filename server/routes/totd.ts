@@ -1,6 +1,6 @@
 import express from 'express'
 import db from '../models/index'
-import { fn } from 'sequelize'
+import { Op, fn } from 'sequelize'
 
 export const totdRouter = express.Router()
 
@@ -39,4 +39,40 @@ totdRouter.get('/random', async (req, res) => {
     })
 
     res.send(map)
+})
+
+totdRouter.get('/stats', async (req, res) => {
+    const TOTDs = await db.Totds.findAll({
+        include: {
+            include: { all: true, nested: true }, // bad, couldnt do array of models. probably model associations are wrong?
+            where: { campaign: 'totd' },
+            model: db.Maps,
+        },
+    })
+
+    const maps = []
+
+    const plain = TOTDs.map(record => record.get({ plain: true }))
+
+    for (const { Map } of plain) {
+        const mappers = plain.filter(
+            filter => filter.Map.User.nameOnPlatform === Map.User.nameOnPlatform,
+        ).length
+        if (mappers > 1) {
+            const found = maps.find(x => x.nameOnPlatform === Map.User.nameOnPlatform)
+
+            if (!found) {
+                maps.push({
+                    nameOnPlatform: Map.User.nameOnPlatform,
+                    count: mappers,
+                    tracks: [Map.data],
+                })
+            } else {
+                found.tracks.push(Map.data)
+            }
+        }
+    }
+
+    maps.sort((a, b) => (a.count > b.count ? 1 : -1))
+    res.send({ maps })
 })

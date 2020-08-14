@@ -12,15 +12,11 @@ module.exports = (sequelize, DataTypes) => {
          */
         static associate(models) {
             // define association here
-            this.belongsTo(models.Maps, {
-                foreignKey: 'mapUid',
-                targetKey: 'mapUid',
-            })
+            this.belongsTo(models.Maps, { foreignKey: 'mapUid', targetKey: 'mapUid' })
         }
     }
     Leaderboards.init(
         {
-            campaign: DataTypes.STRING,
             mapUid: DataTypes.STRING,
             closed: DataTypes.BOOLEAN,
             data: DataTypes.JSONB,

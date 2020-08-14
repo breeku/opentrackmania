@@ -10,3 +10,8 @@ export const getRandomTOTD = async () => {
     const { data } = await axios.get(BASEURL + '/totds/random')
     return data
 }
+
+export const getTOTDStats = async () => {
+    const { data } = await axios.get(BASEURL + '/totds/stats')
+    return data
+}

@@ -2,7 +2,7 @@ import React from 'react'
 
 import { useDispatch, useSelector } from 'react-redux'
 
-import { Grid } from '@material-ui/core'
+import { Grid, Button, ButtonGroup } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 
 import { getTOTDs } from '@services/totds'
@@ -11,6 +11,7 @@ import { groupBy } from '@utils/'
 import { setTOTDs } from '@redux/store/totd'
 
 import TrackList from '@components/TrackList'
+import Stats from "./Stats"
 
 const useStyles = makeStyles(theme => ({
     TOTDs: {
@@ -39,7 +40,13 @@ const monthNames = [
     'December',
 ]
 
+const options = [
+    'Tracks',
+    'Stats'
+]
+
 export default function TrackOfTheDay() {
+    const [selected, setSelected] = React.useState(options[0])
     const { TOTDs } = useSelector(state => state.totd)
     const classes = useStyles()
     const dispatch = useDispatch()
@@ -58,7 +65,22 @@ export default function TrackOfTheDay() {
     return (
         <div className={classes.TOTDs}>
             <h1 className={classes.title}>Track of the day</h1>
-            {TOTDs && (
+            <ButtonGroup
+                            className={classes.buttons}
+                            color="primary"
+                            aria-label="text primary button group">
+                            {options.map(option => (
+                                <Button
+                                    style={{ color: '#fff' }}
+                                    variant={
+                                        option === selected ? 'outlined' : 'text'
+                                    }
+                                    onClick={() => setSelected(option)}>
+                                    {option}
+                                </Button>
+                            ))}
+                        </ButtonGroup>
+            {selected === 'Tracks' && <> {TOTDs && (
                 <>
                     {Array.from(Object.keys(TOTDs))
                         .sort((a, b) => b - a)
@@ -86,7 +108,8 @@ export default function TrackOfTheDay() {
                             )
                         })}
                 </>
-            )}
+            )} </>}
+            {selected === 'Stats' && <Stats/>}
         </div>
     )
 }
