@@ -91,16 +91,15 @@ totdRouter.get('/stats', async (req, res) => {
                             count: 1,
                         })
                     }
+                }
+                // ...rest
+                const index = top10.findIndex(
+                    x => x.nameOnPlatform === position.nameOnPlatform,
+                )
+                if (index !== -1) {
+                    top10[index].count += 1
                 } else {
-                    // ...rest
-                    const index = top10.findIndex(
-                        x => x.nameOnPlatform === position.nameOnPlatform,
-                    )
-                    if (index !== -1) {
-                        top10[index].count += 1
-                    } else {
-                        top10.push({ nameOnPlatform: position.nameOnPlatform, count: 1 })
-                    }
+                    top10.push({ nameOnPlatform: position.nameOnPlatform, count: 1 })
                 }
             }
         }
