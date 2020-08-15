@@ -28,8 +28,16 @@ module.exports = (sequelize, DataTypes) => {
     }
     Users.init(
         {
-            nameOnPlatform: DataTypes.STRING,
-            accountId: DataTypes.STRING,
+            nameOnPlatform: {
+                type: DataTypes.STRING,
+                unique: true,
+                allowNull: false,
+            },
+            accountId: {
+                type: DataTypes.STRING,
+                unique: true,
+                allowNull: false,
+            },
             clubId: DataTypes.INTEGER,
             clubName: DataTypes.STRING,
         },

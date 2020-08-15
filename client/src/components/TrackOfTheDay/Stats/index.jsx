@@ -56,7 +56,7 @@ export default function Stats() {
                             >
                                 <CartesianGrid strokeDasharray="3 3" />
                                 <XAxis dataKey="nameOnPlatform" allowDataOverflow={true} interval={0} angle={-45} textAnchor="end" height={120} minTickGap={20}/>
-                                <YAxis />
+                                <YAxis allowDecimals={false} />
                                 <Tooltip />
                                 <Legend />
                                 <Bar dataKey="count" fill="#8884d8" />

@@ -15,6 +15,9 @@ export const namesFromAccountIds = async (
 ): Promise<{ accounts: any[]; profiles: any[] }> => {
     try {
         const accounts = await getProfiles(credentials.ubiTokens.accessToken, accountIds)
+        if (accounts.length === 0) {
+            throw new Error('No account(s) found for ' + accountIds)
+        }
         const { profiles } = await getProfilesById(
             credentials.ticket,
             accounts.map(x => x.uid),
