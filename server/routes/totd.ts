@@ -42,15 +42,18 @@ totdRouter.get('/random', async (req, res) => {
 })
 
 totdRouter.get('/stats', async (req, res) => {
+    // this can be cached everyday at 17:01 UTC
     const TOTDs = await db.Totds.findAll({
         include: {
-            include: { all: true, nested: true }, // bad, couldnt do array of models. probably model associations are wrong?
+            include: { all: true, nested: true }, // bad, couldnt do array of models since results are duplicated. probably model associations are wrong?
             where: { campaign: 'totd' },
             model: db.Maps,
         },
     })
 
     const maps = []
+    let top10 = []
+    let top1 = []
 
     const plain = TOTDs.map(record => record.get({ plain: true }))
 
@@ -71,8 +74,40 @@ totdRouter.get('/stats', async (req, res) => {
                 found.tracks.push(Map.data)
             }
         }
+        const { data, closed } = Map.Leaderboard
+        if (closed) {
+            for (let i = 0; i < data.length; i++) {
+                const position = data[i]
+                if (i === 0) {
+                    // top 1
+                    const index = top1.findIndex(
+                        x => x.nameOnPlatform === position.nameOnPlatform,
+                    )
+                    if (index !== -1) {
+                        top1[index].count += 1
+                    } else {
+                        top1.push({
+                            nameOnPlatform: position.nameOnPlatform,
+                            count: 1,
+                        })
+                    }
+                } else {
+                    // ...rest
+                    const index = top10.findIndex(
+                        x => x.nameOnPlatform === position.nameOnPlatform,
+                    )
+                    if (index !== -1) {
+                        top10[index].count += 1
+                    } else {
+                        top10.push({ nameOnPlatform: position.nameOnPlatform, count: 1 })
+                    }
+                }
+            }
+        }
     }
-
+    top10 = top10.sort((a, b) => (a.count < b.count ? 1 : -1)).splice(0, 10)
+    top1 = top1.sort((a, b) => (a.count < b.count ? 1 : -1)).splice(0, 10)
     maps.sort((a, b) => (a.count > b.count ? 1 : -1))
-    res.send({ maps })
+
+    res.send({ maps, top10, top1 })
 })
