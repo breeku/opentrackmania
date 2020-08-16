@@ -31,6 +31,7 @@ export const saveMaps = async (
                 db.Maps.create({
                     mapId: map.mapId,
                     mapUid: map.mapUid,
+                    accountId: map.author,
                     data: map,
                     campaign,
                 })
