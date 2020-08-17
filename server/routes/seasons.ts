@@ -14,7 +14,7 @@ seasonRouter.get('/', async (req, res) => {
 
         const maps = await db.Maps.findAll({
             where: {
-                campaign: season.seasonUid,
+                campaign: season.name,
             },
             raw: true,
         })

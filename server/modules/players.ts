@@ -16,7 +16,8 @@ export const namesFromAccountIds = async (
     try {
         const accounts = await getProfiles(credentials.ubiTokens.accessToken, accountIds)
         if (accounts.length === 0) {
-            throw new Error('No account(s) found for ' + accountIds)
+            console.warn('No account(s) found for ' + accountIds)
+            return null
         }
         const { profiles } = await getProfilesById(
             credentials.ticket,
@@ -103,13 +104,17 @@ export const createUser = async (
         accountId?: string
     },
 ): Promise<void> => {
-    const { profiles } = await namesFromAccountIds([accountId], credentials)
-    const { rankings } = await getPlayerRankings(credentials.nadeoTokens.accessToken, [
-        accountId,
-    ])
-    await db.Users.create({
-        nameOnPlatform: profiles[0].nameOnPlatform,
-        accountId: accountId,
-    })
-    await db.Rankings.create(rankings[0])
+    const res = await namesFromAccountIds([accountId], credentials)
+    if (res) {
+        const { profiles } = res
+        const { rankings } = await getPlayerRankings(
+            credentials.nadeoTokens.accessToken,
+            [accountId],
+        )
+        await db.Users.create({
+            nameOnPlatform: profiles[0].nameOnPlatform,
+            accountId: accountId,
+        })
+        await db.Rankings.create(rankings[0])
+    }
 }

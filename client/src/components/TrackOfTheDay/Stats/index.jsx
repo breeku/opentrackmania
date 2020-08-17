@@ -45,14 +45,14 @@ export default function Stats() {
         }
         if (!TOTDstats) getData()
     }, [TOTDstats, dispatch])
-    console.log(TOTDstats)
+
     return (
         <>
             {TOTDstats && (
                 <Grid container>
                     <Grid item xs={12} sm={6}>
                         <Paper className={classes.paper} elevation={3}>
-                            <h2>Players with {'>'} 1 track of the days</h2>
+                            <h2>Mappers with {'>'} 1 tracks of the day</h2>
                             <div className={classes.chartContainer}>
                                 <ResponsiveContainer
                                     width="100%"
@@ -80,7 +80,14 @@ export default function Stats() {
                                         <YAxis allowDecimals={false} />
                                         <Tooltip />
                                         <Legend />
-                                        <Bar dataKey="count" fill="#8884d8" />
+                                        <Bar
+                                            dataKey="count"
+                                            fill="#8884d8"
+                                            label={{
+                                                fill: 'white',
+                                                fontSize: 11,
+                                            }}
+                                        />
                                     </BarChart>
                                 </ResponsiveContainer>
                             </div>
@@ -115,7 +122,14 @@ export default function Stats() {
                                         <YAxis allowDecimals={false} />
                                         <Tooltip />
                                         <Legend />
-                                        <Bar dataKey="count" fill="#8884d8" />
+                                        <Bar
+                                            dataKey="count"
+                                            fill="#8884d8"
+                                            label={{
+                                                fill: 'white',
+                                                fontSize: 11,
+                                            }}
+                                        />
                                     </BarChart>
                                 </ResponsiveContainer>
                             </div>
@@ -150,7 +164,14 @@ export default function Stats() {
                                         <YAxis allowDecimals={false} />
                                         <Tooltip />
                                         <Legend />
-                                        <Bar dataKey="count" fill="#8884d8" />
+                                        <Bar
+                                            dataKey="count"
+                                            fill="#8884d8"
+                                            label={{
+                                                fill: 'white',
+                                                fontSize: 11,
+                                            }}
+                                        />
                                     </BarChart>
                                 </ResponsiveContainer>
                             </div>

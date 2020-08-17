@@ -21,6 +21,7 @@ module.exports = (sequelize, DataTypes) => {
             month: DataTypes.INTEGER,
             day: DataTypes.INTEGER,
             mapUid: DataTypes.STRING,
+            seasonUid: DataTypes.STRING,
         },
         {
             sequelize,

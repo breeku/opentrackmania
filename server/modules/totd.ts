@@ -19,6 +19,7 @@ export const saveTOTD = async (): Promise<boolean> => {
                             month: month.month,
                             day: day.monthDay,
                             mapUid: uid,
+                            seasonUid: day.seasonUid,
                         })
                 }
             }
@@ -32,9 +33,8 @@ export const saveTOTD = async (): Promise<boolean> => {
                     }))
                 )
                     await db.Totds.create(t)
+                await saveMaps([t], 'totd', t.seasonUid, credentials) // should split the totd array with seasonuids so we could pass all map ids at once
             }
-
-            await saveMaps(totd, 'totd', credentials)
 
             return true
         } catch (e) {
