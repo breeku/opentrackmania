@@ -5,6 +5,7 @@ import { createUser } from './players'
 export const saveMaps = async (
     maps: any[],
     campaign: string,
+    seasonUid: string,
     credentials: {
         ticket: string
         ubiTokens: any
@@ -28,12 +29,13 @@ export const saveMaps = async (
         if (mapsToAdd.length > 0) {
             const maps = await getMaps(credentials.ubiTokens.accessToken, mapsToAdd)
             for (const map of maps) {
-                db.Maps.create({
+                await db.Maps.create({
                     mapId: map.mapId,
                     mapUid: map.mapUid,
                     accountId: map.author,
                     data: map,
                     campaign,
+                    seasonUid,
                 })
                 const user = await db.Users.findOne({
                     where: {

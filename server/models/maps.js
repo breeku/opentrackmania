@@ -33,6 +33,7 @@ module.exports = (sequelize, DataTypes) => {
             data: DataTypes.JSONB,
             campaign: DataTypes.STRING,
             accountId: DataTypes.STRING,
+            seasonUid: DataTypes.STRING,
         },
         {
             sequelize,

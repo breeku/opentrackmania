@@ -35,7 +35,7 @@ export const saveSeasons = async (): Promise<boolean> => {
                         playlist,
                     })
 
-                    await saveMaps(playlist, seasonUid, credentials)
+                    await saveMaps(playlist, name, seasonUid, credentials)
                 }
             }
             return true

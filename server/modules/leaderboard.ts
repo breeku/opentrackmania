@@ -1,5 +1,10 @@
 import db from '../models/index.js'
-import { getTopPlayersMap, getMapRecords, getPlayerRankings } from 'trackmania-api-node'
+import {
+    getTopPlayersMap,
+    getMapRecords,
+    getPlayerRankings,
+    getTopGroupPlayersMap,
+} from 'trackmania-api-node'
 
 import { login } from './login'
 import { cache } from '../cache'
@@ -17,14 +22,17 @@ export const topPlayersMap = async (
 
         for (const map of maps) {
             try {
-                const { mapId } = await db.Maps.findOne({
+                const { mapId, seasonUid } = await db.Maps.findOne({
                     where: { mapUid: map },
                     raw: true,
                 })
-                const topPlayers = await getTopPlayersMap(
-                    credentials.nadeoTokens.accessToken,
-                    map,
-                )
+                const topPlayers = seasonUid
+                    ? await getTopGroupPlayersMap(
+                          credentials.nadeoTokens.accessToken,
+                          seasonUid,
+                          map,
+                      )
+                    : await getTopPlayersMap(credentials.nadeoTokens.accessToken, map)
 
                 for (const value of topPlayers.tops[0].top) {
                     const user = await db.Users.findOne({
