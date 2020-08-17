@@ -66,72 +66,78 @@ export default function Leaderboard({ leaderboard }) {
                     Leaderboards are closed!
                 </h4>
             )}
-            {data.map((record, i) => (
-                <Paper className={classes.leaderboard}>
-                    <Grid container direction="row">
-                        <Grid item xs={12} sm={12} md={3}>
-                            <span className={classes.paper_content}>
-                                <h4 className={classes.position}>#{i + 1}</h4>
-                                <Link
-                                    style={{ textDecoration: 'none' }}
-                                    to={`/player/${record.accountId}`}>
-                                    <h3 className={classes.color_blue}>
-                                        {record.nameOnPlatform}
-                                    </h3>
-                                </Link>
-                            </span>
+            {data.map((record, i) => {
+                const time = new Date(record.score).toISOString().slice(14, -1)
+                return (
+                    <Paper className={classes.leaderboard}>
+                        <Grid container direction="row">
+                            <Grid item xs={12} sm={12} md={3}>
+                                <span className={classes.paper_content}>
+                                    <h4 className={classes.position}>#{i + 1}</h4>
+                                    <Link
+                                        style={{ textDecoration: 'none' }}
+                                        to={`/player/${record.accountId}`}>
+                                        <h3 className={classes.color_blue}>
+                                            {record.nameOnPlatform}
+                                        </h3>
+                                    </Link>
+                                </span>
+                            </Grid>
+                            <Grid item xs={12} sm={12} md={3}>
+                                <h4
+                                    className={`${classes.paper_content} ${classes.no_margin_padding}`}>
+                                    {record.zoneName}
+                                </h4>
+                            </Grid>
+                            <Grid item xs={12} sm={12} md={4}>
+                                <span className={classes.paper_content}>
+                                    <h2>
+                                        {i === 0 ? (
+                                            <>{time}</>
+                                        ) : (
+                                            <>
+                                                {time} (
+                                                <span className={classes.color_red}>
+                                                    +
+                                                    {new Date(
+                                                        record.score - data[0].score,
+                                                    )
+                                                        .toISOString()
+                                                        .slice(14, -1)}
+                                                </span>
+                                                <span className={classes.color_white}>
+                                                    )
+                                                </span>
+                                            </>
+                                        )}
+                                    </h2>
+                                </span>
+                            </Grid>
+                            <Grid item xs={12} sm={12} md={2}>
+                                <span className={classes.paper_content}>
+                                    <Button
+                                        href={record.ghost}
+                                        target="_blank"
+                                        variant="outlined"
+                                        color="default"
+                                        className={classes.button_download}>
+                                        download
+                                    </Button>
+                                    <a
+                                        href="https://www.reddit.com/r/TrackMania/comments/i51q98/download_and_view_wr_ghosts_in_replay_editor/"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className={classes.question_mark}>
+                                        <span role="img" aria-label="question mark">
+                                            ❔
+                                        </span>
+                                    </a>
+                                </span>
+                            </Grid>
                         </Grid>
-                        <Grid item xs={12} sm={12} md={3}>
-                            <h4
-                                className={`${classes.paper_content} ${classes.no_margin_padding}`}>
-                                {record.zoneName}
-                            </h4>
-                        </Grid>
-                        <Grid item xs={12} sm={12} md={4}>
-                            <span className={classes.paper_content}>
-                                <h2>
-                                    {i === 0 ? (
-                                        <>{(record.score / 1000).toFixed(3)}s</>
-                                    ) : (
-                                        <>
-                                            {record.score / 1000}s (
-                                            <span className={classes.color_red}>
-                                                +
-                                                {(
-                                                    record.score / 1000 -
-                                                    data[0].score / 1000
-                                                ).toFixed(3)}
-                                            </span>
-                                            <span className={classes.color_white}>)</span>
-                                        </>
-                                    )}
-                                </h2>
-                            </span>
-                        </Grid>
-                        <Grid item xs={12} sm={12} md={2}>
-                            <span className={classes.paper_content}>
-                                <Button
-                                    href={record.ghost}
-                                    target="_blank"
-                                    variant="outlined"
-                                    color="default"
-                                    className={classes.button_download}>
-                                    download
-                                </Button>
-                                <a
-                                    href="https://www.reddit.com/r/TrackMania/comments/i51q98/download_and_view_wr_ghosts_in_replay_editor/"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className={classes.question_mark}>
-                                    <span role="img" aria-label="question mark">
-                                        ❔
-                                    </span>
-                                </a>
-                            </span>
-                        </Grid>
-                    </Grid>
-                </Paper>
-            ))}
+                    </Paper>
+                )
+            })}
         </>
     )
 }

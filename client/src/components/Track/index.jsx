@@ -114,7 +114,9 @@ export default function Track() {
                                                 Author
                                             </h3>
                                             <h3>
-                                                {(track.authorScore / 1000).toFixed(3)}s
+                                                {new Date(track.authorScore)
+                                                    .toISOString()
+                                                    .slice(14, -1)}
                                             </h3>
                                         </Paper>
                                     </Grid>
@@ -127,7 +129,9 @@ export default function Track() {
                                                 Gold
                                             </h3>
                                             <h3>
-                                                {(track.goldScore / 1000).toFixed(3)}s
+                                                {new Date(track.goldScore)
+                                                    .toISOString()
+                                                    .slice(14, -1)}
                                             </h3>
                                         </Paper>
                                     </Grid>
@@ -140,7 +144,9 @@ export default function Track() {
                                                 Silver
                                             </h3>
                                             <h3>
-                                                {(track.silverScore / 1000).toFixed(3)}s
+                                                {new Date(track.silverScore)
+                                                    .toISOString()
+                                                    .slice(14, -1)}
                                             </h3>
                                         </Paper>
                                     </Grid>
@@ -153,7 +159,9 @@ export default function Track() {
                                                 Bronze
                                             </h3>
                                             <h3>
-                                                {(track.bronzeScore / 1000).toFixed(3)}s
+                                                {new Date(track.bronzeScore)
+                                                    .toISOString()
+                                                    .slice(14, -1)}
                                             </h3>
                                         </Paper>
                                     </Grid>
