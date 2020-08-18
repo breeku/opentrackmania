@@ -53,7 +53,7 @@ export default function Search() {
                                 <Grid item xs={12} sm={12}>
                                     <Link
                                         className={classes.link}
-                                        to={`/player/${account.accountId}`}>
+                                        to={`/player/${account.accountId}/stats`}>
                                         {account.nameOnPlatform}
                                     </Link>
                                 </Grid>
