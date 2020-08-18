@@ -76,7 +76,7 @@ export default function Leaderboard({ leaderboard }) {
                                     <h4 className={classes.position}>#{i + 1}</h4>
                                     <Link
                                         style={{ textDecoration: 'none' }}
-                                        to={`/player/${record.accountId}`}>
+                                        to={`/player/${record.accountId}/stats`}>
                                         <h3 className={classes.color_blue}>
                                             {record.nameOnPlatform}
                                         </h3>
