@@ -2,7 +2,9 @@ import React from 'react'
 
 import { useDispatch, useSelector } from 'react-redux'
 
-import { Grid, Button, ButtonGroup } from '@material-ui/core'
+import { Link, useParams } from 'react-router-dom'
+
+import { Grid, Button, ButtonGroup, Paper } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 
 import { getTOTDs } from '@services/totds'
@@ -11,7 +13,7 @@ import { groupBy } from '@utils/'
 import { setTOTDs } from '@redux/store/totd'
 
 import TrackList from '@components/TrackList'
-import Stats from "./Stats"
+import Stats from './Stats'
 
 const useStyles = makeStyles(theme => ({
     TOTDs: {
@@ -23,6 +25,14 @@ const useStyles = makeStyles(theme => ({
         margin: 'auto',
     },
     title: theme.title,
+    paper: {
+        display: 'inline-flex',
+        justifyContent: 'center',
+        margin: 10,
+        padding: 10,
+        color: '#fff',
+        backgroundColor: theme.background_color,
+    },
 }))
 
 const monthNames = [
@@ -40,13 +50,10 @@ const monthNames = [
     'December',
 ]
 
-const options = [
-    'Tracks',
-    'Stats'
-]
+const options = ['tracks', 'stats']
 
 export default function TrackOfTheDay() {
-    const [selected, setSelected] = React.useState(options[0])
+    const { selection } = useParams()
     const { TOTDs } = useSelector(state => state.totd)
     const classes = useStyles()
     const dispatch = useDispatch()
@@ -65,51 +72,56 @@ export default function TrackOfTheDay() {
     return (
         <div className={classes.TOTDs}>
             <h1 className={classes.title}>Track of the day</h1>
-            <ButtonGroup
-                            className={classes.buttons}
-                            color="primary"
-                            aria-label="text primary button group">
-                            {options.map(option => (
-                                <Button
-                                    style={{ color: '#fff' }}
-                                    variant={
-                                        option === selected ? 'outlined' : 'text'
-                                    }
-                                    onClick={() => setSelected(option)}>
-                                    {option}
-                                </Button>
-                            ))}
-                        </ButtonGroup>
-            {selected === 'Tracks' && <> {TOTDs && (
+            <Paper className={classes.paper} elevation={3}>
+                <ButtonGroup
+                    className={classes.buttons}
+                    aria-label="text primary button group">
+                    {options.map(option => (
+                        <Link to={option}>
+                            <Button
+                                color="primary"
+                                style={{ color: '#fff' }}
+                                variant={option === selection ? 'outlined' : 'text'}>
+                                {option}
+                            </Button>
+                        </Link>
+                    ))}
+                </ButtonGroup>
+            </Paper>
+            {selection === 'tracks' && (
                 <>
-                    {Array.from(Object.keys(TOTDs))
-                        .sort((a, b) => b - a)
-                        .map(month => {
-                            return (
-                                <>
-                                    <h2>{monthNames[month - 1]}</h2>
-                                    <Grid
-                                        container
-                                        className={classes.TOTD_grid}
-                                        spacing={6}>
-                                        {Array.from(TOTDs[month])
-                                            .sort((a, b) =>
-                                                a.day < b.day
-                                                    ? 1
-                                                    : b.day < a.day
-                                                    ? -1
-                                                    : 0,
-                                            )
-                                            .map(totd => {
-                                                return <TrackList track={totd} />
-                                            })}
-                                    </Grid>
-                                </>
-                            )
-                        })}
+                    {TOTDs && (
+                        <>
+                            {Array.from(Object.keys(TOTDs))
+                                .sort((a, b) => b - a)
+                                .map(month => {
+                                    return (
+                                        <>
+                                            <h2>{monthNames[month - 1]}</h2>
+                                            <Grid
+                                                container
+                                                className={classes.TOTD_grid}
+                                                spacing={6}>
+                                                {Array.from(TOTDs[month])
+                                                    .sort((a, b) =>
+                                                        a.day < b.day
+                                                            ? 1
+                                                            : b.day < a.day
+                                                            ? -1
+                                                            : 0,
+                                                    )
+                                                    .map(totd => {
+                                                        return <TrackList track={totd} />
+                                                    })}
+                                            </Grid>
+                                        </>
+                                    )
+                                })}
+                        </>
+                    )}
                 </>
-            )} </>}
-            {selected === 'Stats' && <Stats/>}
+            )}
+            {selection === 'stats' && <Stats />}
         </div>
     )
 }

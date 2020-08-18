@@ -146,7 +146,7 @@ export default function Players() {
                                         m.dataIndex
                                     ]
                                     dispatch(setPlayer({ accountId, nameOnPlatform }))
-                                    history.push('/player/' + accountId)
+                                    history.push('/player/' + accountId + '/stats')
                                 },
                             }}
                         />
