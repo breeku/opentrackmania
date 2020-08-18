@@ -48,13 +48,13 @@ export default function App() {
                             <Route path="/players/search/:name">
                                 <Search />
                             </Route>
-                            <Route path="/player/:id" exact={true}>
+                            <Route path="/player/:id/:selection" exact={true}>
                                 <Player />
                             </Route>
                             <Route path="/seasons">
                                 <Seasons />
                             </Route>
-                            <Route path="/totd/">
+                            <Route path="/totd/:selection">
                                 <TrackOfTheDay />
                             </Route>
                             <Route path="/track/:id">

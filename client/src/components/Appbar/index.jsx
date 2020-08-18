@@ -127,7 +127,7 @@ export default function Appbar() {
                     </Link>
 
                     <Link
-                        to="/totd"
+                        to="/totd/tracks"
                         className={`${classes.no_decoration} ${classes.link}`}>
                         <Button className={classes.button}>track of the day</Button>
                     </Link>

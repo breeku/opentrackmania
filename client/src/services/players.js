@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { BASEURL } from "./config"
+import { BASEURL } from './config'
 
 export const getPlayerRankings = async () => {
     const { data } = await axios.get(BASEURL + '/players/rankings')
@@ -12,7 +12,7 @@ export const getPlayerRanking = async id => {
 }
 
 export const getPlayer = async id => {
-    const { data } = await axios.get( BASEURL+ '/players/' + id)
+    const { data } = await axios.get(BASEURL + '/players/' + id)
     return data
 }
 
@@ -23,5 +23,10 @@ export const getPlayerTrophies = async id => {
 
 export const searchPlayer = async name => {
     const { data } = await axios.get(BASEURL + '/players/search/' + name)
+    return data
+}
+
+export const getPlayerRecords = async id => {
+    const { data } = await axios.get(BASEURL + '/players/records/' + id)
     return data
 }

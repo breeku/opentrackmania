@@ -133,3 +133,25 @@ playerRouter.get('/search/:name', async (req, res) => {
 
     res.send(users)
 })
+
+playerRouter.get('/records/:id', async (req, res) => {
+    const id = req.params.id
+
+    const records = await db.Leaderboards.findAll({
+        where: {
+            data: {
+                [Op.contains]: [{ accountId: id }],
+            },
+        },
+        include: {
+            model: db.Maps,
+        },
+        raw: true,
+    })
+
+    const filtered = records.map((record: { data: any[] }) => {
+        return { ...record, data: record.data.filter(x => x.accountId === id)[0] }
+    })
+
+    res.send(filtered)
+})
