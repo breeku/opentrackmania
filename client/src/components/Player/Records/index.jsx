@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { useDispatch } from 'react-redux'
+
 import { useHistory } from 'react-router-dom'
 
 import MUIDataTable from 'mui-datatables'
@@ -8,6 +10,7 @@ import { MuiThemeProvider, createMuiTheme } from '@material-ui/core'
 
 import { getPlayerRecords } from '@services/players'
 import { textParser } from '@utils'
+import { setTrack } from '@redux/store/tracks'
 
 const useStyles = makeStyles(theme => ({
     records: {
@@ -29,6 +32,7 @@ const theme = createMuiTheme({
 export default function Records({ id }) {
     const [playerRecords, setPlayerRecords] = React.useState(null)
     const history = useHistory()
+    const dispatch = useDispatch()
     const classes = useStyles()
 
     React.useEffect(() => {
@@ -129,6 +133,9 @@ export default function Records({ id }) {
                                 print: false,
                                 search: false,
                                 onRowClick: (d, m) => {
+                                    dispatch(
+                                        setTrack(playerRecords[m.dataIndex['Map.data']]),
+                                    )
                                     history.push(
                                         '/track/' + playerRecords[m.dataIndex].mapUid,
                                     )
