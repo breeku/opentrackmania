@@ -61,12 +61,7 @@ export default function Rankings({ id }) {
                     return {
                         zone: {
                             ...zone,
-                            timestamp:
-                                date.getDate() +
-                                '.' +
-                                (date.getMonth() + 1) +
-                                '.' +
-                                date.getFullYear(),
+                            timestamp: date.getDate() + '.' + (date.getMonth() + 1),
                         },
                     }
                 } else {
@@ -122,7 +117,11 @@ export default function Rankings({ id }) {
                                     stroke="rgba(255,255,255,0.3)"
                                     strokeDasharray="5 5"
                                 />
-                                <XAxis dataKey="zone.timestamp" reversed={true} />
+                                <XAxis
+                                    dataKey="zone.timestamp"
+                                    reversed={true}
+                                    interval={0}
+                                />
                                 <YAxis
                                     allowDecimals={false}
                                     domain={[
