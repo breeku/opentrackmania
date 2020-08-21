@@ -2,6 +2,8 @@ import React from 'react'
 
 import { useDispatch, useSelector } from 'react-redux'
 
+import { useHistory } from 'react-router-dom'
+
 import {
     ResponsiveContainer,
     BarChart,
@@ -19,8 +21,6 @@ import { makeStyles } from '@material-ui/core/styles'
 import { getTOTDStats } from '@services/totds'
 import { setTOTDStats } from '@redux/store/totd'
 
-import Construction from '@components/Construction'
-
 const useStyles = makeStyles(theme => ({
     chartContainer: {
         minWidth: 750,
@@ -36,6 +36,7 @@ const useStyles = makeStyles(theme => ({
 export default function Stats() {
     const { TOTDstats } = useSelector(state => state.totd)
     const dispatch = useDispatch()
+    const history = useHistory()
     const classes = useStyles()
 
     React.useEffect(() => {
@@ -76,6 +77,19 @@ export default function Stats() {
                                             height={120}
                                             minTickGap={20}
                                             reversed={true}
+                                            onClick={e =>
+                                                history.push(
+                                                    '/player/' +
+                                                        TOTDstats.maps[e.index]
+                                                            .accountId +
+                                                        '/stats',
+                                                )
+                                            }
+                                            style={{
+                                                fill: '#0074d1',
+                                                fontWeight: 'bold',
+                                                cursor: 'pointer',
+                                            }}
                                         />
                                         <YAxis allowDecimals={false} />
                                         <Tooltip />
@@ -118,6 +132,19 @@ export default function Stats() {
                                             textAnchor="end"
                                             height={120}
                                             minTickGap={20}
+                                            onClick={e =>
+                                                history.push(
+                                                    '/player/' +
+                                                        TOTDstats.top10[e.index]
+                                                            .accountId +
+                                                        '/stats',
+                                                )
+                                            }
+                                            style={{
+                                                fill: '#0074d1',
+                                                fontWeight: 'bold',
+                                                cursor: 'pointer',
+                                            }}
                                         />
                                         <YAxis allowDecimals={false} />
                                         <Tooltip />
@@ -160,6 +187,19 @@ export default function Stats() {
                                             textAnchor="end"
                                             height={120}
                                             minTickGap={20}
+                                            onClick={e =>
+                                                history.push(
+                                                    '/player/' +
+                                                        TOTDstats.top1[e.index]
+                                                            .accountId +
+                                                        '/stats',
+                                                )
+                                            }
+                                            style={{
+                                                fill: '#0074d1',
+                                                fontWeight: 'bold',
+                                                cursor: 'pointer',
+                                            }}
                                         />
                                         <YAxis allowDecimals={false} />
                                         <Tooltip />

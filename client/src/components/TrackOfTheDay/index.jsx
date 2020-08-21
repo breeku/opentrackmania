@@ -33,6 +33,7 @@ const useStyles = makeStyles(theme => ({
         color: '#fff',
         backgroundColor: theme.background_color,
     },
+    no_decoration: theme.no_decoration,
 }))
 
 const monthNames = [
@@ -77,7 +78,7 @@ export default function TrackOfTheDay() {
                     className={classes.buttons}
                     aria-label="text primary button group">
                     {options.map(option => (
-                        <Link to={option}>
+                        <Link to={option} className={classes.no_decoration}>
                             <Button
                                 color="primary"
                                 style={{ color: '#fff' }}

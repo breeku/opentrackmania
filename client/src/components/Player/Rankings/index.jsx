@@ -29,19 +29,27 @@ const useStyles = makeStyles(theme => ({
     },
 }))
 
+const options = [
+    { title: '7d', number: 7 },
+    { title: '14d', number: 14 },
+    { title: '30d', number: 30 },
+    { title: '365d', number: 365 },
+]
+
 export default function Rankings({ id }) {
     const [zoneName, setZoneName] = React.useState('World')
+    const [selectedTime, setSelectedTime] = React.useState(options[0])
     const [playerRanking, setPlayerRanking] = React.useState(null)
     const classes = useStyles()
 
     React.useEffect(() => {
         const getData = async () => {
-            const response = await getPlayerRanking(id)
+            const response = await getPlayerRanking(id, selectedTime.number)
             setPlayerRanking(response)
         }
 
         getData()
-    }, [id])
+    }, [id, selectedTime])
 
     const rankings = React.useMemo(
         () =>
@@ -53,12 +61,7 @@ export default function Rankings({ id }) {
                     return {
                         zone: {
                             ...zone,
-                            timestamp:
-                                date.getDate() +
-                                '.' +
-                                (date.getMonth() + 1) +
-                                '.' +
-                                date.getFullYear(),
+                            timestamp: date.getDate() + '.' + (date.getMonth() + 1),
                         },
                     }
                 } else {
@@ -67,6 +70,7 @@ export default function Rankings({ id }) {
             }),
         [playerRanking, zoneName],
     )
+
     return (
         <>
             {rankings && (
@@ -113,7 +117,11 @@ export default function Rankings({ id }) {
                                     stroke="rgba(255,255,255,0.3)"
                                     strokeDasharray="5 5"
                                 />
-                                <XAxis dataKey="zone.timestamp" />
+                                <XAxis
+                                    dataKey="zone.timestamp"
+                                    reversed={true}
+                                    interval={0}
+                                />
                                 <YAxis
                                     allowDecimals={false}
                                     domain={[
@@ -138,6 +146,23 @@ export default function Rankings({ id }) {
                                 <Tooltip />
                             </LineChart>
                         </ResponsiveContainer>
+                        <ButtonGroup
+                            className={classes.buttons}
+                            color="primary"
+                            aria-label="text primary button group">
+                            {options.map(option => (
+                                <Button
+                                    style={{ color: '#fff' }}
+                                    variant={
+                                        option.title === selectedTime.title
+                                            ? 'outlined'
+                                            : 'text'
+                                    }
+                                    onClick={() => setSelectedTime(option)}>
+                                    {option.title}
+                                </Button>
+                            ))}
+                        </ButtonGroup>
                     </Paper>
                 </>
             )}

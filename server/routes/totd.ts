@@ -67,6 +67,7 @@ totdRouter.get('/stats', async (req, res) => {
             if (!found) {
                 maps.push({
                     nameOnPlatform: Map.User.nameOnPlatform,
+                    accountId: Map.User.accountId,
                     count: mappers,
                     tracks: [Map.data],
                 })
@@ -88,6 +89,7 @@ totdRouter.get('/stats', async (req, res) => {
                     } else {
                         top1.push({
                             nameOnPlatform: position.nameOnPlatform,
+                            accountId: position.accountId,
                             count: 1,
                         })
                     }
@@ -99,7 +101,11 @@ totdRouter.get('/stats', async (req, res) => {
                 if (index !== -1) {
                     top10[index].count += 1
                 } else {
-                    top10.push({ nameOnPlatform: position.nameOnPlatform, count: 1 })
+                    top10.push({
+                        nameOnPlatform: position.nameOnPlatform,
+                        accountId: position.accountId,
+                        count: 1,
+                    })
                 }
             }
         }
