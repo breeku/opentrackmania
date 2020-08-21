@@ -64,14 +64,16 @@ playerRouter.get('/rankings/', async (req, res) => {
     res.send(response)
 })
 
-playerRouter.get('/rankings/:id', async (req, res) => {
+playerRouter.get('/rankings/:id&:limit', async (req, res) => {
     const id = req.params.id
+    const limit = req.params.limit
     const rankings = await db.Rankings.findAll({
         raw: true,
         where: {
             accountId: id,
         },
-        order: [['createdAt', 'ASC']],
+        order: [['createdAt', 'DESC']],
+        limit,
     })
     if (rankings.length === 0) return res.send(null)
     res.send(rankings)

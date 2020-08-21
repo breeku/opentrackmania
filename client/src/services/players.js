@@ -6,8 +6,8 @@ export const getPlayerRankings = async () => {
     return data
 }
 
-export const getPlayerRanking = async id => {
-    const { data } = await axios.get(BASEURL + '/players/rankings/' + id)
+export const getPlayerRanking = async (id, limit = 7) => {
+    const { data } = await axios.get(BASEURL + '/players/rankings/' + id + '&' + limit)
     return data
 }
 
