@@ -14,16 +14,21 @@ export const namesFromAccountIds = async (
     credentials: { ubiTokens: { accessToken: string }; ticket: string },
 ): Promise<{ accounts: any[]; profiles: any[] }> => {
     try {
-        const accounts = await getProfiles(credentials.ubiTokens.accessToken, accountIds)
-        if (accounts.length === 0) {
-            console.warn('No account(s) found for ' + accountIds)
-            return null
+        const result = { accounts: [], profiles: [] }
+        const chunks = array_chunks(accountIds, 25)
+        for (const chunk of chunks) {
+            const accounts = await getProfiles(credentials.ubiTokens.accessToken, chunk)
+            if (accounts.length === 0) {
+                console.warn('No account(s) found for ' + chunk)
+                return null
+            }
+            const { profiles } = await getProfilesById(
+                credentials.ticket,
+                accounts.map(x => x.uid),
+            )
+            result.accounts.push(...accounts)
+            result.profiles.push(...profiles)
         }
-        const { profiles } = await getProfilesById(
-            credentials.ticket,
-            accounts.map(x => x.uid),
-        )
-        const result = { accounts, profiles }
         return result
     } catch (e) {
         console.warn(e)

@@ -50,7 +50,7 @@ leaderboardRouter.get('/map/:id', async (req, res) => {
                         new Date().getTime() - new Date(latest.createdAt).getTime(),
                     ) /
                         60000 >
-                    10
+                    15
                 ) {
                     await topPlayersMap([id]) // if totd is the latest
                 } else {

@@ -177,7 +177,7 @@ export default function Track() {
                                 ) : !leaderboard.ready ? (
                                     <Countdown
                                         date={
-                                            new Date(leaderboard.time).getTime() + 600000
+                                            new Date(leaderboard.time).getTime() + 900000
                                         }
                                         renderer={({ minutes, seconds, completed }) => {
                                             if (completed) {

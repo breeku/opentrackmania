@@ -62,7 +62,6 @@ const useStyles = makeStyles(theme => ({
 export default function Leaderboard({ leaderboard: { leaderboard } }) {
     const classes = useStyles()
     const { data } = leaderboard
-
     return (
         <>
             <h1 className={classes.text_center}>Leaderboards</h1>
