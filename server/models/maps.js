@@ -28,11 +28,23 @@ module.exports = (sequelize, DataTypes) => {
     }
     Maps.init(
         {
-            mapId: DataTypes.STRING,
-            mapUid: DataTypes.STRING,
-            data: DataTypes.JSONB,
+            mapId: {
+                type: DataTypes.STRING,
+                allowNull: false,
+            },
+            mapUid: {
+                type: DataTypes.STRING,
+                allowNull: false,
+            },
+            data: {
+                type: DataTypes.JSONB,
+                allowNull: false,
+            },
             campaign: DataTypes.STRING,
-            accountId: DataTypes.STRING,
+            accountId: {
+                type: DataTypes.STRING,
+                allowNull: false,
+            },
             seasonUid: DataTypes.STRING,
         },
         {

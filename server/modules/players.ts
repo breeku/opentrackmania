@@ -20,7 +20,7 @@ export const namesFromAccountIds = async (
             const accounts = await getProfiles(credentials.ubiTokens.accessToken, chunk)
             if (accounts.length === 0) {
                 console.warn('No account(s) found for ' + chunk)
-                return null
+                break
             }
             const { profiles } = await getProfilesById(
                 credentials.ticket,

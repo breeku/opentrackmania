@@ -20,8 +20,14 @@ module.exports = (sequelize, DataTypes) => {
     }
     Trophies.init(
         {
-            accountId: DataTypes.STRING,
-            data: DataTypes.JSONB,
+            accountId: {
+                type: DataTypes.STRING,
+                allowNull: false,
+            },
+            data: {
+                type: DataTypes.JSONB,
+                allowNull: false,
+            },
         },
         {
             sequelize,

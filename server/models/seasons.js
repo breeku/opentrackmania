@@ -17,10 +17,16 @@ module.exports = (sequelize, DataTypes) => {
     Seasons.init(
         {
             name: DataTypes.STRING,
-            seasonUid: DataTypes.STRING,
+            seasonUid: {
+                type: DataTypes.STRING,
+                allowNull: false,
+            },
             leaderboardGroupUid: DataTypes.STRING,
             publishedDate: DataTypes.INTEGER,
-            playlist: DataTypes.JSONB,
+            playlist: {
+                type: DataTypes.JSONB,
+                allowNull: false,
+            },
         },
         {
             sequelize,

@@ -17,10 +17,22 @@ module.exports = (sequelize, DataTypes) => {
     }
     Totds.init(
         {
-            year: DataTypes.INTEGER,
-            month: DataTypes.INTEGER,
-            day: DataTypes.INTEGER,
-            mapUid: DataTypes.STRING,
+            year: {
+                type: DataTypes.INTEGER,
+                allowNull: false,
+            },
+            month: {
+                type: DataTypes.INTEGER,
+                allowNull: false,
+            },
+            day: {
+                type: DataTypes.INTEGER,
+                allowNull: false,
+            },
+            mapUid: {
+                type: DataTypes.STRING,
+                allowNull: false,
+            },
             seasonUid: DataTypes.STRING,
         },
         {

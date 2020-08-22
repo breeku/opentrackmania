@@ -17,9 +17,15 @@ module.exports = (sequelize, DataTypes) => {
     }
     Leaderboards.init(
         {
-            mapUid: DataTypes.STRING,
+            mapUid: {
+                type: DataTypes.STRING,
+                allowNull: false,
+            },
             closed: DataTypes.BOOLEAN,
-            data: DataTypes.JSONB,
+            data: {
+                type: DataTypes.JSONB,
+                allowNull: false,
+            },
         },
         {
             sequelize,

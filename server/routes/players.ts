@@ -37,28 +37,34 @@ playerRouter.get('/rankings/', async (req, res) => {
 
     for (const ranking of rankings) {
         // split into correct zones, 1 / 2 / 3 / 4
-        const { nameOnPlatform, accountId } = users.find(
-            (x: { accountId: any }) => x.accountId === ranking.accountId,
-        )
-        for (const zone of ranking.zones) {
-            const { zoneName } = zone
-            if (
-                !response.find(x => {
-                    if (x.zoneName === zoneName) {
-                        return true
-                    }
-                })
-            )
-                response.push({ zoneName, players: [] })
-
-            const z = response.find(x => x.zoneName === zone.zoneName)
-            z.players.push({
-                echelon: ranking.echelon,
-                points: ranking.countPoint,
-                position: zone.ranking.position,
-                accountId,
-                nameOnPlatform,
+        try {
+            const { nameOnPlatform, accountId } = users.find((x: { accountId: any }) => {
+                if (x.accountId === ranking.accountId) {
+                    return x
+                }
             })
+            for (const zone of ranking.zones) {
+                const { zoneName } = zone
+                if (
+                    !response.find(x => {
+                        if (x.zoneName === zoneName) {
+                            return true
+                        }
+                    })
+                )
+                    response.push({ zoneName, players: [] })
+
+                const z = response.find(x => x.zoneName === zone.zoneName)
+                z.players.push({
+                    echelon: ranking.echelon,
+                    points: ranking.countPoint,
+                    position: zone.ranking.position,
+                    accountId,
+                    nameOnPlatform,
+                })
+            }
+        } catch (e) {
+            console.warn(e)
         }
     }
     res.send(response)

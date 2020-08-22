@@ -20,10 +20,22 @@ module.exports = (sequelize, DataTypes) => {
     }
     Rankings.init(
         {
-            accountId: DataTypes.STRING,
-            countPoint: DataTypes.INTEGER,
-            echelon: DataTypes.INTEGER,
-            zones: DataTypes.JSONB,
+            accountId: {
+                type: DataTypes.STRING,
+                allowNull: false,
+            },
+            countPoint: {
+                type: DataTypes.INTEGER,
+                allowNull: false,
+            },
+            echelon: {
+                type: DataTypes.INTEGER,
+                allowNull: false,
+            },
+            zones: {
+                type: DataTypes.JSONB,
+                allowNull: false,
+            },
         },
         {
             sequelize,
