@@ -3,6 +3,8 @@ import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import { Paper, Grid, Button } from '@material-ui/core'
 
+import Countdown, { zeroPad } from 'react-countdown'
+
 import { Link } from 'react-router-dom'
 
 const useStyles = makeStyles(theme => ({
@@ -50,21 +52,45 @@ const useStyles = makeStyles(theme => ({
         padding: 0,
         margin: 0,
     },
+    text_center: { textAlign: 'center' },
+    timer: {
+        margin: 0,
+        padding: 0,
+    },
 }))
 
-export default function Leaderboard({ leaderboard }) {
+export default function Leaderboard({ leaderboard: { leaderboard } }) {
     const classes = useStyles()
     const { data } = leaderboard
+
     return (
         <>
-            <h1 style={{ textAlign: 'center' }}>Leaderboards</h1>
-            <h6 style={{ textAlign: 'center' }}>
+            <h1 className={classes.text_center}>Leaderboards</h1>
+            <h6 className={classes.text_center}>
                 Last updated {new Date(leaderboard.updatedAt).toTimeString()}
             </h6>
-            {leaderboard.closed && (
-                <h4 style={{ textAlign: 'center', color: '#E60000' }}>
+            {leaderboard.closed ? (
+                <h4 className={`${classes.text_center} ${classes.color_red}`}>
                     Leaderboards are closed!
                 </h4>
+            ) : (
+                <Countdown
+                    date={new Date(leaderboard.updatedAt).getTime() + 1800000}
+                    renderer={({ minutes, seconds, completed }) => {
+                        if (completed) {
+                            return (
+                                <p className={classes.text_center}>Refresh the page!</p>
+                            )
+                        } else {
+                            return (
+                                <h5 className={`${classes.text_center} ${classes.timer}`}>
+                                    Next update in: <br />
+                                    {zeroPad(minutes)}:{zeroPad(seconds)}
+                                </h5>
+                            )
+                        }
+                    }}
+                />
             )}
             {data.map((record, i) => {
                 const time = new Date(record.score).toISOString().slice(14, -1)
@@ -73,7 +99,9 @@ export default function Leaderboard({ leaderboard }) {
                         <Grid container direction="row">
                             <Grid item xs={12} sm={12} md={3}>
                                 <span className={classes.paper_content}>
-                                    <h4 className={classes.position}>#{i + 1}</h4>
+                                    <h4 className={classes.position}>
+                                        #{record.position}
+                                    </h4>
                                     <Link
                                         style={{ textDecoration: 'none' }}
                                         to={`/player/${record.accountId}/stats`}>
