@@ -7,6 +7,7 @@
         "update:seasons": "ts-node --transpile-only cron/updateSeasons.ts",
         "update:rankings": "ts-node --transpile-only cron/updateRankings.ts",
         "update:totd": "ts-node --transpile-only cron/updateTOTD.ts",
+        "update:last-totd": "ts-node --transpile-only cron/updateLastTOTD.ts",
         "start": "ts-node --transpile-only index.ts",
         "watch": "tsnd --respawn index.ts",
         "tslint": "tslint -c tslint.json -p tsconfig.json",
