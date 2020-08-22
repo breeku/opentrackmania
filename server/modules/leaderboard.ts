@@ -4,6 +4,7 @@ import {
     getMapRecords,
     getPlayerRankings,
     getTopGroupPlayersMap,
+    getLeaderboardsAroundScore,
 } from 'trackmania-api-node'
 
 import { login } from './login'
@@ -33,6 +34,34 @@ export const topPlayersMap = async (
                           map,
                       )
                     : await getTopPlayersMap(credentials.nadeoTokens.accessToken, map)
+
+                if (seasonUid) {
+                    let lastScore =
+                        topPlayers.tops[0].top[topPlayers.tops[0].top.length - 1].score
+                    let pos = 0
+                    while (pos < 50) {
+                        const scores = await getLeaderboardsAroundScore(
+                            credentials.nadeoTokens.accessToken,
+                            seasonUid,
+                            map,
+                            lastScore,
+                        )
+                        for (const record of scores.levels[0].level) {
+                            if (
+                                !topPlayers.tops[0].top.find(
+                                    x => x.accountId === record.accountId,
+                                ) &&
+                                record.zoneName !== 'World'
+                            )
+                                topPlayers.tops[0].top.push(record)
+                        }
+                        const lastItem =
+                            scores.levels[0].level[scores.levels[0].level.length - 1]
+                        pos = lastItem.position
+                        lastScore = lastItem.score
+                        console.log(JSON.stringify(scores.levels[0].level, null, 2))
+                    }
+                }
 
                 for (const value of topPlayers.tops[0].top) {
                     const user = await db.Users.findOne({
@@ -101,7 +130,12 @@ export const topPlayersMap = async (
                                     ghost: mapRecord[0].url,
                                 }
                             } catch (e) {
-                                console.error(e.response.data)
+                                console.error(e)
+                                return {
+                                    ...record,
+                                    nameOnPlatform: user.nameOnPlatform,
+                                    ghost: null,
+                                }
                             }
                         }
                     }),
@@ -124,7 +158,10 @@ export const topPlayersMap = async (
                     }
                 }
 
-                topPlayersMaps.push({ map, top: newTop })
+                topPlayersMaps.push({
+                    map,
+                    top: newTop.sort((a, b) => a.position - b.position),
+                })
             } catch (e) {
                 console.warn(e)
                 if (e.response && e.response.status === 401 && !retry) {
@@ -144,6 +181,7 @@ const createOrUpdateLeaderboard = async (
 ) => {
     for (const data of maps) {
         const { map, top } = data
+        console.log(JSON.stringify(top, null, 2))
         try {
             if (
                 await db.Leaderboards.findOne({

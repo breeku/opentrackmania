@@ -39,8 +39,8 @@ export default function Search() {
                 <>
                     <h4>There were no matches for "{name}".</h4>
                     <h5>
-                        At the moment only way to get tracked is to get a top 10
-                        leaderboard record.
+                        At the moment only way to get tracked is to get a top ~50
+                        leaderboard record (World).
                     </h5>
                 </>
             ) : (

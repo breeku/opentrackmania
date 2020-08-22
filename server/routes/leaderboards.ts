@@ -41,11 +41,20 @@ leaderboardRouter.get('/map/:id', async (req, res) => {
         ],
         raw: true,
     })
-
     if (!leaderboard) {
         if (totd) {
             if (totd.mapUid === latest.mapUid) {
-                await topPlayersMap([id]) // if totd is the latest
+                if (
+                    Math.abs(
+                        new Date().getTime() - new Date(latest.createdAt).getTime(),
+                    ) /
+                        60000 >
+                    10
+                ) {
+                    await topPlayersMap([id]) // if totd is the latest
+                } else {
+                    return res.send({ ready: false, time: latest.createdAt })
+                }
             } else {
                 await topPlayersMap([id], false, true) // if totd is not the latest, update and close
             }
@@ -75,5 +84,5 @@ leaderboardRouter.get('/map/:id', async (req, res) => {
         },
     })
 
-    return res.send(leaderboard)
+    return res.send({ ready: true, leaderboard })
 })

@@ -52,9 +52,10 @@ const useStyles = makeStyles(theme => ({
     },
 }))
 
-export default function Leaderboard({ leaderboard }) {
+export default function Leaderboard({ leaderboard: { leaderboard } }) {
     const classes = useStyles()
     const { data } = leaderboard
+
     return (
         <>
             <h1 style={{ textAlign: 'center' }}>Leaderboards</h1>
@@ -73,7 +74,9 @@ export default function Leaderboard({ leaderboard }) {
                         <Grid container direction="row">
                             <Grid item xs={12} sm={12} md={3}>
                                 <span className={classes.paper_content}>
-                                    <h4 className={classes.position}>#{i + 1}</h4>
+                                    <h4 className={classes.position}>
+                                        #{record.position}
+                                    </h4>
                                     <Link
                                         style={{ textDecoration: 'none' }}
                                         to={`/player/${record.accountId}/stats`}>
