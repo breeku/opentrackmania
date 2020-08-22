@@ -30,7 +30,7 @@ leaderboardRouter.get('/map/:id', async (req, res) => {
     // 3.1 and do the same check's for totd.
     // TODO: make topPlayersMap return the leaderboard
 
-    if (leaderboard && leaderboard.closed) return res.send(leaderboard)
+    if (leaderboard && leaderboard.closed) return res.send({ ready: true, leaderboard })
 
     const totd = await db.Totds.findOne({ where: { mapUid: id }, raw: true })
     const latest = await db.Totds.findOne({

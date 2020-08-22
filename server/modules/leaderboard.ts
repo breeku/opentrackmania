@@ -39,7 +39,8 @@ export const topPlayersMap = async (
                     let lastScore =
                         topPlayers.tops[0].top[topPlayers.tops[0].top.length - 1].score
                     let pos = 0
-                    while (pos < 50) {
+                    let i = 0
+                    while (pos < 50 || i > 10) {
                         const scores = await getLeaderboardsAroundScore(
                             credentials.nadeoTokens.accessToken,
                             seasonUid,
@@ -51,15 +52,18 @@ export const topPlayersMap = async (
                                 !topPlayers.tops[0].top.find(
                                     x => x.accountId === record.accountId,
                                 ) &&
-                                record.zoneName !== 'World'
+                                record.zoneName !== 'World' &&
+                                record.position > 0
                             )
                                 topPlayers.tops[0].top.push(record)
                         }
                         const lastItem =
                             scores.levels[0].level[scores.levels[0].level.length - 1]
                         pos = lastItem.position
+                        if (pos === 0) break
                         lastScore = lastItem.score
-                        console.log(JSON.stringify(scores.levels[0].level, null, 2))
+                        i++
+                        console.log(pos, i)
                     }
                 }
 
@@ -181,7 +185,6 @@ const createOrUpdateLeaderboard = async (
 ) => {
     for (const data of maps) {
         const { map, top } = data
-        console.log(JSON.stringify(top, null, 2))
         try {
             if (
                 await db.Leaderboards.findOne({
