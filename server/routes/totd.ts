@@ -101,11 +101,13 @@ totdRouter.get('/stats', async (req, res) => {
                 if (index !== -1) {
                     top10[index].count += 1
                 } else {
-                    top10.push({
-                        nameOnPlatform: position.nameOnPlatform,
-                        accountId: position.accountId,
-                        count: 1,
-                    })
+                    if (position <= 10) {
+                        top10.push({
+                            nameOnPlatform: position.nameOnPlatform,
+                            accountId: position.accountId,
+                            count: 1,
+                        })
+                    }
                 }
             }
         }

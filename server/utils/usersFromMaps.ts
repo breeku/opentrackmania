@@ -59,7 +59,13 @@ import { Op } from 'sequelize'
 
         for (const user of combined) {
             try {
-                await db.Users.create(user)
+                if (
+                    !(await db.Users.findOne({
+                        where: { accountId: user.accountId },
+                        raw: true,
+                    }))
+                )
+                    await db.Users.create(user)
             } catch (e) {
                 console.warn(e)
             }
