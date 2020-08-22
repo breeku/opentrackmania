@@ -1,11 +1,12 @@
 import db from '../models/index.js'
 import { getTOTDs } from 'trackmania-api-node'
 import { saveMaps } from './maps'
+import { cache } from '../cache'
 
 import { login } from './login'
 
 export const saveTOTD = async (): Promise<boolean> => {
-    const credentials = await login()
+    const credentials = (cache.get('credentials') as any) || (await login())
     if (credentials) {
         try {
             const totds = await getTOTDs(credentials.nadeoTokens.accessToken, 0, 1)
