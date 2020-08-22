@@ -41,6 +41,7 @@ leaderboardRouter.get('/map/:id', async (req, res) => {
         ],
         raw: true,
     })
+
     if (!leaderboard) {
         if (totd) {
             if (totd.mapUid === latest.mapUid) {
@@ -65,7 +66,7 @@ leaderboardRouter.get('/map/:id', async (req, res) => {
         !leaderboard.closed &&
         Math.abs(new Date().getTime() - new Date(leaderboard.updatedAt).getTime()) /
             36e5 >
-            1
+            0.5
     ) {
         if (totd) {
             if (totd.mapUid === latest.mapUid) {

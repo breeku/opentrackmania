@@ -7,7 +7,7 @@ import { useLocation, useParams } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles'
 import { Paper, Grid } from '@material-ui/core'
 
-import Countdown from 'react-countdown'
+import Countdown, { zeroPad } from 'react-countdown'
 
 import { textParser } from '@utils/'
 import { getLeaderboard } from '@services/leaderboards'
@@ -190,7 +190,8 @@ export default function Track() {
                                                 return (
                                                     <h3 className={classes.text_center}>
                                                         Populating leaderboards... <br />
-                                                        {minutes}:{seconds}
+                                                        {zeroPad(minutes)}:
+                                                        {zeroPad(seconds)}
                                                     </h3>
                                                 )
                                             }
