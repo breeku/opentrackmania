@@ -73,7 +73,7 @@ export const updateRankings = async (): Promise<boolean> => {
 
         const chunks = array_chunks(
             users.map((x: { accountId: any }) => x.accountId),
-            100,
+            250,
         )
         for (const chunk of chunks) {
             const { rankings } = await getPlayerRankings(
