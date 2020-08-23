@@ -30,7 +30,7 @@ leaderboardRouter.get('/map/:id', async (req, res) => {
     // 3.1 and do the same check's for totd.
     // TODO: make topPlayersMap return the leaderboard
 
-    if (leaderboard && leaderboard.closed) return res.send({ ready: true, leaderboard })
+    if (leaderboard && leaderboard.closed) return res.send(leaderboard)
 
     const totd = await db.Totds.findOne({ where: { mapUid: id }, raw: true })
     const latest = await db.Totds.findOne({
@@ -45,17 +45,7 @@ leaderboardRouter.get('/map/:id', async (req, res) => {
     if (!leaderboard) {
         if (totd) {
             if (totd.mapUid === latest.mapUid) {
-                if (
-                    Math.abs(
-                        new Date().getTime() - new Date(latest.createdAt).getTime(),
-                    ) /
-                        60000 >
-                    15
-                ) {
-                    await topPlayersMap([id]) // if totd is the latest
-                } else {
-                    return res.send({ ready: false, time: latest.createdAt })
-                }
+                await topPlayersMap([id]) // if totd is the latest
             } else {
                 await topPlayersMap([id], false, true) // if totd is not the latest, update and close
             }
@@ -66,7 +56,7 @@ leaderboardRouter.get('/map/:id', async (req, res) => {
         !leaderboard.closed &&
         Math.abs(new Date().getTime() - new Date(leaderboard.updatedAt).getTime()) /
             36e5 >
-            0.5
+            0.25
     ) {
         if (totd) {
             if (totd.mapUid === latest.mapUid) {
@@ -85,5 +75,5 @@ leaderboardRouter.get('/map/:id', async (req, res) => {
         },
     })
 
-    return res.send({ ready: true, leaderboard })
+    return res.send(leaderboard)
 })

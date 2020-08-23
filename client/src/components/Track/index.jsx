@@ -7,8 +7,6 @@ import { useLocation, useParams } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles'
 import { Paper, Grid } from '@material-ui/core'
 
-import Countdown, { zeroPad } from 'react-countdown'
-
 import { textParser } from '@utils/'
 import { getLeaderboard } from '@services/leaderboards'
 import { getTrack } from '@services/tracks'
@@ -174,29 +172,6 @@ export default function Track() {
                             <Paper className={classes.leaderboard} elevation={5}>
                                 {!leaderboard ? (
                                     <SLeaderboard />
-                                ) : !leaderboard.ready ? (
-                                    <Countdown
-                                        date={
-                                            new Date(leaderboard.time).getTime() + 900000
-                                        }
-                                        renderer={({ minutes, seconds, completed }) => {
-                                            if (completed) {
-                                                return (
-                                                    <p className={classes.text_center}>
-                                                        Refresh the page!
-                                                    </p>
-                                                )
-                                            } else {
-                                                return (
-                                                    <h3 className={classes.text_center}>
-                                                        Populating leaderboards... <br />
-                                                        {zeroPad(minutes)}:
-                                                        {zeroPad(seconds)}
-                                                    </h3>
-                                                )
-                                            }
-                                        }}
-                                    />
                                 ) : (
                                     <Leaderboard leaderboard={leaderboard} />
                                 )}

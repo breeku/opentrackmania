@@ -142,10 +142,16 @@ export default function Players() {
                                 print: false,
                                 searchPlaceholder: 'Player name',
                                 onRowClick: (d, m) => {
-                                    const { accountId, nameOnPlatform } = data[
+                                    const { accountId, nameOnPlatform, tracking } = data[
                                         m.dataIndex
                                     ]
-                                    dispatch(setPlayer({ accountId, nameOnPlatform }))
+                                    dispatch(
+                                        setPlayer({
+                                            accountId,
+                                            nameOnPlatform,
+                                            tracking,
+                                        }),
+                                    )
                                     history.push('/player/' + accountId + '/stats')
                                 },
                             }}
