@@ -5,7 +5,7 @@ import db from '../models'
 
     users.push(
         ...rankings
-            .filter(x => x.zones && x.zones[0].ranking.position <= 500)
+            .filter(x => x.zones && x.zones[0].ranking.position <= 1000)
             .filter((v, i, a) => a.findIndex(t => t.accountId === v.accountId) === i)
             .map(x => x.accountId),
     )
