@@ -59,7 +59,7 @@ const useStyles = makeStyles(theme => ({
     },
 }))
 
-export default function Leaderboard({ leaderboard: { leaderboard } }) {
+export default function Leaderboard({ leaderboard }) {
     const classes = useStyles()
     const { data } = leaderboard
     return (
@@ -74,7 +74,7 @@ export default function Leaderboard({ leaderboard: { leaderboard } }) {
                 </h4>
             ) : (
                 <Countdown
-                    date={new Date(leaderboard.updatedAt).getTime() + 1800000}
+                    date={new Date(leaderboard.updatedAt).getTime() + 900000}
                     renderer={({ minutes, seconds, completed }) => {
                         if (completed) {
                             return (
