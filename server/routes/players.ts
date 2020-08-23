@@ -7,6 +7,9 @@ export const playerRouter = express.Router()
 
 playerRouter.get('/rankings/', async (req, res) => {
     const users = await db.Users.findAll({
+        where: {
+            tracking: true,
+        },
         raw: true,
     })
     const recent = await db.Rankings.findOne({
@@ -38,11 +41,13 @@ playerRouter.get('/rankings/', async (req, res) => {
     for (const ranking of rankings) {
         // split into correct zones, 1 / 2 / 3 / 4
         try {
-            const { nameOnPlatform, accountId } = users.find((x: { accountId: any }) => {
-                if (x.accountId === ranking.accountId) {
-                    return x
-                }
-            })
+            const { nameOnPlatform, accountId, tracking } = users.find(
+                (x: { accountId: any }) => {
+                    if (x.accountId === ranking.accountId) {
+                        return x
+                    }
+                },
+            )
             for (const zone of ranking.zones) {
                 const { zoneName } = zone
                 if (
@@ -61,6 +66,7 @@ playerRouter.get('/rankings/', async (req, res) => {
                     position: zone.ranking.position,
                     accountId,
                     nameOnPlatform,
+                    tracking,
                 })
             }
         } catch (e) {
@@ -119,7 +125,7 @@ playerRouter.get('/:id', async (req, res) => {
         where: {
             accountId: id,
         },
-        attributes: ['accountId', 'nameOnPlatform'],
+        attributes: ['accountId', 'nameOnPlatform', 'tracking'],
     })
 
     res.send(user)

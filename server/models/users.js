@@ -40,6 +40,10 @@ module.exports = (sequelize, DataTypes) => {
             },
             clubId: DataTypes.INTEGER,
             clubName: DataTypes.STRING,
+            tracking: {
+                type: DataTypes.BOOLEAN,
+                defaultValue: false,
+            },
         },
         {
             sequelize,

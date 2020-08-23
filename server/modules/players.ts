@@ -74,7 +74,7 @@ export const updateRankings = async (): Promise<boolean> => {
     const credentials = await login()
 
     try {
-        const users = await db.Users.findAll({ raw: true })
+        const users = await db.Users.findAll({ where: { tracking: true }, raw: true })
 
         const chunks = array_chunks(
             users.map((x: { accountId: any }) => x.accountId),
@@ -87,7 +87,7 @@ export const updateRankings = async (): Promise<boolean> => {
             )
 
             for (const ranking of rankings) {
-                await db.Rankings.create(ranking)
+                if (ranking) await db.Rankings.create(ranking)
             }
 
             await new Promise(r => setTimeout(r, 2500))

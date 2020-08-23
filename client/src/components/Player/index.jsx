@@ -97,6 +97,9 @@ export default function Player() {
                                 <Grid item xs={12} sm={6}>
                                     <Paper className={classes.paper} elevation={3}>
                                         <Rankings id={id} />
+                                        {!player.tracking && (
+                                            <h5>Player is currently not tracked</h5>
+                                        )}
                                     </Paper>
                                 </Grid>
                                 <Grid item xs={12} sm={6}>
