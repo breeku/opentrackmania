@@ -123,6 +123,7 @@ export const topPlayersMap = async (
                                 })
 
                             const oldRecord =
+                                Leaderboard &&
                                 Leaderboard.data &&
                                 Leaderboard.data.find(
                                     x => x.accountId === record.accountId,
