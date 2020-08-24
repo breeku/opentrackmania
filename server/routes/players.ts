@@ -41,7 +41,7 @@ playerRouter.get('/rankings/', async (req, res) => {
     for (const ranking of rankings) {
         // split into correct zones, 1 / 2 / 3 / 4
         try {
-            const { nameOnPlatform, accountId, tracking } = users.find(
+            const { nameOnPlatform, accountId, tracking, twitch } = users.find(
                 (x: { accountId: any }) => {
                     if (x.accountId === ranking.accountId) {
                         return x
@@ -67,6 +67,7 @@ playerRouter.get('/rankings/', async (req, res) => {
                     accountId,
                     nameOnPlatform,
                     tracking,
+                    twitch,
                 })
             }
         } catch (e) {
@@ -125,7 +126,7 @@ playerRouter.get('/:id', async (req, res) => {
         where: {
             accountId: id,
         },
-        attributes: ['accountId', 'nameOnPlatform', 'tracking'],
+        attributes: ['accountId', 'nameOnPlatform', 'tracking', 'twitch'],
     })
 
     res.send(user)
@@ -142,7 +143,7 @@ playerRouter.get('/search/:name', async (req, res) => {
             },
         },
         limit: 10,
-        attributes: ['accountId', 'nameOnPlatform'],
+        attributes: ['accountId', 'nameOnPlatform', 'tracking', 'twitch'],
     })
 
     res.send(users)

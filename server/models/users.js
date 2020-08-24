@@ -44,6 +44,9 @@ module.exports = (sequelize, DataTypes) => {
                 type: DataTypes.BOOLEAN,
                 defaultValue: false,
             },
+            twitch: {
+                type: DataTypes.STRING,
+            },
         },
         {
             sequelize,

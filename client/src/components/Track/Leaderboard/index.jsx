@@ -1,11 +1,13 @@
 import React from 'react'
 
 import { makeStyles } from '@material-ui/core/styles'
-import { Paper, Grid, Button } from '@material-ui/core'
+import { Paper, Grid, Button, Tooltip } from '@material-ui/core'
 
 import Countdown, { zeroPad } from 'react-countdown'
 
 import { Link } from 'react-router-dom'
+
+import { TwitchIcon } from '@utils/Icons'
 
 const useStyles = makeStyles(theme => ({
     leaderboard: {
@@ -35,9 +37,14 @@ const useStyles = makeStyles(theme => ({
     },
     position: {
         color: 'rgba(255,255,255,0.7)',
-        marginRight: 10,
         position: 'absolute',
         left: '5px',
+    },
+    position_history: {
+        color: 'rgba(255,255,255,0.7)',
+        position: 'absolute',
+        left: '65px',
+        cursor: 'default',
     },
     question_mark: {
         position: 'absolute',
@@ -57,11 +64,19 @@ const useStyles = makeStyles(theme => ({
         margin: 0,
         padding: 0,
     },
+    name: {
+        marginLeft: 20,
+        marginRight: 10,
+    },
+    twitch: {
+        display: 'flex',
+    },
 }))
 
 export default function Leaderboard({ leaderboard }) {
     const classes = useStyles()
     const { data } = leaderboard
+    console.log(data)
     return (
         <>
             <h1 className={classes.text_center}>Leaderboards</h1>
@@ -93,6 +108,9 @@ export default function Leaderboard({ leaderboard }) {
             )}
             {data.map((record, i) => {
                 const time = new Date(record.score).toISOString().slice(14, -1)
+                const oldTime =
+                    record.oldScore &&
+                    new Date(record.oldScore).toISOString().slice(14, -1)
                 return (
                     <Paper className={classes.leaderboard}>
                         <Grid container direction="row">
@@ -101,13 +119,47 @@ export default function Leaderboard({ leaderboard }) {
                                     <h4 className={classes.position}>
                                         #{record.position}
                                     </h4>
+                                    {record.oldScore && record.oldPosition && (
+                                        <Tooltip
+                                            title={
+                                                <>
+                                                    Previous time: {oldTime}
+                                                    <br />
+                                                    Previous position:{' '}
+                                                    {record.oldPosition}
+                                                </>
+                                            }>
+                                            <div className={classes.position_history}>
+                                                {record.position === record.oldPosition ||
+                                                record.stagnant ? (
+                                                    <h4>-</h4>
+                                                ) : record.position >
+                                                  record.oldPosition ? (
+                                                    <h5>▲</h5>
+                                                ) : (
+                                                    record.position <
+                                                        record.oldPosition && <h5>▼</h5>
+                                                )}
+                                            </div>
+                                        </Tooltip>
+                                    )}
+
                                     <Link
                                         style={{ textDecoration: 'none' }}
                                         to={`/player/${record.accountId}/stats`}>
-                                        <h3 className={classes.color_blue}>
+                                        <h3
+                                            className={`${classes.color_blue} ${classes.name}`}>
                                             {record.nameOnPlatform}
                                         </h3>
                                     </Link>
+                                    {record.twitch && (
+                                        <a
+                                            className={classes.twitch}
+                                            href={record.twitch}
+                                            target="_blank">
+                                            <TwitchIcon height={'16px'} width={'16px'} />
+                                        </a>
+                                    )}
                                 </span>
                             </Grid>
                             <Grid item xs={12} sm={12} md={3}>

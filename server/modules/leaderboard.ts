@@ -23,10 +23,14 @@ export const topPlayersMap = async (
 
         for (const map of maps) {
             try {
-                const { mapId, seasonUid } = await db.Maps.findOne({
+                const dbMaps = await db.Maps.findOne({
                     where: { mapUid: map },
-                    raw: true,
+                    include: {
+                        model: db.Leaderboards,
+                    },
                 })
+                const plain = dbMaps.get({ plain: true })
+                const { mapId, seasonUid, Leaderboard } = plain
                 const topPlayers = seasonUid
                     ? await getTopGroupPlayersMap(
                           credentials.nadeoTokens.accessToken,
@@ -118,22 +122,46 @@ export const topPlayersMap = async (
                                     nameOnPlatform: user.nameOnPlatform,
                                 })
 
-                            try {
-                                const mapRecord = await getMapRecords(
-                                    credentials.ubiTokens.accessToken,
-                                    record.accountId,
-                                    mapId,
+                            const oldRecord =
+                                Leaderboard.data &&
+                                Leaderboard.data.find(
+                                    x => x.accountId === record.accountId,
                                 )
-                                return {
-                                    ...record,
-                                    nameOnPlatform: user.nameOnPlatform,
-                                    ghost: mapRecord[0].url,
+                            const newRecord = {
+                                ...record,
+                                nameOnPlatform: user.nameOnPlatform,
+                                twitch: user.twitch,
+                                oldScore:
+                                    oldRecord && oldRecord.score === record.score
+                                        ? oldRecord.score
+                                        : record.score,
+                                oldPosition:
+                                    oldRecord && oldRecord.position === record.position
+                                        ? oldRecord.position
+                                        : record.position,
+                                stagnant: oldRecord
+                                    ? oldRecord.position === record.position
+                                    : false,
+                            }
+
+                            try {
+                                if (oldRecord && oldRecord.score !== newRecord.score) {
+                                    const mapRecord = await getMapRecords(
+                                        credentials.ubiTokens.accessToken,
+                                        record.accountId,
+                                        mapId,
+                                    )
+                                    return {
+                                        ...newRecord,
+                                        ghost: mapRecord[0].url,
+                                    }
+                                } else {
+                                    return newRecord
                                 }
                             } catch (e) {
                                 console.error(e)
                                 return {
                                     ...record,
-                                    nameOnPlatform: user.nameOnPlatform,
                                     ghost: null,
                                 }
                             }

@@ -15,11 +15,16 @@ import Rankings from './Rankings'
 import Trophies from './Trophies'
 import Records from './Records'
 
+import { TwitchIcon } from '@utils/Icons'
+
 const useStyles = makeStyles(theme => ({
     player: {
         textAlign: 'center',
     },
-    title: theme.title,
+    title: {
+        ...theme.title,
+        marginBottom: 11,
+    },
     paper: {
         display: 'flex',
         justifyContent: 'center',
@@ -44,6 +49,7 @@ const useStyles = makeStyles(theme => ({
         backgroundColor: theme.background_color,
     },
     no_decoration: theme.no_decoration,
+    twitch: {},
 }))
 
 const options = ['stats', 'records', 'maps', 'activity', 'replays']
@@ -72,6 +78,14 @@ export default function Player() {
                 <>
                     <div>
                         <h1 className={classes.title}>{player.nameOnPlatform}</h1>
+                        {player.twitch && (
+                            <a
+                                className={classes.twitch}
+                                href={player.twitch}
+                                target="_blank">
+                                <TwitchIcon height={'32px'} width={'32px'} />
+                            </a>
+                        )}
                     </div>
                     <Paper className={classes.paper_buttons} elevation={3}>
                         <ButtonGroup
