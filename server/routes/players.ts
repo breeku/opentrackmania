@@ -162,6 +162,7 @@ playerRouter.get('/records/:id', async (req, res) => {
         include: {
             model: db.Maps,
         },
+        order: [['createdAt', 'DESC']],
         raw: true,
     })
 
