@@ -71,6 +71,7 @@ playerRouter.get('/rankings/', async (req, res) => {
                 })
             }
         } catch (e) {
+            console.log(ranking)
             console.warn(e)
         }
     }

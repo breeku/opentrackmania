@@ -1,7 +1,7 @@
 import express from 'express'
 import db from '../models/index'
 import { topPlayersMap } from '../modules/leaderboard'
-import { literal } from 'sequelize'
+import { literal, Op } from 'sequelize'
 
 export const leaderboardRouter = express.Router()
 
@@ -18,6 +18,7 @@ leaderboardRouter.get('/map/:id', async (req, res) => {
         where: {
             mapUid: id,
         },
+        order: [['createdAt', 'DESC']],
         raw: true,
     })
 
@@ -30,7 +31,20 @@ leaderboardRouter.get('/map/:id', async (req, res) => {
     // 3.1 and do the same check's for totd.
     // TODO: make topPlayersMap return the leaderboard
 
-    if (leaderboard && leaderboard.closed) return res.send(leaderboard)
+    if (leaderboard && leaderboard.closed) {
+        const accountIds = leaderboard.data.map(x => x.accountId)
+        const users = await db.Users.findAll({
+            where: { accountId: { [Op.in]: accountIds } },
+            raw: true,
+        })
+        const result = {
+            ...leaderboard,
+            data: leaderboard.data.map(x => {
+                return { ...x, user: users.find(u => u.accountId === x.accountId) }
+            }),
+        }
+        return res.send(result)
+    }
 
     const totd = await db.Totds.findOne({ where: { mapUid: id }, raw: true })
     const latest = await db.Totds.findOne({
@@ -73,7 +87,20 @@ leaderboardRouter.get('/map/:id', async (req, res) => {
         where: {
             mapUid: id,
         },
+        order: [['createdAt', 'DESC']],
+        raw: true,
     })
 
-    return res.send(leaderboard)
+    const accountIds = leaderboard.data.map(x => x.accountId)
+    const users = await db.Users.findAll({
+        where: { accountId: { [Op.in]: accountIds } },
+        raw: true,
+    })
+    const result = {
+        ...leaderboard,
+        data: leaderboard.data.map(x => {
+            return { ...x, user: users.find(u => u.accountId === x.accountId) }
+        }),
+    }
+    return res.send(result)
 })

@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useLocation, useParams } from 'react-router-dom'
 
 import { makeStyles } from '@material-ui/core/styles'
-import { Paper, Grid } from '@material-ui/core'
+import { Paper, Grid, ButtonGroup, Button } from '@material-ui/core'
 
 import { textParser } from '@utils/'
 import { getLeaderboard } from '@services/leaderboards'
@@ -15,6 +15,7 @@ import { useProgressiveImage } from '@utils/imageLoader'
 
 import SLeaderboard from './SLeaderboard'
 import Leaderboard from './Leaderboard'
+import Construction from '@components/Construction'
 
 const useStyles = makeStyles(theme => ({
     hero: theme.hero,
@@ -44,6 +45,8 @@ const useStyles = makeStyles(theme => ({
         marginLeft: 7,
         marginBottom: 7,
         color: '#fff',
+        display: 'flex',
+        flexDirection: 'column',
     },
     trophies: {
         backgroundColor: '#111',
@@ -52,10 +55,16 @@ const useStyles = makeStyles(theme => ({
         color: '#fff',
     },
     text_center: { textAlign: 'center' },
+    buttons: {
+        alignSelf: 'center',
+    },
 }))
+
+const options = ['Leaderboards', 'Activity']
 
 export default function Track() {
     const [leaderboard, setLeaderboard] = React.useState(null)
+    const [selection, setSelection] = React.useState('Leaderboards')
     const { track } = useSelector(state => state.tracks)
     const dispatch = useDispatch()
     const { pathname } = useLocation()
@@ -170,10 +179,38 @@ export default function Track() {
                         </Grid>
                         <Grid item xs={12} sm={8}>
                             <Paper className={classes.leaderboard} elevation={5}>
-                                {!leaderboard ? (
-                                    <SLeaderboard />
-                                ) : (
-                                    <Leaderboard leaderboard={leaderboard} />
+                                <ButtonGroup
+                                    className={classes.buttons}
+                                    aria-label="text primary button group">
+                                    {options.map(option => (
+                                        <Button
+                                            color="primary"
+                                            style={{ color: '#fff' }}
+                                            variant={
+                                                option === selection ? 'outlined' : 'text'
+                                            }
+                                            onClick={() => setSelection(option)}>
+                                            {option}
+                                        </Button>
+                                    ))}
+                                </ButtonGroup>
+                                {selection === 'Leaderboards' && (
+                                    <>
+                                        <h1 className={classes.text_center}>
+                                            Leaderboards
+                                        </h1>
+                                        {!leaderboard ? (
+                                            <SLeaderboard />
+                                        ) : (
+                                            <Leaderboard leaderboard={leaderboard} />
+                                        )}
+                                    </>
+                                )}
+                                {selection === 'Activity' && (
+                                    <>
+                                        <h1 className={classes.text_center}>Activity</h1>
+                                        <Construction />
+                                    </>
                                 )}
                             </Paper>
                         </Grid>

@@ -32,7 +32,8 @@ export const topPlayersMap = async (
                 })
                 const plain = dbMaps.get({ plain: true })
                 const { mapId, seasonUid, Leaderboard } = plain
-                const topPlayers = seasonUid
+
+                const topTen = seasonUid
                     ? await getTopGroupPlayersMap(
                           credentials.nadeoTokens.accessToken,
                           seasonUid,
@@ -40,9 +41,10 @@ export const topPlayersMap = async (
                       )
                     : await getTopPlayersMap(credentials.nadeoTokens.accessToken, map)
 
+                const topPlayers = topTen.tops[0].top
+
                 if (seasonUid) {
-                    let lastScore =
-                        topPlayers.tops[0].top[topPlayers.tops[0].top.length - 1].score
+                    let lastScore = topPlayers[topPlayers.length - 1].score
                     let i = 0
                     while (i < 2) {
                         const scores = await getLeaderboardsAroundScore(
@@ -54,13 +56,11 @@ export const topPlayersMap = async (
                         if (Object.keys(scores).length === 0) break
                         for (const record of scores.tops[0].top) {
                             if (
-                                !topPlayers.tops[0].top.find(
-                                    x => x.accountId === record.accountId,
-                                ) &&
+                                !topPlayers.find(x => x.accountId === record.accountId) &&
                                 record.zoneName !== 'World' &&
                                 record.position > 0
                             )
-                                topPlayers.tops[0].top.push(record)
+                                topPlayers.push(record)
                         }
                         const lastItem = scores.tops[0].top[scores.tops[0].top.length - 1]
                         lastScore = lastItem.score
@@ -68,7 +68,7 @@ export const topPlayersMap = async (
                     }
                 }
 
-                for (const value of topPlayers.tops[0].top) {
+                for (const value of topPlayers) {
                     const user = await db.Users.findOne({
                         where: { accountId: value.accountId },
                         raw: true,
@@ -76,7 +76,7 @@ export const topPlayersMap = async (
                     if (user) dbAccounts.push(user)
                 }
 
-                const accountIds = topPlayers.tops[0].top.flatMap(
+                const accountIds = topPlayers.flatMap(
                     (account: { accountId: string }) => {
                         if (
                             !dbAccounts.find(
@@ -96,7 +96,7 @@ export const topPlayersMap = async (
                     (await namesFromAccountIds(accountIds, credentials))
 
                 const newTop = await Promise.all(
-                    topPlayers.tops[0].top.map(async record => {
+                    topPlayers.map(async record => {
                         const user =
                             dbAccounts.find(
                                 (x: { accountId: string }) =>
@@ -129,16 +129,26 @@ export const topPlayersMap = async (
                                 Leaderboard.data.find(
                                     x => x.accountId === record.accountId,
                                 )
-                            const newRecord = {
-                                ...record,
-                                nameOnPlatform: user.nameOnPlatform,
-                                twitch: user.twitch,
-                            }
 
+                            if (oldRecord) {
+                                if (
+                                    oldRecord.score !== record.score ||
+                                    oldRecord.position !== record.position
+                                ) {
+                                    await db.Leaderboards_Activity.create({
+                                        mapUid: map,
+                                        accountId: record.accountId,
+                                        oldScore: oldRecord.score,
+                                        newScore: record.score,
+                                        oldPosition: oldRecord.position,
+                                        newPosition: record.position,
+                                    })
+                                }
+                            }
                             try {
                                 if (
                                     !oldRecord ||
-                                    (oldRecord && oldRecord.score !== newRecord.score) ||
+                                    (oldRecord && oldRecord.score !== record.score) ||
                                     !oldRecord.ghost
                                 ) {
                                     const mapRecord = await getMapRecords(
@@ -147,11 +157,11 @@ export const topPlayersMap = async (
                                         mapId,
                                     )
                                     return {
-                                        ...newRecord,
+                                        ...record,
                                         ghost: mapRecord[0].url,
                                     }
                                 } else {
-                                    return newRecord
+                                    return record
                                 }
                             } catch (e) {
                                 console.error(e)
@@ -171,12 +181,16 @@ export const topPlayersMap = async (
                             raw: true,
                         })
                         if (!user) {
-                            const { rankings } = await getPlayerRankings(
-                                credentials.nadeoTokens.accessToken,
-                                [account.accountId],
-                            )
-                            await db.Users.create(account)
-                            await db.Rankings.create(rankings[0])
+                            try {
+                                const { rankings } = await getPlayerRankings(
+                                    credentials.nadeoTokens.accessToken,
+                                    [account.accountId],
+                                )
+                                const user = await db.Users.create(account)
+                                if (user) await db.Rankings.create(rankings[0])
+                            } catch (e) {
+                                console.warn(e)
+                            }
                         }
                     }
                 }
@@ -194,47 +208,19 @@ export const topPlayersMap = async (
             }
         }
 
-        return await createOrUpdateLeaderboard(topPlayersMaps, close)
-    }
-}
-
-const createOrUpdateLeaderboard = async (
-    maps: { map: string; top: any[] }[],
-    close: boolean,
-) => {
-    for (const data of maps) {
-        const { map, top } = data
-        try {
-            if (
-                await db.Leaderboards.findOne({
-                    where: {
-                        mapUid: map,
-                    },
-                })
-            ) {
-                await db.Leaderboards.update(
-                    {
-                        mapUid: map,
-                        data: top,
-                        closed: close,
-                    },
-                    {
-                        where: {
-                            mapUid: map,
-                        },
-                    },
-                )
-            } else {
+        for (const data of topPlayersMaps) {
+            const { map, top } = data
+            try {
                 await db.Leaderboards.create({
                     mapUid: map,
                     data: top,
                     closed: close,
                 })
+            } catch (e) {
+                console.error(e)
+                return false
             }
-        } catch (e) {
-            console.error(e)
-            return false
         }
+        return true
     }
-    return true
 }

@@ -11,7 +11,7 @@ import { TwitchIcon } from '@utils/Icons'
 
 const useStyles = makeStyles(theme => ({
     leaderboard: {
-        margin: 20,
+        margin: 10,
         marginLeft: 30,
         marginRight: 30,
         padding: 10,
@@ -79,9 +79,8 @@ export default function Leaderboard({ leaderboard }) {
 
     return (
         <>
-            <h1 className={classes.text_center}>Leaderboards</h1>
             <h6 className={classes.text_center}>
-                Last updated {new Date(leaderboard.updatedAt).toTimeString()}
+                Last updated {new Date(leaderboard.createdAt).toTimeString()}
             </h6>
             {leaderboard.closed ? (
                 <h4 className={`${classes.text_center} ${classes.color_red}`}>
@@ -111,6 +110,7 @@ export default function Leaderboard({ leaderboard }) {
                 const oldTime =
                     record.oldScore &&
                     new Date(record.oldScore).toISOString().slice(14, -1)
+                const { user } = record
                 return (
                     <Paper className={classes.leaderboard}>
                         <Grid container direction="row">
@@ -146,16 +146,16 @@ export default function Leaderboard({ leaderboard }) {
 
                                     <Link
                                         style={{ textDecoration: 'none' }}
-                                        to={`/player/${record.accountId}/stats`}>
+                                        to={`/player/${user.accountId}/stats`}>
                                         <h3
                                             className={`${classes.color_blue} ${classes.name}`}>
-                                            {record.nameOnPlatform}
+                                            {user.nameOnPlatform}
                                         </h3>
                                     </Link>
-                                    {record.twitch && (
+                                    {user.twitch && (
                                         <a
                                             className={classes.twitch}
-                                            href={record.twitch}
+                                            href={user.twitch}
                                             target="_blank">
                                             <TwitchIcon height={'16px'} width={'16px'} />
                                         </a>

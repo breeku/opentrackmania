@@ -13,6 +13,10 @@ module.exports = (sequelize, DataTypes) => {
         static associate(models) {
             // define association here
             this.belongsTo(models.Maps, { foreignKey: 'mapUid', targetKey: 'mapUid' })
+            this.hasMany(models.Leaderboards_Activity, {
+                foreignKey: 'mapUid',
+                sourceKey: 'mapUid',
+            })
         }
     }
     Leaderboards.init(

@@ -24,6 +24,10 @@ module.exports = (sequelize, DataTypes) => {
                 foreignKey: 'accountId',
                 sourceKey: 'accountId',
             })
+            this.hasMany(models.Leaderboards_Activity, {
+                foreignKey: 'accountId',
+                sourceKey: 'accountId',
+            })
         }
     }
     Users.init(
