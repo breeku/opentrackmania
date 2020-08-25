@@ -183,7 +183,7 @@ export const topPlayersMap = async (
                                     credentials.nadeoTokens.accessToken,
                                     [account.accountId],
                                 )
-                                if (rankings) {
+                                if (rankings[0] && rankings[0].zones) {
                                     await db.Users.create({
                                         ...account,
                                         zones: rankings[0].zones.map(x => {
@@ -194,6 +194,17 @@ export const topPlayersMap = async (
                                         }),
                                     })
                                     await db.Rankings.create(rankings[0])
+                                } else {
+                                    console.warn(
+                                        'Rankings not found for ' +
+                                            account.nameOnPlatform,
+                                    )
+                                    console.warn(rankings)
+
+                                    console.log('Creating user without zones..')
+                                    await db.Users.create({
+                                        ...account,
+                                    })
                                 }
                             } catch (e) {
                                 console.warn(e)
