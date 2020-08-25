@@ -45,7 +45,7 @@ totdRouter.get('/stats', async (req, res) => {
     // this can be cached everyday at 17:01 UTC
     const TOTDs = await db.Totds.findAll({
         include: {
-            include: { all: true, nested: true }, // bad, couldnt do array of models since results are duplicated. probably model associations are wrong?
+            include: { model: db.Users },
             where: { campaign: 'totd' },
             model: db.Maps,
         },
@@ -75,7 +75,13 @@ totdRouter.get('/stats', async (req, res) => {
                 found.tracks.push(Map.data)
             }
         }
-        const { data, closed } = Map.Leaderboard
+
+        const leaderboard = await db.Leaderboards.findOne({
+            where: { mapUid: Map.mapUid },
+            raw: true,
+        })
+
+        const { data, closed } = leaderboard
         if (closed) {
             for (let i = 0; i < data.length; i++) {
                 const position = data[i]
