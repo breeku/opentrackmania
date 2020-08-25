@@ -12,7 +12,6 @@ import { QueryTypes } from 'sequelize'
         `,
         { type: QueryTypes.SELECT },
     )
-
     for (const ranking of rankings) {
         const zones = ranking.zones.slice(1).map(z => {
             return { zoneName: z.zoneName, zoneId: z.zoneId }
