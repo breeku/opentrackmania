@@ -4,7 +4,7 @@
 'use strict'
 const { Model } = require('sequelize')
 module.exports = (sequelize, DataTypes) => {
-    class Maps extends Model {
+    class leaderboard_new extends Model {
         /**
          * Helper method for defining associations.
          * This method is not a part of Sequelize lifecycle.
@@ -12,45 +12,38 @@ module.exports = (sequelize, DataTypes) => {
          */
         static associate(models) {
             // define association here
-            this.hasOne(models.leaderboard_new, {
-                foreignKey: 'mapUid',
-                sourceKey: 'mapUid',
-            })
-            this.hasOne(models.Totds, {
-                foreignKey: 'mapUid',
-                sourceKey: 'mapUid',
-            })
-            this.hasOne(models.Users, {
+            this.belongsTo(models.Maps, { foreignKey: 'mapUid', targetKey: 'mapUid' })
+            this.belongsTo(models.Users, {
                 foreignKey: 'accountId',
-                sourceKey: 'accountId',
+                targetKey: 'accountId',
             })
         }
     }
-    Maps.init(
+    leaderboard_new.init(
         {
-            mapId: {
-                type: DataTypes.STRING,
-                allowNull: false,
-            },
             mapUid: {
                 type: DataTypes.STRING,
                 allowNull: false,
             },
-            data: {
-                type: DataTypes.JSONB,
-                allowNull: false,
-            },
-            campaign: DataTypes.STRING,
             accountId: {
                 type: DataTypes.STRING,
                 allowNull: false,
             },
-            seasonUid: DataTypes.STRING,
+            closed: DataTypes.BOOLEAN,
+            score: {
+                type: DataTypes.INTEGER,
+                allowNull: false,
+            },
+            position: {
+                type: DataTypes.INTEGER,
+                allowNull: false,
+            },
+            ghost: DataTypes.STRING,
         },
         {
             sequelize,
-            modelName: 'Maps',
+            modelName: 'leaderboard_new',
         },
     )
-    return Maps
+    return leaderboard_new
 }

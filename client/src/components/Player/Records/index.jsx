@@ -62,7 +62,7 @@ export default function Records({ id }) {
                                         sort: false,
                                         customBodyRenderLite: dataIndex => {
                                             return textParser(
-                                                playerRecords[dataIndex]['Map.data'].name,
+                                                playerRecords[dataIndex].map.data.name,
                                             )
                                         },
                                     },
@@ -73,7 +73,8 @@ export default function Records({ id }) {
                                     options: {
                                         sort: true,
                                         customBodyRenderLite: dataIndex => {
-                                            return playerRecords[dataIndex].data.position
+                                            return playerRecords[dataIndex].leaderboard
+                                                .position
                                         },
                                         sortCompare: order => {
                                             return (obj1, obj2) => {
@@ -100,7 +101,9 @@ export default function Records({ id }) {
                                         sort: false,
                                         customBodyRenderLite: dataIndex => {
                                             return new Date(
-                                                playerRecords[dataIndex].data.score,
+                                                playerRecords[
+                                                    dataIndex
+                                                ].leaderboard.score,
                                             )
                                                 .toISOString()
                                                 .slice(14, -1)
@@ -115,7 +118,8 @@ export default function Records({ id }) {
                                         customBodyRenderLite: dataIndex => {
                                             return new Date(
                                                 Date.parse(
-                                                    playerRecords[dataIndex].createdAt,
+                                                    playerRecords[dataIndex].leaderboard
+                                                        .createdAt,
                                                 ),
                                             ).toDateString()
                                         },
@@ -134,10 +138,10 @@ export default function Records({ id }) {
                                 search: false,
                                 onRowClick: (d, m) => {
                                     dispatch(
-                                        setTrack(playerRecords[m.dataIndex['Map.data']]),
+                                        setTrack(playerRecords[m.dataIndex].map.data),
                                     )
                                     history.push(
-                                        '/track/' + playerRecords[m.dataIndex].mapUid,
+                                        '/track/' + playerRecords[m.dataIndex].map.mapUid,
                                     )
                                 },
                             }}

@@ -28,6 +28,10 @@ module.exports = (sequelize, DataTypes) => {
                 foreignKey: 'accountId',
                 sourceKey: 'accountId',
             })
+            this.hasMany(models.leaderboard_new, {
+                foreignKey: 'accountId',
+                sourceKey: 'accountId',
+            })
         }
     }
     Users.init(
@@ -51,6 +55,7 @@ module.exports = (sequelize, DataTypes) => {
             twitch: {
                 type: DataTypes.STRING,
             },
+            zones: DataTypes.JSONB,
         },
         {
             sequelize,

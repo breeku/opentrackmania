@@ -41,34 +41,35 @@ playerRouter.get('/rankings/', async (req, res) => {
     for (const ranking of rankings) {
         // split into correct zones, 1 / 2 / 3 / 4
         try {
-            const { nameOnPlatform, accountId, tracking, twitch } = users.find(
-                (x: { accountId: any }) => {
-                    if (x.accountId === ranking.accountId) {
-                        return x
-                    }
-                },
-            )
-            for (const zone of ranking.zones) {
-                const { zoneName } = zone
-                if (
-                    !response.find(x => {
-                        if (x.zoneName === zoneName) {
-                            return true
-                        }
-                    })
-                )
-                    response.push({ zoneName, players: [] })
+            const user = users.find((x: { accountId: any }) => {
+                if (x.accountId === ranking.accountId) {
+                    return x
+                }
+            })
+            if (user) {
+                const { nameOnPlatform, accountId, tracking, twitch } = user
+                for (const zone of ranking.zones) {
+                    const { zoneName } = zone
+                    if (
+                        !response.find(x => {
+                            if (x.zoneName === zoneName) {
+                                return true
+                            }
+                        })
+                    )
+                        response.push({ zoneName, players: [] })
 
-                const z = response.find(x => x.zoneName === zone.zoneName)
-                z.players.push({
-                    echelon: ranking.echelon,
-                    points: ranking.countPoint,
-                    position: zone.ranking.position,
-                    accountId,
-                    nameOnPlatform,
-                    tracking,
-                    twitch,
-                })
+                    const z = response.find(x => x.zoneName === zone.zoneName)
+                    z.players.push({
+                        echelon: ranking.echelon,
+                        points: ranking.countPoint,
+                        position: zone.ranking.position,
+                        accountId,
+                        nameOnPlatform,
+                        tracking,
+                        twitch,
+                    })
+                }
             }
         } catch (e) {
             console.log(ranking)
@@ -153,24 +154,31 @@ playerRouter.get('/search/:name', async (req, res) => {
 playerRouter.get('/records/:id', async (req, res) => {
     const id = req.params.id
 
-    const records = await db.Leaderboards.findAll({
+    const leaderboard = await db.sequelize.query(
+        `
+        SELECT *
+        FROM  (
+            SELECT DISTINCT ON ("mapUid") *
+            FROM "leaderboard_news" AS "leaderboard_news" 
+			WHERE "accountId"='${id}'
+            ) p
+        ORDER BY "updatedAt" DESC;
+        `,
+        { type: QueryTypes.SELECT },
+    )
+
+    const maps = await db.Maps.findAll({
         where: {
-            data: {
-                [Op.contains]: [{ accountId: id }],
+            mapUid: {
+                [Op.in]: leaderboard.map(x => x.mapUid),
             },
         },
-        include: {
-            model: db.Maps,
-        },
-        order: [['createdAt', 'DESC']],
         raw: true,
     })
 
-    const filtered = records
-        .map((record: { data: any[] }) => {
-            return { ...record, data: record.data.filter(x => x.accountId === id)[0] }
-        })
-        .filter((v, i, a) => a.findIndex(t => t.mapUid === v.mapUid) === i)
+    const result = leaderboard.map(l => {
+        return { leaderboard: l, map: maps.find(m => m.mapUid === l.mapUid) }
+    })
 
-    res.send(filtered)
+    res.send(result)
 })

@@ -65,7 +65,7 @@ import { Op } from 'sequelize'
                         raw: true,
                     }))
                 )
-                    await db.Users.create(user)
+                    await db.Users.create(user) //ranking??
             } catch (e) {
                 console.warn(e)
             }

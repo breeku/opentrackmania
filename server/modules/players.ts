@@ -118,7 +118,13 @@ export const createUser = async (
         )
         await db.Users.create({
             nameOnPlatform: profiles[0].nameOnPlatform,
-            accountId: accountId,
+            accountId,
+            zones: rankings[0].zones.map(x => {
+                return {
+                    zoneName: x.zoneName,
+                    zoneId: x.zoneId,
+                }
+            }),
         })
         await db.Rankings.create(rankings[0])
     }

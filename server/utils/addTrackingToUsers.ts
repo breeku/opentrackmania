@@ -10,7 +10,7 @@ import db from '../models'
             .map(x => x.accountId),
     )
 
-    const leaderboards = await db.Leaderboards.findAll({ raw: true })
+    const leaderboards = await db.Leaderboards.findAll({ raw: true }) // old
 
     for (const leaderboard of leaderboards) {
         for (const data of leaderboard.data) {

@@ -75,20 +75,19 @@ const useStyles = makeStyles(theme => ({
 
 export default function Leaderboard({ leaderboard }) {
     const classes = useStyles()
-    const { data } = leaderboard
 
     return (
         <>
             <h6 className={classes.text_center}>
-                Last updated {new Date(leaderboard.createdAt).toTimeString()}
+                Last updated {new Date(leaderboard[0].updatedAt).toTimeString()}
             </h6>
-            {leaderboard.closed ? (
+            {leaderboard[0].closed ? (
                 <h4 className={`${classes.text_center} ${classes.color_red}`}>
                     Leaderboards are closed!
                 </h4>
             ) : (
                 <Countdown
-                    date={new Date(leaderboard.updatedAt).getTime() + 900000}
+                    date={new Date(leaderboard[0].updatedAt).getTime() + 900000}
                     renderer={({ minutes, seconds, completed }) => {
                         if (completed) {
                             return (
@@ -105,12 +104,13 @@ export default function Leaderboard({ leaderboard }) {
                     }}
                 />
             )}
-            {data.map((record, i) => {
+            {leaderboard.map((record, i) => {
                 const time = new Date(record.score).toISOString().slice(14, -1)
                 const oldTime =
                     record.oldScore &&
                     new Date(record.oldScore).toISOString().slice(14, -1)
                 const { user } = record
+                console.log(user)
                 return (
                     <Paper className={classes.leaderboard}>
                         <Grid container direction="row">
@@ -165,7 +165,7 @@ export default function Leaderboard({ leaderboard }) {
                             <Grid item xs={12} sm={12} md={3}>
                                 <h4
                                     className={`${classes.paper_content} ${classes.no_margin_padding}`}>
-                                    {record.zoneName}
+                                    {user.zones ? user.zones[1].zoneName : `?`}
                                 </h4>
                             </Grid>
                             <Grid item xs={12} sm={12} md={4}>
@@ -179,7 +179,8 @@ export default function Leaderboard({ leaderboard }) {
                                                 <span className={classes.color_red}>
                                                     +
                                                     {new Date(
-                                                        record.score - data[0].score,
+                                                        record.score -
+                                                            leaderboard[0].score,
                                                     )
                                                         .toISOString()
                                                         .slice(14, -1)}
