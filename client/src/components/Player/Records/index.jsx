@@ -71,21 +71,16 @@ export default function Records({ id }) {
                                     label: 'Position',
                                     name: 'data',
                                     options: {
-                                        sort: true,
+                                        sort: false,
                                         customBodyRenderLite: dataIndex => {
                                             return playerRecords[dataIndex].leaderboard
                                                 .position
                                         },
                                         sortCompare: order => {
                                             return (obj1, obj2) => {
-                                                let val1 = parseInt(
-                                                    obj1.data.position,
-                                                    10,
-                                                )
-                                                let val2 = parseInt(
-                                                    obj2.data.position,
-                                                    10,
-                                                )
+                                                // fix sort!!
+                                                let val1 = parseInt(obj1.position, 10)
+                                                let val2 = parseInt(obj2.position, 10)
                                                 return (
                                                     (val1 - val2) *
                                                     (order === 'asc' ? 1 : -1)
