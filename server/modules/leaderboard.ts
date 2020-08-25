@@ -27,6 +27,7 @@ export const topPlayersMap = async (
                     where: { mapUid: map },
                     include: {
                         model: db.Leaderboards,
+                        order: [['createdAt', 'DESC']],
                     },
                 })
                 const plain = dbMaps.get({ plain: true })
@@ -132,21 +133,14 @@ export const topPlayersMap = async (
                                 ...record,
                                 nameOnPlatform: user.nameOnPlatform,
                                 twitch: user.twitch,
-                                oldScore:
-                                    oldRecord && oldRecord.score === record.score
-                                        ? oldRecord.score
-                                        : record.score,
-                                oldPosition:
-                                    oldRecord && oldRecord.position === record.position
-                                        ? oldRecord.position
-                                        : record.position,
-                                stagnant: oldRecord
-                                    ? oldRecord.position === record.position
-                                    : false,
                             }
 
                             try {
-                                if (oldRecord && oldRecord.score !== newRecord.score) {
+                                if (
+                                    !oldRecord ||
+                                    (oldRecord && oldRecord.score !== newRecord.score) ||
+                                    !oldRecord.ghost
+                                ) {
                                     const mapRecord = await getMapRecords(
                                         credentials.ubiTokens.accessToken,
                                         record.accountId,
