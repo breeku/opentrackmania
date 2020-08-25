@@ -1,6 +1,6 @@
 import express from 'express'
 import db from '../models/index'
-import { Op, fn } from 'sequelize'
+import { QueryTypes, fn } from 'sequelize'
 
 export const totdRouter = express.Router()
 
@@ -45,9 +45,11 @@ totdRouter.get('/stats', async (req, res) => {
     // this can be cached everyday at 17:01 UTC
     const TOTDs = await db.Totds.findAll({
         include: {
-            include: { all: true, nested: true }, // bad, couldnt do array of models since results are duplicated. probably model associations are wrong?
             where: { campaign: 'totd' },
             model: db.Maps,
+            include: {
+                model: db.Users,
+            },
         },
     })
 
@@ -58,9 +60,11 @@ totdRouter.get('/stats', async (req, res) => {
     const plain = TOTDs.map(record => record.get({ plain: true }))
 
     for (const { Map } of plain) {
-        const mappers = plain.filter(
-            filter => filter.Map.User.nameOnPlatform === Map.User.nameOnPlatform,
-        ).length
+        const mappers = plain.filter(filter => {
+            if (filter.Map.User.nameOnPlatform === Map.User.nameOnPlatform) {
+                return true
+            }
+        }).length
         if (mappers > 1) {
             const found = maps.find(x => x.nameOnPlatform === Map.User.nameOnPlatform)
 
@@ -75,36 +79,64 @@ totdRouter.get('/stats', async (req, res) => {
                 found.tracks.push(Map.data)
             }
         }
-        const { data, closed } = Map.Leaderboard
-        if (closed) {
-            for (let i = 0; i < data.length; i++) {
-                const position = data[i]
-                if (i === 0) {
+        const recent = await db.leaderboard_new.findOne({
+            where: { mapUid: Map.mapUid },
+            raw: true,
+            order: [['createdAt', 'DESC']],
+        })
+
+        const fromDate = new Date(recent.createdAt - 300000).toISOString()
+        const toDate = recent.createdAt.toISOString()
+
+        const leaderboard = await db.sequelize.query(
+            `
+            SELECT *
+            FROM  (
+                SELECT DISTINCT ON ("accountId") *
+                FROM "leaderboard_news"
+                WHERE "createdAt" 
+                BETWEEN '${fromDate}'
+                AND '${toDate}'
+                AND "mapUid"='${Map.mapUid}'
+                ) p
+            ORDER BY "updatedAt" DESC;
+            `,
+            { type: QueryTypes.SELECT },
+        )
+        if (leaderboard[0].closed) {
+            for (let i = 0; i < leaderboard.length; i++) {
+                const position = leaderboard[i]
+                const user = await db.Users.findOne({
+                    where: { accountId: position.accountId },
+                    raw: true,
+                })
+                if (!user) console.log(position.accountId)
+                if (position.position === 1) {
                     // top 1
                     const index = top1.findIndex(
-                        x => x.nameOnPlatform === position.nameOnPlatform,
+                        x => x.nameOnPlatform === user.nameOnPlatform,
                     )
                     if (index !== -1) {
                         top1[index].count += 1
                     } else {
                         top1.push({
-                            nameOnPlatform: position.nameOnPlatform,
-                            accountId: position.accountId,
+                            nameOnPlatform: user.nameOnPlatform,
+                            accountId: user.accountId,
                             count: 1,
                         })
                     }
                 }
                 // ...rest
                 const index = top10.findIndex(
-                    x => x.nameOnPlatform === position.nameOnPlatform,
+                    x => x.nameOnPlatform === user.nameOnPlatform,
                 )
                 if (index !== -1) {
                     top10[index].count += 1
                 } else {
                     if (position.position <= 10) {
                         top10.push({
-                            nameOnPlatform: position.nameOnPlatform,
-                            accountId: position.accountId,
+                            nameOnPlatform: user.nameOnPlatform,
+                            accountId: user.accountId,
                             count: 1,
                         })
                     }
