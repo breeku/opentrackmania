@@ -165,9 +165,11 @@ playerRouter.get('/records/:id', async (req, res) => {
         raw: true,
     })
 
-    const filtered = records.map((record: { data: any[] }) => {
-        return { ...record, data: record.data.filter(x => x.accountId === id)[0] }
-    })
+    const filtered = records
+        .map((record: { data: any[] }) => {
+            return { ...record, data: record.data.filter(x => x.accountId === id)[0] }
+        })
+        .filter((v, i, a) => a.findIndex(t => t.mapUid === v.mapUid) === i)
 
     res.send(filtered)
 })
