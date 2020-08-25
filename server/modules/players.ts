@@ -100,8 +100,8 @@ export const updateRankings = async (): Promise<boolean> => {
     }
 }
 
-export const createUser = async (
-    accountId: string,
+export const createUsers = async (
+    accountIds: string[],
     credentials: {
         ticket: string
         ubiTokens: any
@@ -109,23 +109,44 @@ export const createUser = async (
         accountId?: string
     },
 ): Promise<void> => {
-    const res = await namesFromAccountIds([accountId], credentials)
-    if (res) {
-        const { profiles } = res
-        const { rankings } = await getPlayerRankings(
-            credentials.nadeoTokens.accessToken,
-            [accountId],
-        )
-        await db.Users.create({
-            nameOnPlatform: profiles[0].nameOnPlatform,
-            accountId,
-            zones: rankings[0].zones.map(x => {
-                return {
-                    zoneName: x.zoneName,
-                    zoneId: x.zoneId,
+    const chunks = array_chunks(accountIds, 25)
+    for (const chunk of chunks) {
+        const users = await namesFromAccountIds(chunk, credentials)
+        const combined = users.accounts.flatMap(account => {
+            return users.profiles.flatMap(profile => {
+                if (profile.profileId === account.uid && account.provider === 'uplay') {
+                    return {
+                        nameOnPlatform: profile.nameOnPlatform,
+                        accountId: account.accountId,
+                    }
+                } else {
+                    return []
                 }
-            }),
+            })
         })
-        await db.Rankings.create(rankings[0])
+        if (users) {
+            const { rankings } = await getPlayerRankings(
+                credentials.nadeoTokens.accessToken,
+                chunk,
+            )
+
+            for (const ranking of rankings) {
+                if (ranking) {
+                    const account = combined.find(x => x.accountId === ranking.accountId)
+                    console.log(account)
+                    await db.Users.create({
+                        nameOnPlatform: account.nameOnPlatform,
+                        accountId: account.accountId,
+                        zones: ranking.zones.map(x => {
+                            return {
+                                zoneName: x.zoneName,
+                                zoneId: x.zoneId,
+                            }
+                        }),
+                    })
+                    await db.Rankings.create(ranking)
+                }
+            }
+        }
     }
 }

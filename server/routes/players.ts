@@ -152,31 +152,70 @@ playerRouter.get('/search/:name', async (req, res) => {
 })
 
 playerRouter.get('/records/:id', async (req, res) => {
+    // lol
     const id = req.params.id
 
     const leaderboard = await db.sequelize.query(
         `
         SELECT *
         FROM  (
-            SELECT DISTINCT ON ("mapUid") *
+            SELECT DISTINCT ON ("mapUid") *, max("updatedAt")
             FROM "leaderboard_news" AS "leaderboard_news" 
-			WHERE "accountId"='${id}'
+            WHERE "accountId"='${id}'
+            group by id
+            ORDER BY "mapUid", "updatedAt" DESC
             ) p
         ORDER BY "updatedAt" DESC;
         `,
         { type: QueryTypes.SELECT },
     )
 
+    const matchList = []
+    for (const map of leaderboard) {
+        const recent = await db.leaderboard_new.findOne({
+            where: { mapUid: map.mapUid },
+            raw: true,
+            order: [['createdAt', 'DESC']],
+        })
+
+        const fromDate = new Date(recent.createdAt - 300000).toISOString()
+        const toDate = recent.createdAt.toISOString()
+
+        const recentLeaderboard = await db.sequelize.query(
+            `
+            SELECT *
+            FROM  (
+                SELECT DISTINCT ON ("accountId") *
+                FROM "leaderboard_news"
+                WHERE "createdAt" 
+                BETWEEN '${fromDate}'
+                AND '${toDate}'
+                AND "mapUid"='${map.mapUid}'
+                ) p
+            ORDER BY "updatedAt" DESC;
+            `,
+            { type: QueryTypes.SELECT },
+        )
+
+        const match = recentLeaderboard.find(x => x.accountId === map.accountId)
+
+        if (match) {
+            matchList.push(match.mapUid)
+        }
+    }
+
+    const filtered = leaderboard.filter(x => matchList.find(m => x.mapUid === m))
+
     const maps = await db.Maps.findAll({
         where: {
             mapUid: {
-                [Op.in]: leaderboard.map(x => x.mapUid),
+                [Op.in]: filtered.map(x => x.mapUid),
             },
         },
         raw: true,
     })
 
-    const result = leaderboard.map(l => {
+    const result = filtered.map(l => {
         return { leaderboard: l, map: maps.find(m => m.mapUid === l.mapUid) }
     })
 

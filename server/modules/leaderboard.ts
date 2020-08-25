@@ -29,13 +29,25 @@ export const topPlayersMap = async (
                     where: { mapUid: map },
                     raw: true,
                 })
+                const recent = await db.leaderboard_new.findOne({
+                    where: { mapUid: map },
+                    raw: true,
+                    order: [['createdAt', 'DESC']],
+                })
+
+                const fromDate = new Date(recent.createdAt - 300000).toISOString()
+                const toDate = recent.createdAt.toISOString()
+
                 const leaderboard = await db.sequelize.query(
                     `
                     SELECT *
                     FROM  (
                         SELECT DISTINCT ON ("accountId") *
-                        FROM "leaderboard_news" AS "leaderboard_news" 
-                        WHERE "mapUid"='${map}'
+                        FROM "leaderboard_news"
+                        WHERE "createdAt" 
+                        BETWEEN '${fromDate}'
+                        AND '${toDate}'
+                        AND "mapUid"='${map}'
                         ) p
                     ORDER BY "updatedAt" DESC;
                     `,
@@ -55,7 +67,7 @@ export const topPlayersMap = async (
                 const topPlayers = topTen.tops[0].top
 
                 if (seasonUid) {
-                    let lastScore = topPlayers[topPlayers.length - 1].score
+                    let lastScore = topPlayers[0].score
                     let i = 0
                     while (i < 2) {
                         const scores = await getLeaderboardsAroundScore(

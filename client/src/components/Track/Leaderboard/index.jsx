@@ -110,7 +110,6 @@ export default function Leaderboard({ leaderboard }) {
                     record.oldScore &&
                     new Date(record.oldScore).toISOString().slice(14, -1)
                 const { user } = record
-                console.log(user)
                 return (
                     <Paper className={classes.leaderboard}>
                         <Grid container direction="row">

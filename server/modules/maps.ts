@@ -1,6 +1,6 @@
 import db from '../models/index.js'
 import { getMaps } from 'trackmania-api-node'
-import { createUser } from './players'
+import { createUsers } from './players'
 
 export const saveMaps = async (
     maps: any[],
@@ -43,7 +43,7 @@ export const saveMaps = async (
                     },
                     raw: true,
                 })
-                if (!user) await createUser(map.author, credentials)
+                if (!user) await createUsers([map.author], credentials)
             }
         }
     } catch (e) {

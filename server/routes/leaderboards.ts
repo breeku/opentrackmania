@@ -7,13 +7,27 @@ export const leaderboardRouter = express.Router()
 
 leaderboardRouter.get('/map/:id', async (req, res) => {
     const id = req.params.id
+    const recent = await db.leaderboard_new.findOne({
+        where: { mapUid: id },
+        raw: true,
+        order: [['createdAt', 'DESC']],
+    })
+
+    if (!recent) return res.send(null)
+
+    const fromDate = new Date(recent.createdAt - 300000).toISOString()
+    const toDate = recent.createdAt.toISOString()
+
     let leaderboard = await db.sequelize.query(
         `
         SELECT *
         FROM  (
             SELECT DISTINCT ON ("accountId") *
-            FROM "leaderboard_news" AS "leaderboard_news" 
-			WHERE "mapUid"='${id}'
+            FROM "leaderboard_news"
+            WHERE "createdAt" 
+            BETWEEN '${fromDate}'
+            AND '${toDate}'
+            AND "mapUid"='${id}'
             ) p
         ORDER BY "updatedAt" DESC;
         `,
@@ -86,14 +100,16 @@ leaderboardRouter.get('/map/:id', async (req, res) => {
         SELECT *
         FROM  (
             SELECT DISTINCT ON ("accountId") *
-            FROM "leaderboard_news" AS "leaderboard_news" 
-			WHERE "mapUid"='${id}'
+            FROM "leaderboard_news"
+            WHERE "createdAt" 
+            BETWEEN '${fromDate}'
+            AND '${toDate}'
+            AND "mapUid"='${id}'
             ) p
         ORDER BY "updatedAt" DESC;
         `,
         { type: QueryTypes.SELECT },
     )
-
     const accountIds = leaderboard.map(x => x.accountId)
     const users = await db.Users.findAll({
         where: { accountId: { [Op.in]: accountIds } },

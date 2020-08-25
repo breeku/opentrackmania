@@ -79,13 +79,25 @@ totdRouter.get('/stats', async (req, res) => {
                 found.tracks.push(Map.data)
             }
         }
+        const recent = await db.leaderboard_new.findOne({
+            where: { mapUid: Map.mapUid },
+            raw: true,
+            order: [['createdAt', 'DESC']],
+        })
+
+        const fromDate = new Date(recent.createdAt - 300000).toISOString()
+        const toDate = recent.createdAt.toISOString()
+
         const leaderboard = await db.sequelize.query(
             `
             SELECT *
             FROM  (
                 SELECT DISTINCT ON ("accountId") *
-                FROM "leaderboard_news" AS "leaderboard_news" 
-                WHERE "mapUid"='${Map.mapUid}'
+                FROM "leaderboard_news"
+                WHERE "createdAt" 
+                BETWEEN '${fromDate}'
+                AND '${toDate}'
+                AND "mapUid"='${Map.mapUid}'
                 ) p
             ORDER BY "updatedAt" DESC;
             `,
@@ -99,7 +111,7 @@ totdRouter.get('/stats', async (req, res) => {
                     raw: true,
                 })
                 if (!user) console.log(position.accountId)
-                if (i === 0) {
+                if (position.position === 1) {
                     // top 1
                     const index = top1.findIndex(
                         x => x.nameOnPlatform === user.nameOnPlatform,
