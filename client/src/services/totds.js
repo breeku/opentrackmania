@@ -1,8 +1,13 @@
 import axios from 'axios'
-import { BASEURL } from "./config"
+import { BASEURL } from './config'
 
-export const getTOTDs = async () => {
-    const { data } = await axios.get(BASEURL + '/totds')
+export const getTOTDInfo = async year => {
+    const { data } = await axios.get(BASEURL + '/totds/')
+    return data
+}
+
+export const getTOTDs = async year => {
+    const { data } = await axios.get(BASEURL + '/totds/' + year)
     return data
 }
 

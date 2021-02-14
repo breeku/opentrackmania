@@ -1,11 +1,22 @@
 import express from 'express'
 import db from '../models/index'
-import { Op, fn } from 'sequelize'
+import { fn } from 'sequelize'
 
 export const totdRouter = express.Router()
 
 totdRouter.get('/', async (req, res) => {
-    const totds = await db.Totds.findAll({ raw: true })
+    const years = await db.Totds.findAll({
+        raw: true,
+        attributes: ['year'],
+        group: ['year'],
+    })
+
+    res.send(years)
+})
+
+totdRouter.get('/:year', async (req, res) => {
+    const year = req.params.year
+    const totds = await db.Totds.findAll({ raw: true, where: { year } })
 
     const maps = await db.Maps.findAll({
         where: {
