@@ -71,6 +71,7 @@ export const saveTrophies = async (accountId: string, retry = false, mode: strin
 }
 
 export const updateRankings = async (): Promise<boolean> => {
+    const delay = 60000 // 1 minute in ms
     const credentials = await login()
 
     try {
@@ -80,6 +81,9 @@ export const updateRankings = async (): Promise<boolean> => {
             users.map((x: { accountId: any }) => x.accountId),
             250,
         )
+
+        console.log('Updating rankings of ' + users.length + ' players.')
+        console.log('This will take ~ ' + chunks.length * (delay / 1000) + ' seconds.')
         for (const chunk of chunks) {
             const { rankings } = await getPlayerRankings(
                 credentials.nadeoTokens.accessToken,
@@ -90,7 +94,7 @@ export const updateRankings = async (): Promise<boolean> => {
                 if (ranking) await db.Rankings.create(ranking)
             }
 
-            await new Promise(r => setTimeout(r, 2500))
+            await new Promise(r => setTimeout(r, delay))
         }
 
         return true

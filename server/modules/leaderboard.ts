@@ -31,7 +31,8 @@ export const topPlayersMap = async (
                     },
                 })
                 const plain = dbMaps.get({ plain: true })
-                const { mapId, seasonUid, Leaderboard } = plain
+                const { mapId, Leaderboard } = plain
+                const seasonUid = null // with seasonUid we can get >10 leaderboard records, disabled for now
 
                 const topTen = seasonUid
                     ? await getTopGroupPlayersMap(
