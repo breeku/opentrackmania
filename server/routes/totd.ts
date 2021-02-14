@@ -14,28 +14,6 @@ totdRouter.get('/', async (req, res) => {
     res.send(years)
 })
 
-totdRouter.get('/:year', async (req, res) => {
-    const year = req.params.year
-    const totds = await db.Totds.findAll({ raw: true, where: { year } })
-
-    const maps = await db.Maps.findAll({
-        where: {
-            campaign: 'totd',
-        },
-        raw: true,
-    })
-    const response = totds.flatMap(totd => {
-        return maps.flatMap((map: { mapUid: any; data: any }) => {
-            if (map.mapUid === totd.mapUid) {
-                return { ...totd, map: map.data }
-            } else {
-                return []
-            }
-        })
-    })
-    res.send(response)
-})
-
 totdRouter.get('/random', async (req, res) => {
     const totd = await db.Totds.findOne({
         order: fn('random'),
@@ -134,4 +112,26 @@ totdRouter.get('/stats', async (req, res) => {
     maps.sort((a, b) => (a.count > b.count ? 1 : -1))
 
     res.send({ maps, top10, top1 })
+})
+
+totdRouter.get('/:year', async (req, res) => {
+    const year = req.params.year
+    const totds = await db.Totds.findAll({ raw: true, where: { year } })
+
+    const maps = await db.Maps.findAll({
+        where: {
+            campaign: 'totd',
+        },
+        raw: true,
+    })
+    const response = totds.flatMap(totd => {
+        return maps.flatMap((map: { mapUid: any; data: any }) => {
+            if (map.mapUid === totd.mapUid) {
+                return { ...totd, map: map.data }
+            } else {
+                return []
+            }
+        })
+    })
+    res.send(response)
 })
